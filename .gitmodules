@@ -1,0 +1,9 @@
+[submodule "overview"]
+	path = overview
+	url = https://github.com/notofonts/overview
+[submodule "notofonts.github.io"]
+	path = notofonts.github.io
+	url = https://github.com/notofonts/notofonts.github.io
+[submodule "noto-cjk"]
+	path = noto-cjk
+	url = https://github.com/notofonts/noto-cjk
