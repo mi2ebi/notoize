@@ -1,4 +1,5 @@
 // use serde_json;
+use std::fs;
 
 pub struct NotoizeConfig {
     pub lgc: Vec<Serifness>,
@@ -116,9 +117,28 @@ pub enum SyriacCfg {Sans, Western, Eastern}
 pub enum ThaiLaoCfg {SansLooped, SansUnlooped, Serif}
 pub enum CjkVariant {Sc, Tc, Hk, Jp, Kr}
 
-pub struct FontStack(Vec<String>);
+pub struct FontStack(pub Vec<String>);
 
-/// Returns a minimal CSS font stack for rendering `text`
+#[derive(Debug)]
+pub struct FontStackBytes {
+    pub filename: String,
+    pub fontname: String,
+    pub bytes: Vec<u8>
+}
+
+impl FontStack {
+    pub fn files(& self) -> Vec<FontStackBytes> {
+        self.0.clone().iter().map(|x|
+            FontStackBytes {
+                filename: "NotoSans-Regular.otf".to_string(),
+                fontname: x.to_string(),
+                bytes: fs::read("notofonts.github.io/fonts/NotoSans/full/otf/NotoSans-Regular.otf").unwrap()
+            }
+        ).collect()
+    }
+}
+
+/// Returns a minimal font stack for rendering `text`
 pub fn notoize(text: &str, config: NotoizeConfig) -> FontStack {
     drop(config);
     FontStack(vec![text.to_string()])

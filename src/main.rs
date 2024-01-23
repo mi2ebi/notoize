@@ -6,4 +6,5 @@ fn main() {
         adlam: vec![AdlamNkoCfg::Unjoined],
         ..NotoizeConfig::new_sans()
     };
+    println!("{:?}", FontStack(vec![]).files().iter().map(|x| x.filename.clone()).collect::<Vec<String>>());
 }
