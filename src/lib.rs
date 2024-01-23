@@ -31,6 +31,8 @@ pub struct NotoizeConfig {
     pub syriac: Vec<SyriacCfg>,
     pub thai: Vec<ThaiLaoCfg>,
     pub lao: Vec<ThaiLaoCfg>,
+    // cjk
+    pub cjk: (Vec<Serifness>, Vec<CjkVariant>)
 }
 impl NotoizeConfig {
     pub fn new_sans() -> Self {
@@ -65,6 +67,8 @@ impl NotoizeConfig {
             syriac: vec![SyriacCfg::Sans],
             thai: vec![ThaiLaoCfg::SansUnlooped],
             lao: vec![ThaiLaoCfg::SansLooped],
+            //
+            cjk: (vec![Serifness::Sans], vec![CjkVariant::Sc])
         }
     }
     pub fn prefer_serif() -> Self {
@@ -95,6 +99,8 @@ impl NotoizeConfig {
             khitan: vec![KhitanCfg::Serif],
             thai: vec![ThaiLaoCfg::Serif],
             lao: vec![ThaiLaoCfg::Serif],
+            //
+            cjk: (vec![Serifness::Serif], vec![CjkVariant::Sc]),
             ..Self::new_sans()
         }
     }
@@ -108,6 +114,7 @@ pub enum KhitanCfg {Serif, Vertical, Rotated}
 pub enum NushuCfg {Sans, Traditional}
 pub enum SyriacCfg {Sans, Western, Eastern}
 pub enum ThaiLaoCfg {SansLooped, SansUnlooped, Serif}
+pub enum CjkVariant {Sc, Tc, Hk, Jp, Kr}
 
 pub struct FontStack(Vec<String>);
 
