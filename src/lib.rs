@@ -32,7 +32,7 @@ pub struct NotoizeConfig {
     pub thai: Vec<ThaiLaoCfg>,
     pub lao: Vec<ThaiLaoCfg>,
     // cjk
-    pub cjk: (Vec<Serifness>, Vec<CjkVariant>)
+    pub cjk: Vec<(Serifness, CjkVariant)>
 }
 impl NotoizeConfig {
     pub fn new_sans() -> Self {
@@ -68,7 +68,7 @@ impl NotoizeConfig {
             thai: vec![ThaiLaoCfg::SansUnlooped],
             lao: vec![ThaiLaoCfg::SansLooped],
             //
-            cjk: (vec![Serifness::Sans], vec![CjkVariant::Sc])
+            cjk: vec![(Serifness::Sans, CjkVariant::Sc)]
         }
     }
     pub fn prefer_serif() -> Self {
@@ -100,7 +100,7 @@ impl NotoizeConfig {
             thai: vec![ThaiLaoCfg::Serif],
             lao: vec![ThaiLaoCfg::Serif],
             //
-            cjk: (vec![Serifness::Serif], vec![CjkVariant::Sc]),
+            cjk: vec![(Serifness::Serif, CjkVariant::Sc)],
             ..Self::new_sans()
         }
     }

@@ -39,8 +39,8 @@ Noto Sans Mono and Noto Sans/Serif Display are not supplied.
 | Syriac | `Sans` | - | `Eastern`, `Western` |
 | Thai, Lao | `SansUnlooped` | `Serif` | `SansLooped` |
 
-CJK is given a tuple of `(Vec<Serifness>, Vec<CjkVariant>)`. The default `CjkVariant` is `Sc`; others are `Tc`, `Hk`, `Jp`, `Kr`.
-
 Everything else (Armenian, Balinese, Bengali, Devanagari, Ethiopic, Georgian, Grantha, Gujarati, Gurmukhi, Kannada, Khmer, Khojki, Malayalam, Myanmar, Oriya, Sinhala, Tamil, Telugu, Vithkuqi) is only either `Sans` or `Serif`, accessible via the `Serifness` enum.
+
+CJK is given a `Vec<(Serifness, CjkVariant)>`. The default `CjkVariant` is `Sc`; others are `Tc`, `Hk`, `Jp`, `Kr`.
 
 There are all-sans and all*-serif presets as `new_sans()` / `prefer_serif()`.
