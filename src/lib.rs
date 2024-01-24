@@ -68,7 +68,7 @@ impl NotoizeConfig {
             nushu: vec![NushuCfg::Sans],
             syriac: vec![SyriacCfg::Sans],
             thai: vec![ThaiLaoCfg::SansUnlooped],
-            lao: vec![ThaiLaoCfg::SansLooped],
+            lao: vec![ThaiLaoCfg::SansUnlooped],
             //
             cjk: vec![(Serifness::Sans, CjkVariant::Sc)]
         }
