@@ -1,4 +1,3 @@
-use serde_json;
 use serde::Deserialize;
 use itertools::Itertools;
 use std::{collections::{HashMap, HashSet}, fs};
@@ -157,8 +156,8 @@ pub fn notoize(text: &str, config: NotoizeConfig) -> Vec<String> {
     for c in text.chars() {
         let codepoint = c as u32;
         let hex = format!("{codepoint:04x}");
-        let f = font_support.iter().find(|(n, _)| n == &codepoint).unwrap_or(&(codepoint, CodepointFontSupport {fonts: None}));
-        
+        let f = font_support.iter().find(|(n, _)| n == &codepoint).cloned().unwrap_or((codepoint, CodepointFontSupport {fonts: None})).1.fonts.unwrap_or(vec![]);
+        println!("{:?}", f);
     }
     fonts.into_iter().collect()
 }
