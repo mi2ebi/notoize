@@ -152,7 +152,7 @@ pub struct CodepointFontSupport {
 /// Returns a minimal font stack for rendering `text`
 pub fn notoize(text: &str, config: NotoizeConfig) -> Vec<String> {
     // love one-liners
-    let font_support = (0..=1).map(|i| serde_json::from_str::<BlockData>(&fs::read_to_string(format!("overview/blocks/block-{i:03}.json")).unwrap()).unwrap().cps).flat_map(|h| h.into_iter()).map(|(k, v)| (k.parse::<u32>().unwrap(), v)).sorted_by_key(|&(k, _)| k).collect::<Vec<_>>();
+    let font_support = (0..=323).map(|i| serde_json::from_str::<BlockData>(&fs::read_to_string(format!("overview/blocks/block-{i:03}.json")).unwrap()).unwrap().cps).flat_map(|h| h.into_iter()).map(|(k, v)| (k.parse::<u32>().unwrap(), v)).sorted_by_key(|&(k, _)| k).collect::<Vec<_>>();
     let fonts = HashSet::new();
     for c in text.chars() {
         let codepoint = c as u32;
