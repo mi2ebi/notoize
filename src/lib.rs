@@ -141,18 +141,13 @@ impl FontStack {
 #[derive(Deserialize, Debug)]
 pub struct BlockData {
     name: String,
-    start: u32,
-    end: u32,
-    // coverage: String,
     cps: HashMap<String, CodepointFontSupport>
 }
 
 #[derive(Deserialize, Debug)]
 pub struct CodepointFontSupport {
-    age: Option<String>,
     name: Option<String>,
     fonts: Option<Vec<String>>,
-    special: Option<bool>
 }
 
 /// Returns a minimal font stack for rendering `text`
