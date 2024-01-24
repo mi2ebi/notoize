@@ -1,5 +1,6 @@
-// use serde_json;
-use std::fs;
+use serde_json;
+use serde::Deserialize;
+use std::{collections::HashMap, fs};
 
 pub struct NotoizeConfig {
     pub lgc: Vec<Serifness>,
@@ -138,8 +139,26 @@ impl FontStack {
     }
 }
 
+#[derive(Deserialize, Debug)]
+pub struct BlockData {
+    name: String,
+    start: u32,
+    end: u32,
+    // coverage: String,
+    cps: HashMap<String, CodepointFontSupport>
+}
+
+#[derive(Deserialize, Debug)]
+pub struct CodepointFontSupport {
+    age: Option<String>,
+    name: Option<String>,
+    fonts: Option<Vec<String>>,
+    special: Option<bool>
+}
+
 /// Returns a minimal font stack for rendering `text`
-pub fn notoize(text: &str, config: NotoizeConfig) -> FontStack {
-    drop(config);
-    FontStack(vec![text.to_string()])
+pub fn notoize(text: &str, config: NotoizeConfig) -> Vec<(u32, CodepointFontSupport)> {
+    // love one-liners
+    let blocks = (0..=323).map(|i| serde_json::from_str::<BlockData>(&fs::read_to_string(format!("overview/blocks/block-{i:03}.json")).unwrap()).unwrap().cps).flat_map(|h| h.into_iter()).map(|(k, v)| (k.parse::<u32>().unwrap(), v)).collect::<Vec<_>>();
+    blocks
 }
