@@ -1,7 +1,7 @@
 use serde_json;
 use serde::Deserialize;
 use itertools::Itertools;
-use std::{collections::HashMap, fs};
+use std::{collections::{HashMap, HashSet}, fs};
 
 pub struct NotoizeConfig {
     pub lgc: Vec<Serifness>,
@@ -144,15 +144,21 @@ pub struct BlockData {
     cps: HashMap<String, CodepointFontSupport>
 }
 
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct CodepointFontSupport {
-    name: Option<String>,
     fonts: Option<Vec<String>>,
 }
 
 /// Returns a minimal font stack for rendering `text`
-pub fn notoize(text: &str, config: NotoizeConfig) -> Vec<(u32, CodepointFontSupport)> {
+pub fn notoize(text: &str, config: NotoizeConfig) -> Vec<String> {
     // love one-liners
-    let blocks = (0..=323).map(|i| serde_json::from_str::<BlockData>(&fs::read_to_string(format!("overview/blocks/block-{i:03}.json")).unwrap()).unwrap().cps).flat_map(|h| h.into_iter()).map(|(k, v)| (k.parse::<u32>().unwrap(), v)).sorted_by_key(|&(k, _)| k).collect();
-    blocks
+    let font_support = (0..=1).map(|i| serde_json::from_str::<BlockData>(&fs::read_to_string(format!("overview/blocks/block-{i:03}.json")).unwrap()).unwrap().cps).flat_map(|h| h.into_iter()).map(|(k, v)| (k.parse::<u32>().unwrap(), v)).sorted_by_key(|&(k, _)| k).collect::<Vec<_>>();
+    let fonts = HashSet::new();
+    for c in text.chars() {
+        let codepoint = c as u32;
+        let hex = format!("{codepoint:04x}");
+        let f = font_support.iter().find(|(n, _)| n == &codepoint).unwrap_or(&(codepoint, CodepointFontSupport {fonts: None}));
+        
+    }
+    fonts.into_iter().collect()
 }
