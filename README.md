@@ -2,6 +2,8 @@
 
 A crate that tells you what Noto font stack you need.
 
+This is ***not*** "not oize". what's oize
+
 ## `notoize()`
 
 Takes a `&str` and `NotoizeConfig` and returns a [`FontStack`](#fontstack).
