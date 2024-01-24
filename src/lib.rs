@@ -1,5 +1,6 @@
 use serde_json;
 use serde::Deserialize;
+use itertools::Itertools;
 use std::{collections::HashMap, fs};
 
 pub struct NotoizeConfig {
@@ -121,21 +122,19 @@ pub enum CjkVariant {Sc, Tc, Hk, Jp, Kr}
 pub struct FontStack(pub Vec<String>);
 
 #[derive(Debug)]
-pub struct FontStackBytes {
+pub struct Font {
     pub filename: String,
     pub fontname: String,
     pub bytes: Vec<u8>
 }
 
 impl FontStack {
-    pub fn files(& self) -> Vec<FontStackBytes> {
-        self.0.clone().iter().map(|x|
-            FontStackBytes {
-                filename: "NotoSans-Regular.otf".to_string(),
-                fontname: x.to_string(),
-                bytes: fs::read("notofonts.github.io/fonts/NotoSans/full/otf/NotoSans-Regular.otf").unwrap()
-            }
-        ).collect()
+    pub fn files(& self) -> Vec<Font> {
+        self.0.clone().iter().map(|x| Font {
+            filename: "NotoSans-Regular.otf".to_string(),
+            fontname: x.to_string(),
+            bytes: fs::read("notofonts.github.io/fonts/NotoSans/full/otf/NotoSans-Regular.otf").unwrap()
+        }).collect()
     }
 }
 
@@ -159,6 +158,6 @@ pub struct CodepointFontSupport {
 /// Returns a minimal font stack for rendering `text`
 pub fn notoize(text: &str, config: NotoizeConfig) -> Vec<(u32, CodepointFontSupport)> {
     // love one-liners
-    let blocks = (0..=323).map(|i| serde_json::from_str::<BlockData>(&fs::read_to_string(format!("overview/blocks/block-{i:03}.json")).unwrap()).unwrap().cps).flat_map(|h| h.into_iter()).map(|(k, v)| (k.parse::<u32>().unwrap(), v)).collect::<Vec<_>>();
+    let blocks = (0..=323).map(|i| serde_json::from_str::<BlockData>(&fs::read_to_string(format!("overview/blocks/block-{i:03}.json")).unwrap()).unwrap().cps).flat_map(|h| h.into_iter()).map(|(k, v)| (k.parse::<u32>().unwrap(), v)).sorted_by_key(|&(k, _)| k).collect();
     blocks
 }
