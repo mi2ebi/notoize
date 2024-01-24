@@ -22,7 +22,10 @@ let config = NotoizeConfig {
 
 ### `bool`s
 
-- **`prefer_math`:** over Noto Sans Symbols, for the 222 characters in both
+These apply on characters supported by both:
+
+- **`prefer_math`:** over Noto Sans Symbols (or Symbols 2)
+- **`prefer_cjk`:** over regular Noto Sans/Serif
 
 ### Script-specific
 
@@ -54,9 +57,9 @@ There are all-sans and all*-serif presets as `new_sans()` / `prefer_serif()`.
 
 A `Vec<`font names`>`.
 
-- **`files()`** returns a `Vec<FontStackBytes>`.
+- **`files()`** returns a `Vec<Font>`.
 
-## `FontStackBytes`
+## `Font`
 
 - **`filename`, `bytes`:** for writing the font file elsewhere
 - **`fontname`:** for CSS
