@@ -157,8 +157,11 @@ pub fn notoize(text: &str, config: NotoizeConfig) -> Vec<String> {
         ).unwrap()
     ).map(
         |b| match b.fonts {
-            Some(_) => b.cps.iter().map(
-                |(k, v)| (k.clone(), if v.fonts.is_none() {b.fonts.unwrap()} else {v.fonts.unwrap()})
+            Some(bf) => b.cps.iter().map(
+                |(k, v)| (k.clone(), match v.fonts {
+                    Some(vf) => vf,
+                    None => bf
+                })
             ).unzip(),
             None => b.cps.iter().map(
                 |(k, v)| (k, v.fonts.unwrap_or(vec![]))
