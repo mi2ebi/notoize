@@ -6,5 +6,5 @@ fn main() {
         adlam: vec![AdlamNkoCfg::Unjoined],
         ..NotoizeConfig::new_sans()
     };
-    println!("{:?}", notoize("text", config));
+    println!("{:?}", notoize("ᵼഔᎇ䅺ℴ↤", config));
 }

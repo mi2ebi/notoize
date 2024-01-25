@@ -137,10 +137,11 @@ impl FontStack {
     }
 }
 
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct BlockData {
     name: String,
-    cps: HashMap<String, CodepointFontSupport>
+    cps: HashMap<String, CodepointFontSupport>,
+    fonts: Option<Vec<String>>
 }
 
 #[derive(Deserialize, Debug, Clone)]
@@ -150,15 +151,29 @@ pub struct CodepointFontSupport {
 
 /// Returns a minimal font stack for rendering `text`
 pub fn notoize(text: &str, config: NotoizeConfig) -> Vec<String> {
-    // love one-liners
-    let font_support = (0..=323).map(|i| serde_json::from_str::<BlockData>(&fs::read_to_string(format!("overview/blocks/block-{i:03}.json")).unwrap()).unwrap().cps).flat_map(|h| h.into_iter()).map(|(k, v)| (k.parse::<u32>().unwrap(), v)).sorted_by_key(|&(k, _)| k).collect::<Vec<_>>();
+    let font_support = (0..=323).map(
+        |i| serde_json::from_str::<BlockData>(
+            &fs::read_to_string(format!("overview/blocks/block-{i:03}.json")).unwrap()
+        ).unwrap()
+    ).map(
+        |b| match b.fonts {
+            Some(_) => b.cps.iter().map(
+                |(k, v)| (k.clone(), if v.fonts.is_none() {b.fonts.unwrap()} else {v.fonts.unwrap_or(vec![])})
+            ).unzip(),
+            None => b.cps.iter().map(
+                |(k, v)| (k, v.fonts.unwrap())
+            ).unzip()
+        }
+    ).map(
+        |(k, v): (String, Vec<Vec<String>>)| (k.parse::<u32>().unwrap(), v.into_iter().flatten().collect())
+    ).sorted_by_key(|&(k, _)| k).collect::<Vec<_>>();
     let fonts = HashSet::new();
     for c in text.chars() {
         let codepoint = c as u32;
-        let hex = format!("{codepoint:04x}");
-        let f = font_support.iter().find(|(n, _)| n == &codepoint).cloned().unwrap_or((codepoint, CodepointFontSupport {fonts: None})).1.fonts.unwrap_or(vec![]);
+        let hex = format!("{codepoint:04}");
+        let f = font_support.iter().find(|(n, _)| n == &codepoint).cloned().unwrap_or((codepoint, vec![])).1;
         println!("{hex} {f:?}");
-        // grab appropriate fonts based on config somehow
+        
     }
     fonts.into_iter().collect()
 }
