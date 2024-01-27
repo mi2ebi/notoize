@@ -4,6 +4,10 @@ A crate that tells you what Noto font stack you need.
 
 This is ***not*** "not oize". what's oize
 
+## Beware:
+
+- `notoize()` has to reparse the font support JSONs on every use. It takes around 0.4s on the debug builds. I might make it a `const` *vel sim* in the future.
+
 ## `notoize()`
 
 Takes a `&str` and `NotoizeConfig` and returns a [`FontStack`](#fontstack).
@@ -21,8 +25,6 @@ let config = NotoizeConfig {
 ```
 
 ### `bool`s
-
-These apply on characters supported by both:
 
 - **`prefer_math`:** over Noto Sans Symbols (or Symbols 2)
 - **`prefer_cjk`:** over regular Noto Sans/Serif

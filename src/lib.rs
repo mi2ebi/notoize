@@ -230,7 +230,7 @@ pub fn notoize(text: &str, config: NotoizeConfig) -> Vec<String> {
             .clone();
         for e in &f {
             if !fonts.contains(e) && e != "Sans Mono" && !e.contains("Display") {
-                fonts.push(e.clone())
+                fonts.push("Noto ".to_string() + &e.clone())
             };
         }
         println!("{hex} {f:?}");
