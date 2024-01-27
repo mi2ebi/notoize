@@ -1,10 +1,6 @@
 use notoize::*;
 
 fn main() {
-    let config = NotoizeConfig {
-        // prefer_math: true,
-        adlam: vec![AdlamNkoCfg::Unjoined],
-        ..NotoizeConfig::new_sans()
-    };
+    let config = NotoizeConfig::prefer_serif();
     println!("{:?}", notoize("ᵼഔᎇ䅺ℴ↤", config));
 }

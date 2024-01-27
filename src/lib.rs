@@ -108,44 +108,53 @@ impl NotoizeConfig {
     }
 }
 
+#[derive(PartialEq)]
 pub enum Serifness {
     Sans,
     Serif,
 }
+#[derive(PartialEq)]
 pub enum AdlamNkoCfg {
     Sans,
     Unjoined,
 }
+#[derive(PartialEq)]
 pub enum ArabicCfg {
     Sans,
     Kufi,
     Naskh,
     Nastaliq,
 }
+#[derive(PartialEq)]
 pub enum HebrewCfg {
     Sans,
     Serif,
     Rashi,
 }
+#[derive(PartialEq)]
 pub enum KhitanCfg {
     Serif,
     Vertical,
     Rotated,
 }
+#[derive(PartialEq)]
 pub enum NushuCfg {
     Sans,
     Traditional,
 }
+#[derive(PartialEq)]
 pub enum SyriacCfg {
     Sans,
     Western,
     Eastern,
 }
+#[derive(PartialEq)]
 pub enum ThaiLaoCfg {
     SansLooped,
     SansUnlooped,
     Serif,
 }
+#[derive(PartialEq)]
 pub enum CjkVariant {
     Sc,
     Tc,
@@ -226,11 +235,16 @@ pub fn notoize(text: &str, config: NotoizeConfig) -> Vec<String> {
             .1
             .clone();
         for e in &f {
-            if !fonts.contains(e) && e != "Sans Mono" && !e.contains("Display") {
-                fonts.push("Noto ".to_string() + &e.clone())
+            if !fonts.contains(&format!("Noto {e}"))
+                && e != "Sans Mono"
+                && !e.contains("Display")
+                && (config.lgc.contains(&Serifness::Sans) && e.ends_with("Sans")
+                    || config.lgc.contains(&Serifness::Serif) && e.ends_with("Serif"))
+            {
+                fonts.push(format!("Noto {e}"));
             };
         }
         println!("{hex} {f:?}");
     }
-    fonts.into_iter().collect()
+    fonts
 }
