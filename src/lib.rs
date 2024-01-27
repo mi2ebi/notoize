@@ -1,6 +1,6 @@
 use serde::Deserialize;
 use itertools::Itertools;
-use std::{collections::{HashMap, HashSet}, fs};
+use std::{any::Any, collections::{HashMap, HashSet}, fs};
 
 pub struct NotoizeConfig {
     pub lgc: Vec<Serifness>,
@@ -155,28 +155,30 @@ pub fn notoize(text: &str, config: NotoizeConfig) -> Vec<String> {
         |i| serde_json::from_str::<BlockData>(
             &fs::read_to_string(format!("overview/blocks/block-{i:03}.json")).unwrap()
         ).unwrap()
-    ).map(
-        |b| match b.fonts {
-            Some(bf) => b.cps.iter().map(
-                |(k, v)| (k.clone(), match v.fonts {
-                    Some(vf) => vf,
-                    None => bf
-                })
-            ).unzip(),
-            None => b.cps.iter().map(
-                |(k, v)| (k, v.fonts.unwrap_or(vec![]))
-            ).unzip()
+    ).enumerate().flat_map(
+        |(i, mut e)| {
+            // the entries will all parse as u32 except this one.
+            // this way we still return an iterator & pass the index of the block
+            e.cps.insert(format!("i={i}"), CodepointFontSupport {fonts: None}); e.cps
         }
-    ).map(
-        |(k, v): (String, Vec<Vec<String>>)| (k.parse::<u32>().unwrap(), v.into_iter().flatten().collect())
-    ).sorted_by_key(|&(k, _)| k).collect::<Vec<_>>();
+    ).collect_vec();
+    let font_support = font_support.iter().map(
+        |(k, v)| if k.clone().parse::<u32>().is_ok() {
+            (k.clone().parse::<i32>().unwrap(), match v.clone().fonts {
+                Some(vf) => vf,
+                // FIXME: this doesn't actually work
+                None => font_support.iter().filter(|(k, _)| k.parse::<u32>().is_err()).collect_vec()[0].1.fonts.clone().unwrap_or(vec![])
+            })
+        } else {
+            (-1, vec![])
+        }
+    ).filter(|e| e.0 != -1).map(|e| (e.0 as u32, e.1)).sorted_by_key(|&(k, _)| k).collect_vec();
     let fonts = HashSet::new();
     for c in text.chars() {
         let codepoint = c as u32;
-        let hex = format!("{codepoint:04}");
+        let hex = format!("{codepoint:04x}");
         let f = font_support.iter().find(|(n, _)| n == &codepoint).cloned().unwrap_or((codepoint, vec![])).1;
         println!("{hex} {f:?}");
-        
     }
     fonts.into_iter().collect()
 }
