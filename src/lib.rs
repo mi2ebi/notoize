@@ -1,9 +1,6 @@
 use itertools::Itertools;
 use serde::Deserialize;
-use std::{
-    collections::{HashMap, HashSet},
-    fs,
-};
+use std::{collections::HashMap, fs};
 
 pub struct NotoizeConfig {
     pub lgc: Vec<Serifness>,
@@ -123,7 +120,6 @@ pub enum ArabicCfg {
     Sans,
     Kufi,
     Naskh,
-    NaskhUi,
     Nastaliq,
 }
 pub enum HebrewCfg {
