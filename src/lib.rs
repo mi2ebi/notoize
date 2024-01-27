@@ -212,9 +212,6 @@ pub fn notoize(text: &str, config: NotoizeConfig) -> Vec<String> {
                 })
                 .collect::<HashMap<_, _>>()
         })
-        .collect_vec();
-    let font_support = font_support
-        .iter()
         .map(|(k, v)| (k.parse::<u32>().unwrap(), v.clone()))
         .sorted_by_key(|&(k, _)| k)
         .collect_vec();
@@ -222,7 +219,7 @@ pub fn notoize(text: &str, config: NotoizeConfig) -> Vec<String> {
     for c in text.chars() {
         let codepoint = c as u32;
         let hex = format!("{codepoint:04x}");
-        let f = font_support
+        let mut f = font_support
             .iter()
             .find(|(n, _)| n == &codepoint)
             .unwrap_or(&(codepoint, vec![]))
