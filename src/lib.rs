@@ -1,6 +1,10 @@
-use serde::Deserialize;
 use itertools::Itertools;
-use std::{any::Any, collections::{HashMap, HashSet}, fs};
+use serde::Deserialize;
+use std::{
+    any::Any,
+    collections::{HashMap, HashSet},
+    fs,
+};
 
 pub struct NotoizeConfig {
     pub lgc: Vec<Serifness>,
@@ -34,7 +38,7 @@ pub struct NotoizeConfig {
     pub thai: Vec<ThaiLaoCfg>,
     pub lao: Vec<ThaiLaoCfg>,
     // cjk
-    pub cjk: Vec<(Serifness, CjkVariant)>
+    pub cjk: Vec<(Serifness, CjkVariant)>,
 }
 impl NotoizeConfig {
     pub fn new_sans() -> Self {
@@ -70,7 +74,7 @@ impl NotoizeConfig {
             thai: vec![ThaiLaoCfg::SansUnlooped],
             lao: vec![ThaiLaoCfg::SansUnlooped],
             //
-            cjk: vec![(Serifness::Sans, CjkVariant::Sc)]
+            cjk: vec![(Serifness::Sans, CjkVariant::Sc)],
         }
     }
     pub fn prefer_serif() -> Self {
@@ -108,15 +112,52 @@ impl NotoizeConfig {
     }
 }
 
-pub enum Serifness {Sans, Serif}
-pub enum AdlamNkoCfg {Sans, Unjoined}
-pub enum ArabicCfg {Sans, Kufi, Naskh, NaskhUi, Nastaliq}
-pub enum HebrewCfg {Sans, Serif, Rashi}
-pub enum KhitanCfg {Serif, Vertical, Rotated}
-pub enum NushuCfg {Sans, Traditional}
-pub enum SyriacCfg {Sans, Western, Eastern}
-pub enum ThaiLaoCfg {SansLooped, SansUnlooped, Serif}
-pub enum CjkVariant {Sc, Tc, Hk, Jp, Kr}
+pub enum Serifness {
+    Sans,
+    Serif,
+}
+pub enum AdlamNkoCfg {
+    Sans,
+    Unjoined,
+}
+pub enum ArabicCfg {
+    Sans,
+    Kufi,
+    Naskh,
+    NaskhUi,
+    Nastaliq,
+}
+pub enum HebrewCfg {
+    Sans,
+    Serif,
+    Rashi,
+}
+pub enum KhitanCfg {
+    Serif,
+    Vertical,
+    Rotated,
+}
+pub enum NushuCfg {
+    Sans,
+    Traditional,
+}
+pub enum SyriacCfg {
+    Sans,
+    Western,
+    Eastern,
+}
+pub enum ThaiLaoCfg {
+    SansLooped,
+    SansUnlooped,
+    Serif,
+}
+pub enum CjkVariant {
+    Sc,
+    Tc,
+    Hk,
+    Jp,
+    Kr,
+}
 
 pub struct FontStack(pub Vec<String>);
 
@@ -124,16 +165,21 @@ pub struct FontStack(pub Vec<String>);
 pub struct Font {
     pub filename: String,
     pub fontname: String,
-    pub bytes: Vec<u8>
+    pub bytes: Vec<u8>,
 }
 
 impl FontStack {
-    pub fn files(& self) -> Vec<Font> {
-        self.0.clone().iter().map(|x| Font {
-            filename: "NotoSans-Regular.otf".to_string(),
-            fontname: x.to_string(),
-            bytes: fs::read("notofonts.github.io/fonts/NotoSans/full/otf/NotoSans-Regular.otf").unwrap()
-        }).collect()
+    pub fn files(&self) -> Vec<Font> {
+        self.0
+            .clone()
+            .iter()
+            .map(|x| Font {
+                filename: "NotoSans-Regular.otf".to_string(),
+                fontname: x.to_string(),
+                bytes: fs::read("notofonts.github.io/fonts/NotoSans/full/otf/NotoSans-Regular.otf")
+                    .unwrap(),
+            })
+            .collect()
     }
 }
 
@@ -141,7 +187,7 @@ impl FontStack {
 pub struct BlockData {
     name: String,
     cps: HashMap<String, CodepointFontSupport>,
-    fonts: Option<Vec<String>>
+    fonts: Option<Vec<String>>,
 }
 
 #[derive(Deserialize, Debug, Clone)]
@@ -151,33 +197,59 @@ pub struct CodepointFontSupport {
 
 /// Returns a minimal font stack for rendering `text`
 pub fn notoize(text: &str, config: NotoizeConfig) -> Vec<String> {
-    let font_support = (0..=323).map(
-        |i| serde_json::from_str::<BlockData>(
-            &fs::read_to_string(format!("overview/blocks/block-{i:03}.json")).unwrap()
-        ).unwrap()
-    ).enumerate().flat_map(
-        |(i, mut e)| {
+    let font_support = (0..=323)
+        .map(|i| {
+            serde_json::from_str::<BlockData>(
+                &fs::read_to_string(format!("overview/blocks/block-{i:03}.json")).unwrap(),
+            )
+            .unwrap()
+        })
+        .enumerate()
+        .flat_map(|(i, mut e)| {
             // the entries will all parse as u32 except this one.
             // this way we still return an iterator & pass the index of the block
-            e.cps.insert(format!("i={i}"), CodepointFontSupport {fonts: None}); e.cps
-        }
-    ).collect_vec();
-    let font_support = font_support.iter().map(
-        |(k, v)| if k.clone().parse::<u32>().is_ok() {
-            (k.clone().parse::<i32>().unwrap(), match v.clone().fonts {
-                Some(vf) => vf,
-                // FIXME: this doesn't actually work
-                None => font_support.iter().filter(|(k, _)| k.parse::<u32>().is_err()).collect_vec()[0].1.fonts.clone().unwrap_or(vec![])
-            })
-        } else {
-            (-1, vec![])
-        }
-    ).filter(|e| e.0 != -1).map(|e| (e.0 as u32, e.1)).sorted_by_key(|&(k, _)| k).collect_vec();
+            e.cps
+                .insert(format!("i={i}"), CodepointFontSupport { fonts: None });
+            e.cps
+        })
+        .collect_vec();
+    let font_support = font_support
+        .iter()
+        .map(|(k, v)| {
+            if k.clone().parse::<u32>().is_ok() {
+                (
+                    k.clone().parse::<i32>().unwrap(),
+                    match v.clone().fonts {
+                        Some(vf) => vf,
+                        // FIXME: this doesn't actually work
+                        None => font_support
+                            .iter()
+                            .filter(|(k, _)| k.parse::<u32>().is_err())
+                            .collect_vec()[0]
+                            .1
+                            .fonts
+                            .clone()
+                            .unwrap_or(vec![]),
+                    },
+                )
+            } else {
+                (-1, vec![])
+            }
+        })
+        .filter(|e| e.0 != -1)
+        .map(|e| (e.0 as u32, e.1))
+        .sorted_by_key(|&(k, _)| k)
+        .collect_vec();
     let fonts = HashSet::new();
     for c in text.chars() {
         let codepoint = c as u32;
         let hex = format!("{codepoint:04x}");
-        let f = font_support.iter().find(|(n, _)| n == &codepoint).cloned().unwrap_or((codepoint, vec![])).1;
+        let f = font_support
+            .iter()
+            .find(|(n, _)| n == &codepoint)
+            .cloned()
+            .unwrap_or((codepoint, vec![]))
+            .1;
         println!("{hex} {f:?}");
     }
     fonts.into_iter().collect()
