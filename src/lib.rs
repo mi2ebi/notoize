@@ -1,7 +1,6 @@
 use itertools::Itertools;
 use serde::Deserialize;
 use std::{
-    any::Any,
     collections::{HashMap, HashSet},
     fs,
 };
@@ -185,7 +184,6 @@ impl FontStack {
 
 #[derive(Deserialize, Debug, Clone)]
 pub struct BlockData {
-    name: String,
     cps: HashMap<String, CodepointFontSupport>,
     fonts: Option<Vec<String>>,
 }
@@ -204,52 +202,41 @@ pub fn notoize(text: &str, config: NotoizeConfig) -> Vec<String> {
             )
             .unwrap()
         })
-        .enumerate()
-        .flat_map(|(i, mut e)| {
-            // the entries will all parse as u32 except this one.
-            // this way we still return an iterator & pass the index of the block
+        .flat_map(move |e| {
             e.cps
-                .insert(format!("i={i}"), CodepointFontSupport { fonts: None });
-            e.cps
+                .iter()
+                .map(move |(k, v)| {
+                    (
+                        k.clone(),
+                        match e.fonts.clone() {
+                            None => v.fonts.clone().unwrap_or(vec![]),
+                            Some(f) => f,
+                        },
+                    )
+                })
+                .collect::<HashMap<_, _>>()
         })
         .collect_vec();
     let font_support = font_support
         .iter()
-        .map(|(k, v)| {
-            if k.clone().parse::<u32>().is_ok() {
-                (
-                    k.clone().parse::<i32>().unwrap(),
-                    match v.clone().fonts {
-                        Some(vf) => vf,
-                        // FIXME: this doesn't actually work
-                        None => font_support
-                            .iter()
-                            .filter(|(k, _)| k.parse::<u32>().is_err())
-                            .collect_vec()[0]
-                            .1
-                            .fonts
-                            .clone()
-                            .unwrap_or(vec![]),
-                    },
-                )
-            } else {
-                (-1, vec![])
-            }
-        })
-        .filter(|e| e.0 != -1)
-        .map(|e| (e.0 as u32, e.1))
+        .map(|(k, v)| (k.parse::<u32>().unwrap(), v.clone()))
         .sorted_by_key(|&(k, _)| k)
         .collect_vec();
-    let fonts = HashSet::new();
+    let mut fonts = Vec::new();
     for c in text.chars() {
         let codepoint = c as u32;
         let hex = format!("{codepoint:04x}");
         let f = font_support
             .iter()
             .find(|(n, _)| n == &codepoint)
-            .cloned()
-            .unwrap_or((codepoint, vec![]))
-            .1;
+            .unwrap_or(&(codepoint, vec![]))
+            .1
+            .clone();
+        for e in &f {
+            if !fonts.contains(e) && e != "Sans Mono" && !e.contains("Display") {
+                fonts.push(e.clone())
+            };
+        }
         println!("{hex} {f:?}");
     }
     fonts.into_iter().collect()

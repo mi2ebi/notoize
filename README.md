@@ -26,6 +26,7 @@ These apply on characters supported by both:
 
 - **`prefer_math`:** over Noto Sans Symbols (or Symbols 2)
 - **`prefer_cjk`:** over regular Noto Sans/Serif
+- **`prefer_ui`:** try finding less tall fonts
 
 ### Script-specific
 
