@@ -238,11 +238,18 @@ pub fn notoize(text: &str, config: NotoizeConfig) -> Vec<String> {
             if !fonts.contains(&format!("Noto {e}"))
                 && e != "Sans Mono"
                 && !e.contains("Display")
-                && (config.lgc.contains(&Serifness::Sans) && e.ends_with("Sans")
-                    || config.lgc.contains(&Serifness::Serif) && e.ends_with("Serif"))
+                && (config.lgc.iter().any(|s| match s {
+                    Serifness::Sans => e.ends_with("Sans"),
+                    Serifness::Serif => e.ends_with("Serif"),
+                }) || config.arabic.iter().any(|s| match s {
+                    ArabicCfg::Kufi => e.contains("Kufi"),
+                    ArabicCfg::Naskh => e.contains("Naskh"),
+                    ArabicCfg::Nastaliq => e.contains("Nastaliq"),
+                    ArabicCfg::Sans => e.contains("Sans Arabic"),
+                }))
             {
                 fonts.push(format!("Noto {e}"));
-            };
+            }
         }
         println!("{hex} {f:?}");
     }

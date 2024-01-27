@@ -18,17 +18,16 @@ Supplied as the second argument of `notoize()`.
 
 ```rust
 let config = NotoizeConfig {
-    prefer_math: true,
     adlam: vec![AdlamNkoCfg::Unjoined],
     ..NotoizeConfig::new_sans()
 };
 ```
 
-### `bool`s
+<!-- ### `bool`s
 
 - **`prefer_math`:** over Noto Sans Symbols (or Symbols 2)
 - **`prefer_cjk`:** over regular Noto Sans/Serif
-- **`prefer_ui`:** try finding less tall fonts
+- **`prefer_ui`:** try finding less tall fonts -->
 
 ### Script-specific
 
@@ -55,6 +54,8 @@ Everything else (Armenian, Balinese, Bengali, Devanagari, Ethiopic, Georgian, Gr
 CJK is given a `Vec<(Serifness, CjkVariant)>`. The default `CjkVariant` is `Sc`; others are `Tc`, `Hk`, `Jp`, `Kr`.
 
 There are all-sans and all*-serif presets as `new_sans()` / `prefer_serif()`.
+
+The order these appear in the `Vec` does not affect the order they are in the return value.
 
 ## `FontStack`
 

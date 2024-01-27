@@ -1,6 +1,9 @@
-use notoize::*;
+use notoize::{Serifness::*, *};
 
 fn main() {
-    let config = NotoizeConfig::prefer_serif();
-    println!("{:?}", notoize("ᵼഔᎇ䅺ℴ↤", config));
+    let config = NotoizeConfig {
+        lgc: vec![Serif, Sans],
+        ..NotoizeConfig::new_sans()
+    };
+    println!("{:?}", notoize("ᵼഔᎇ䅺ℴ↤ب", config));
 }
