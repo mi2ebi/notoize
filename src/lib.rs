@@ -3,6 +3,8 @@ use serde::Deserialize;
 use std::{collections::HashMap, fs};
 
 pub struct NotoizeConfig {
+    pub prefer_ui: bool,
+    //
     pub lgc: Vec<Serifness>,
     pub armenian: Vec<Serifness>,
     pub balinese: Vec<Serifness>,
@@ -39,6 +41,7 @@ pub struct NotoizeConfig {
 impl NotoizeConfig {
     pub fn new_sans() -> Self {
         Self {
+            prefer_ui: false,
             lgc: vec![Serifness::Sans],
             armenian: vec![Serifness::Sans],
             balinese: vec![Serifness::Sans],
@@ -247,6 +250,14 @@ pub fn notoize(text: &str, config: NotoizeConfig) -> Vec<String> {
                     ArabicCfg::Nastaliq => e.contains("Nastaliq"),
                     ArabicCfg::Sans => e.contains("Sans Arabic"),
                 }))
+                && {
+                    let (a, b, p) = (
+                        e.ends_with(" UI"),
+                        f.iter().any(|x| x == &format!("{e} UI")),
+                        config.prefer_ui,
+                    );
+                    !(a ^ (a && p) ^ (b && p))
+                }
             {
                 fonts.push(format!("Noto {e}"));
             }
