@@ -2,7 +2,7 @@ use notoize::{Serifness::*, *};
 
 fn main() {
     let config = NotoizeConfig {
-        // prefer_ui: true,
+        prefer_ui: true,
         lgc: vec![Serif, Sans],
         arabic: vec![ArabicCfg::Naskh],
         ..NotoizeConfig::new_sans()

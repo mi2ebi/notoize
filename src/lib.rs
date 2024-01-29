@@ -256,7 +256,7 @@ pub fn notoize(text: &str, config: NotoizeConfig) -> Vec<String> {
                         f.iter().any(|x| x == &format!("{e} UI")),
                         config.prefer_ui,
                     );
-                    !(a ^ (a && p) ^ (b && p))
+                    (!a || p) && (!b || !p)
                 }
             {
                 fonts.push(format!("Noto {e}"));
