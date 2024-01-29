@@ -4,6 +4,8 @@ use std::{collections::HashMap, fs};
 
 pub struct NotoizeConfig {
     pub prefer_ui: bool,
+    pub prefer_cjk: bool,
+    pub prefer_math: bool,
     //
     pub lgc: Vec<Serifness>,
     pub armenian: Vec<Serifness>,
@@ -42,6 +44,8 @@ impl NotoizeConfig {
     pub fn new_sans() -> Self {
         Self {
             prefer_ui: false,
+            prefer_cjk: false,
+            prefer_math: false,
             lgc: vec![Serifness::Sans],
             armenian: vec![Serifness::Sans],
             balinese: vec![Serifness::Sans],
@@ -201,6 +205,10 @@ pub struct CodepointFontSupport {
     fonts: Option<Vec<String>>,
 }
 
+fn preferred(p: bool, a: bool, b: bool) -> bool {
+    (!a || p) && (!b || !p)
+}
+
 /// Returns a minimal font stack for rendering `text`
 pub fn notoize(text: &str, config: NotoizeConfig) -> Vec<String> {
     let font_support = (0..=323)
@@ -250,14 +258,16 @@ pub fn notoize(text: &str, config: NotoizeConfig) -> Vec<String> {
                     ArabicCfg::Nastaliq => e.contains("Nastaliq"),
                     ArabicCfg::Sans => e.contains("Sans Arabic"),
                 }))
-                && {
-                    let (a, b, p) = (
-                        e.ends_with(" UI"),
-                        f.iter().any(|x| x == &format!("{e} UI")),
-                        config.prefer_ui,
-                    );
-                    (!a || p) && (!b || !p)
-                }
+                && preferred(
+                    config.prefer_ui,
+                    e.ends_with(" UI"),
+                    f.iter().any(|x| x == &format!("{e} UI")),
+                )
+                && preferred(
+                    config.prefer_math,                             // p
+                    e == "Sans Math",                               // a
+                    f.iter().any(|x| x == "Sans Symbols"), // b
+                )
             {
                 fonts.push(format!("Noto {e}"));
             }
