@@ -2,6 +2,7 @@ use itertools::Itertools;
 use serde::Deserialize;
 use std::{collections::HashMap, fs};
 
+#[derive(Debug)]
 pub struct FontStack(pub Vec<String>);
 
 #[derive(Debug)]
@@ -16,11 +17,18 @@ impl FontStack {
         self.0
             .clone()
             .iter()
-            .map(|x| Font {
-                filename: "NotoSans-Regular.otf".to_string(),
-                fontname: x.to_string(),
-                bytes: fs::read("notofonts.github.io/fonts/NotoSans/full/otf/NotoSans-Regular.otf")
+            .map(|x| {
+                let f = format!("{}-Regular.otf", x.replace(' ', ""));
+                println!("{}", &f);
+                Font {
+                    filename: f.clone(),
+                    fontname: x.to_string(),
+                    bytes: fs::read(format!(
+                        "notofonts.github.io/fonts/{}/full/otf/{f}",
+                        f.split('-').collect::<Vec<_>>()[0]
+                    ))
                     .unwrap(),
+                }
             })
             .collect()
     }
@@ -38,7 +46,7 @@ pub struct CodepointFontSupport {
 }
 
 /// Returns a minimal font stack for rendering `text`
-pub fn notoize(text: &str) -> Vec<String> {
+pub fn notoize(text: &str) -> FontStack {
     let font_support = (0..=323)
         .map(|i| {
             serde_json::from_str::<BlockData>(
@@ -78,5 +86,5 @@ pub fn notoize(text: &str) -> Vec<String> {
         }
         println!("{hex} {f:?}");
     }
-    fonts
+    FontStack(fonts)
 }

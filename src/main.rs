@@ -1,6 +1,9 @@
+use std::fs;
+
 use notoize::*;
 
 fn main() {
-    println!("{:?}", notoize("ᵼഔᎇ䅺ℴ↤ب𝄞"));
-    println!("{:?}", notoize("ℴ"));
+    let the = notoize("ᵼഔᎇℴ↤ب𝄞").files().iter().map(|f| {
+        fs::write("test/".to_string() + &f.filename, &f.bytes).unwrap()
+    });
 }
