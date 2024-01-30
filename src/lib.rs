@@ -19,7 +19,6 @@ impl FontStack {
             .iter()
             .map(|x| {
                 let f = format!("{}-Regular.otf", x.replace(' ', ""));
-                println!("{}", &f);
                 Font {
                     filename: f.clone(),
                     fontname: x.to_string(),
@@ -74,7 +73,6 @@ pub fn notoize(text: &str) -> FontStack {
     let mut fonts = vec![];
     for c in text.chars() {
         let codepoint = c as u32;
-        let hex = format!("{codepoint:04x}");
         let f = font_support
             .iter()
             .find(|(n, _)| n == &codepoint)
@@ -84,7 +82,6 @@ pub fn notoize(text: &str) -> FontStack {
         if !fonts.contains(&format!("Noto {}", f[0])) {
             fonts.push(format!("Noto {}", f[0]));
         }
-        println!("{hex} {f:?}");
     }
     FontStack(fonts)
 }
