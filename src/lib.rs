@@ -1,7 +1,11 @@
 use itertools::Itertools;
 use serde::Deserialize;
-use std::{collections::HashMap, fs};
+use std::{
+    collections::{HashMap, HashSet},
+    fs,
+};
 
+#[derive(Clone)]
 pub struct NotoizeConfig {
     pub prefer_ui: bool,
     pub prefer_cjk: bool,
@@ -115,53 +119,53 @@ impl NotoizeConfig {
     }
 }
 
-#[derive(PartialEq)]
+#[derive(PartialEq, Clone)]
 pub enum Serifness {
     Sans,
     Serif,
 }
-#[derive(PartialEq)]
+#[derive(PartialEq, Clone)]
 pub enum AdlamNkoCfg {
     Sans,
     Unjoined,
 }
-#[derive(PartialEq)]
+#[derive(PartialEq, Clone)]
 pub enum ArabicCfg {
     Sans,
     Kufi,
     Naskh,
     Nastaliq,
 }
-#[derive(PartialEq)]
+#[derive(PartialEq, Clone)]
 pub enum HebrewCfg {
     Sans,
     Serif,
     Rashi,
 }
-#[derive(PartialEq)]
+#[derive(PartialEq, Clone)]
 pub enum KhitanCfg {
     Serif,
     Vertical,
     Rotated,
 }
-#[derive(PartialEq)]
+#[derive(PartialEq, Clone)]
 pub enum NushuCfg {
     Sans,
     Traditional,
 }
-#[derive(PartialEq)]
+#[derive(PartialEq, Clone)]
 pub enum SyriacCfg {
     Sans,
     Western,
     Eastern,
 }
-#[derive(PartialEq)]
+#[derive(PartialEq, Clone)]
 pub enum ThaiLaoCfg {
     SansLooped,
     SansUnlooped,
     Serif,
 }
-#[derive(PartialEq)]
+#[derive(PartialEq, Clone)]
 pub enum CjkVariant {
     Sc,
     Tc,
@@ -205,12 +209,10 @@ pub struct CodepointFontSupport {
     fonts: Option<Vec<String>>,
 }
 
-fn preferred(p: bool, a: bool, b: bool) -> bool {
-    (!a || p) && (!b || !p)
-}
+const BANNED: [&str; 3] = ["Sans Mono", "Sans Display", "Serif Display"];
 
 /// Returns a minimal font stack for rendering `text`
-pub fn notoize(text: &str, config: NotoizeConfig) -> Vec<String> {
+pub fn notoize(text: &str) -> Vec<String> {
     let font_support = (0..=323)
         .map(|i| {
             serde_json::from_str::<BlockData>(
@@ -235,42 +237,18 @@ pub fn notoize(text: &str, config: NotoizeConfig) -> Vec<String> {
         .map(|(k, v)| (k.parse::<u32>().unwrap(), v.clone()))
         .sorted_by_key(|&(k, _)| k)
         .collect_vec();
-    let mut fonts = Vec::new();
+    let mut fonts = vec![];
     for c in text.chars() {
         let codepoint = c as u32;
         let hex = format!("{codepoint:04x}");
-        let mut f = font_support
+        let f = font_support
             .iter()
             .find(|(n, _)| n == &codepoint)
             .unwrap_or(&(codepoint, vec![]))
             .1
             .clone();
-        for e in &f {
-            if !fonts.contains(&format!("Noto {e}"))
-                && e != "Sans Mono"
-                && !e.contains("Display")
-                && (config.lgc.iter().any(|s| match s {
-                    Serifness::Sans => e.ends_with("Sans"),
-                    Serifness::Serif => e.ends_with("Serif"),
-                }) || config.arabic.iter().any(|s| match s {
-                    ArabicCfg::Kufi => e.contains("Kufi"),
-                    ArabicCfg::Naskh => e.contains("Naskh"),
-                    ArabicCfg::Nastaliq => e.contains("Nastaliq"),
-                    ArabicCfg::Sans => e.contains("Sans Arabic"),
-                }))
-                && preferred(
-                    config.prefer_ui,
-                    e.ends_with(" UI"),
-                    f.iter().any(|x| x == &format!("{e} UI")),
-                )
-                && preferred(
-                    config.prefer_math,                             // p
-                    e == "Sans Math",                               // a
-                    f.iter().any(|x| x == "Sans Symbols"), // b
-                )
-            {
-                fonts.push(format!("Noto {e}"));
-            }
+        if !fonts.contains(&format!("Noto {}", f[0])) {
+            fonts.push(format!("Noto {}", f[0]));
         }
         println!("{hex} {f:?}");
     }

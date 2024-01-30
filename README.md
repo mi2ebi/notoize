@@ -10,9 +10,9 @@ This is ***not*** "not oize". what's oize
 
 ## `notoize()`
 
-Takes a `&str` and `NotoizeConfig` and returns a [`FontStack`](#fontstack).
+Takes a `&str` and returns a [`FontStack`](#fontstack).
 
-## `NotoizeConfig`
+<!-- ## `NotoizeConfig`
 
 Supplied as the second argument of `notoize()`.
 
@@ -23,11 +23,11 @@ let config = NotoizeConfig {
 };
 ```
 
-<!-- ### `bool`s
+### `bool`s
 
 - **`prefer_math`:** over Noto Sans Symbols (or Symbols 2)
 - **`prefer_cjk`:** over regular Noto Sans/Serif
-- **`prefer_ui`:** try finding less tall fonts -->
+- **`prefer_ui`:** try finding less tall fonts
 
 ### Script-specific
 
@@ -55,7 +55,7 @@ CJK is given a `Vec<(Serifness, CjkVariant)>`. The default `CjkVariant` is `Sc`;
 
 There are all-sans and all*-serif presets as `new_sans()` / `prefer_serif()`.
 
-The order these appear in the `Vec` does not affect the order they are in the return value.
+The order these appear in the `Vec` does not affect the order they are in the return value. -->
 
 ## `FontStack`
 
