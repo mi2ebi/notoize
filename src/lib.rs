@@ -79,6 +79,7 @@ pub fn notoize(text: &str) -> FontStack {
             .unwrap_or(&(codepoint, vec![]))
             .1
             .clone();
+        println!("{c} {f:?}");
         if !fonts.contains(&format!("Noto {}", f[0])) {
             fonts.push(format!("Noto {}", f[0]));
         }
