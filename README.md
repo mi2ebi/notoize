@@ -7,8 +7,8 @@ This is ***not*** "not oize". what's oize
 ## Beware:
 
 - `notoize()` has to reparse the font support JSONs on every use. It takes around 0.4s on the debug builds. I might make it a `const` *vel sim* in the future.
-- Panics for CJK/emoji.
 - no config options yet
+- Sometimes outputs FangsongKSSRotated instead of CJK.
 
 ## `notoize()`
 

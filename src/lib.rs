@@ -18,7 +18,17 @@ impl FontStack {
             .clone()
             .iter()
             .map(|x| {
-                let f = format!("{}-Regular.otf", x.replace(' ', ""));
+                let cjkfile = format!(
+                    "noto-cjk/{}/OTF/SimplifiedChinese/Noto{0}CJKsc-Regular.otf",
+                    x.split_ascii_whitespace().collect::<Vec<_>>()[1]
+                );
+                let f = if x.contains("CJK") {
+                    cjkfile.split('/').last().unwrap().to_string()
+                } else if x == "Noto Color Emoji" {
+                    "NotoColorEmoji.ttf".to_string()
+                } else {
+                    format!("{}-Regular.otf", x.replace(' ', ""))
+                };
                 Font {
                     filename: f.clone(),
                     fontname: x.to_string(),
@@ -26,7 +36,10 @@ impl FontStack {
                         "notofonts.github.io/fonts/{}/full/otf/{f}",
                         f.split('-').collect::<Vec<_>>()[0]
                     ))
-                    .unwrap(),
+                    .unwrap_or(
+                        fs::read(cjkfile)
+                            .unwrap_or(fs::read("noto-emoji/fonts/NotoColorEmoji.ttf").unwrap()),
+                    ),
                 }
             })
             .collect()
@@ -42,6 +55,12 @@ pub struct BlockData {
 #[derive(Deserialize, Debug, Clone)]
 pub struct CodepointFontSupport {
     fonts: Option<Vec<String>>,
+}
+
+fn drain_before(mut f: Vec<String>, index: Option<usize>) {
+    if let Some(i) = index {
+        f.drain(..i);
+    }
 }
 
 /// Returns a minimal font stack for rendering `text`
@@ -80,8 +99,11 @@ pub fn notoize(text: &str) -> FontStack {
             .1
             .clone();
         println!("{c} {f:?}");
-        if !fonts.contains(&format!("Noto {}", f[0])) {
-            fonts.push(format!("Noto {}", f[0]));
+        drain_before(f.clone(), f.iter().position(|x| x == "Sans"));
+        let sel = &f[0];
+        // println!("{}", sel);
+        if !fonts.contains(&format!("Noto {}", sel)) {
+            fonts.push(format!("Noto {}", sel));
         }
     }
     FontStack(fonts)
