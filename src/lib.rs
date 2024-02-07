@@ -1,6 +1,6 @@
 use itertools::Itertools;
 use serde::Deserialize;
-use std::{collections::HashMap, fs};
+use std::{collections::HashMap, fs, process::Command};
 
 #[derive(Debug)]
 pub struct FontStack(pub Vec<String>);
@@ -63,8 +63,62 @@ fn drain_before(mut f: Vec<String>, index: Option<usize>) {
     }
 }
 
+fn clone_folders(origin: &str, dest: &str, folders: Vec<&str>) {
+    // cursed
+    Command::new("git")
+        .args([
+            "clone",
+            "--depth=1",
+            "--single-branch",
+            "--filter=blob:none",
+            "--no-checkout",
+            "--sparse",
+            origin,
+        ])
+        .status()
+        .unwrap();
+    Command::new("git")
+        .current_dir(dest)
+        .args(["sparse-checkout", "init", "--no-cone"])
+        .status()
+        .unwrap();
+    Command::new("git")
+        .current_dir(dest)
+        .args(["sparse-checkout", "set"])
+        .args(&folders)
+        .status()
+        .unwrap();
+    Command::new("git")
+        .current_dir(dest)
+        .arg("checkout")
+        .status()
+        .unwrap();
+}
+
 /// Returns a minimal font stack for rendering `text`
 pub fn notoize(text: &str) -> FontStack {
+    // grab the repos
+    clone_folders(
+        "https://github.com/notofonts/overview",
+        "overview",
+        vec!["blocks"],
+    );
+    clone_folders(
+        "https://github.com/notofonts/notofonts.github.io",
+        "notofonts.github.io",
+        vec!["fonts"],
+    );
+    clone_folders(
+        "https://github.com/googlefonts/noto-emoji",
+        "noto-emoji",
+        vec!["fonts"],
+    );
+    clone_folders(
+        "https://github.com/notofonts/noto-cjk",
+        "noto-cjk",
+        vec!["Sans", "Serif"],
+    );
+    // parse data
     let font_support = (0..=323)
         .map(|i| {
             serde_json::from_str::<BlockData>(
@@ -89,6 +143,7 @@ pub fn notoize(text: &str) -> FontStack {
         .map(|(k, v)| (k.parse::<u32>().unwrap(), v.clone()))
         .sorted_by_key(|&(k, _)| k)
         .collect_vec();
+    // actually do things
     let mut fonts = vec![];
     for c in text.chars() {
         let codepoint = c as u32;
@@ -101,10 +156,14 @@ pub fn notoize(text: &str) -> FontStack {
         println!("{c} {f:?}");
         drain_before(f.clone(), f.iter().position(|x| x == "Sans"));
         let sel = &f[0];
-        // println!("{}", sel);
         if !fonts.contains(&format!("Noto {}", sel)) {
             fonts.push(format!("Noto {}", sel));
         }
     }
+    // no one will know >:3
+    fs::remove_dir_all("overview").unwrap();
+    fs::remove_dir_all("notofonts.github.io").unwrap();
+    fs::remove_dir_all("noto-emoji").unwrap();
+    fs::remove_dir_all("noto-cjk").unwrap();
     FontStack(fonts)
 }
