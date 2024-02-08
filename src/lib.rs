@@ -160,10 +160,5 @@ pub fn notoize(text: &str) -> FontStack {
             fonts.push(format!("Noto {}", sel));
         }
     }
-    // no one will know >:3
-    fs::remove_dir_all("overview").unwrap();
-    fs::remove_dir_all("notofonts.github.io").unwrap();
-    fs::remove_dir_all("noto-emoji").unwrap();
-    fs::remove_dir_all("noto-cjk").unwrap();
     FontStack(fonts)
 }
