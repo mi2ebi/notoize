@@ -6,7 +6,7 @@ This is ***not*** "not oize". what's oize
 
 ## Beware:
 
-- There is a `[time]` delay cloning the font(-data) repos... it's either that or 6gb crate though
+- There is a long (depends on your internet speed) delay cloning the font(-data) repos... it's either that or 6gb crate though
 - no config options yet
 - Sometimes outputs FangsongKSSRotated instead of CJK.
 
