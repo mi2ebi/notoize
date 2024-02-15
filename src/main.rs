@@ -7,5 +7,5 @@ fn main() {
         fs::write("test/".to_string() + &f.filename, &f.bytes).expect("test doesn't exist");
     }
     // no one will know >:3
-    // fs::remove_dir_all(".notoize").unwrap();
+    fs::remove_dir_all(".notoize").unwrap();
 }
