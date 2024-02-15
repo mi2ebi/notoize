@@ -1,6 +1,8 @@
+use dotenv::dotenv;
+use gh_file_curler::speedrun;
 use itertools::Itertools;
 use serde::Deserialize;
-use std::{collections::HashMap, fs, process::Command};
+use std::{collections::HashMap, env, fs};
 
 #[derive(Debug)]
 pub struct FontStack(pub Vec<String>);
@@ -19,7 +21,7 @@ impl FontStack {
             .iter()
             .map(|x| {
                 let cjkfile = format!(
-                    "noto-cjk/{}/OTF/SimplifiedChinese/Noto{0}CJKsc-Regular.otf",
+                    ".notoize/noto-cjk/{}/OTF/SimplifiedChinese/Noto{0}CJKsc-Regular.otf",
                     x.split_ascii_whitespace().collect::<Vec<_>>()[1]
                 );
                 let f = if x.contains("CJK") {
@@ -33,13 +35,12 @@ impl FontStack {
                     filename: f.clone(),
                     fontname: x.to_string(),
                     bytes: fs::read(format!(
-                        "notofonts.github.io/fonts/{}/full/otf/{f}",
+                        ".notoize/notofonts.github.io/fonts/{}/full/otf/{f}",
                         f.split('-').collect::<Vec<_>>()[0]
                     ))
-                    .unwrap_or(
-                        fs::read(cjkfile)
-                            .unwrap_or(fs::read("noto-emoji/fonts/NotoColorEmoji.ttf").unwrap()),
-                    ),
+                    .unwrap_or(fs::read(cjkfile).unwrap_or(
+                        fs::read(".notoize/noto-emoji/fonts/NotoColorEmoji.ttf").unwrap(),
+                    )),
                 }
             })
             .collect()
@@ -63,66 +64,33 @@ fn drain_before(mut f: Vec<String>, index: Option<usize>) {
     }
 }
 
-fn clone_folders(origin: &str, dest: &str, folders: Vec<&str>) {
-    // cursed
-    Command::new("git")
-        .args([
-            "clone",
-            "--depth=1",
-            "--single-branch",
-            "--filter=blob:none",
-            "--no-checkout",
-            "--sparse",
-            origin,
-        ])
-        .status()
-        .unwrap();
-    Command::new("git")
-        .current_dir(dest)
-        .args(["sparse-checkout", "init", "--no-cone"])
-        .status()
-        .unwrap();
-    Command::new("git")
-        .current_dir(dest)
-        .args(["sparse-checkout", "set"])
-        .args(&folders)
-        .status()
-        .unwrap();
-    Command::new("git")
-        .current_dir(dest)
-        .arg("checkout")
-        .status()
-        .unwrap();
+fn clone_folders(author: &str, repo: &str, folders: Vec<&str>) {
+    let gh_token = env::var("GITHUB_API_TOKEN").unwrap();
+    let gh_token = &gh_token;
+    speedrun(
+        author,
+        repo,
+        &format!(".notoize/{repo}"),
+        folders,
+        true,
+        gh_token,
+    )
+    .unwrap();
 }
-
 /// Returns a minimal font stack for rendering `text`
 pub fn notoize(text: &str) -> FontStack {
+    dotenv().ok();
     // grab the repos
-    clone_folders(
-        "https://github.com/notofonts/overview",
-        "overview",
-        vec!["blocks"],
-    );
-    clone_folders(
-        "https://github.com/notofonts/notofonts.github.io",
-        "notofonts.github.io",
-        vec!["fonts"],
-    );
-    clone_folders(
-        "https://github.com/googlefonts/noto-emoji",
-        "noto-emoji",
-        vec!["fonts"],
-    );
-    clone_folders(
-        "https://github.com/notofonts/noto-cjk",
-        "noto-cjk",
-        vec!["Sans", "Serif"],
-    );
+    fs::remove_dir_all(".notoize").unwrap();
+    clone_folders("notofonts", "overview", vec!["blocks"]);
+    clone_folders("notofonts", "notofonts.github.io", vec!["fonts"]);
+    clone_folders("googlefonts", "noto-emoji", vec!["fonts"]);
+    clone_folders("notofonts", "noto-cjk", vec!["Sans", "Serif"]);
     // parse data
     let font_support = (0..=323)
         .map(|i| {
             serde_json::from_str::<BlockData>(
-                &fs::read_to_string(format!("overview/blocks/block-{i:03}.json")).unwrap(),
+                &fs::read_to_string(format!(".notoize/overview/blocks/block-{i:03}.json")).unwrap(),
             )
             .unwrap()
         })
