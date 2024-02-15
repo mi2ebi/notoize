@@ -37,21 +37,26 @@ impl FontStack {
                     bytes: {
                         let path =
                             format!("fonts/{}/full/otf", f.split('-').collect::<Vec<_>>()[0]);
-                        clone_folders("notofonts", "notofonts.github.io", vec![&path]);
-                        fs::read(format!(".notoize/notofonts.github.io/{path}/{f}"))
+                        if clone_folders("notofonts", "notofonts.github.io", vec![&path]).is_ok() {
+                            fs::read(format!(".notoize/notofonts.github.io/{path}/{f}"))
+                        } else {
+                            fs::read(".")
+                        }
                     }
                     .unwrap_or_else(|_| {
                         {
                             if !Path::new(".notoize/noto-cjk").exists() {
-                                clone_folders("notofonts", "noto-cjk", vec!["Sans", "Serif"]);
+                                clone_folders("notofonts", "noto-cjk", vec!["Sans", "Serif"])
+                                    .unwrap();
                             }
                             fs::read(cjkfile)
                         }
                         .unwrap_or_else(|_| {
                             if !Path::new(".notoize/noto-emoji").exists() {
-                                clone_folders("googlefonts", "noto-emoji", vec!["fonts"]);
+                                clone_folders("googlefonts", "noto-emoji", vec!["fonts"]).unwrap();
                             }
-                            fs::read(".notoize/noto-emoji/fonts/NotoColorEmoji.ttf").unwrap()
+                            fs::read(".notoize/noto-emoji/fonts/NotoColorEmoji.ttf")
+                                .unwrap_or_else(|_| vec![])
                         })
                     }),
                 }
@@ -77,7 +82,11 @@ fn drain_before(mut f: Vec<String>, index: Option<usize>) {
     }
 }
 
-fn clone_folders(author: &str, repo: &str, folders: Vec<&str>) {
+fn clone_folders(
+    author: &str,
+    repo: &str,
+    folders: Vec<&str>,
+) -> Result<gh_file_curler::Files, String> {
     let gh_token = env::var("GITHUB_API_TOKEN").unwrap();
     let gh_token = &gh_token;
     speedrun(
@@ -88,12 +97,11 @@ fn clone_folders(author: &str, repo: &str, folders: Vec<&str>) {
         true,
         gh_token,
     )
-    .unwrap();
 }
 /// Returns a minimal font stack for rendering `text`
 pub fn notoize(text: &str) -> FontStack {
     dotenv().ok();
-    clone_folders("notofonts", "overview", vec!["blocks"]);
+    clone_folders("notofonts", "overview", vec!["blocks"]).unwrap();
     // parse data
     let font_support = (0..=323)
         .map(|i| {
@@ -130,9 +138,13 @@ pub fn notoize(text: &str) -> FontStack {
             .1
             .clone();
         drain_before(f.clone(), f.iter().position(|x| x == "Sans"));
-        let sel = &f[0];
-        if !fonts.contains(&format!("Noto {}", sel)) {
-            fonts.push(format!("Noto {}", sel));
+        if f.len() > 0 {
+            let sel = &f[0];
+            if !fonts.contains(&format!("Noto {}", sel)) {
+                fonts.push(format!("Noto {}", sel));
+            }
+        } else {
+            eprintln!("no fonts support u+{codepoint:04x}")
         }
     }
     FontStack(fonts)
