@@ -37,7 +37,7 @@ impl FontStack {
                     bytes: {
                         let path =
                             format!("fonts/{}/full/otf", f.split('-').collect::<Vec<_>>()[0]);
-                        if clone_folders("notofonts", "notofonts.github.io", vec![&path]).is_ok() {
+                        if Path::new(".notoize/noto-cjk").exists() || clone_folders("notofonts", "notofonts.github.io", vec![&path]).is_ok() {
                             fs::read(format!(".notoize/notofonts.github.io/{path}/{f}"))
                         } else {
                             fs::read(".")
