@@ -31,6 +31,7 @@ impl FontStack {
                 } else {
                     format!("{}-Regular.otf", x.replace(' ', ""))
                 };
+                eprintln!("fetching {x} ({f})");
                 Font {
                     filename: f.clone(),
                     fontname: x.to_string(),
@@ -76,10 +77,12 @@ pub struct CodepointFontSupport {
     fonts: Option<Vec<String>>,
 }
 
-fn drain_before(mut f: Vec<String>, index: Option<usize>) {
+fn drain_before(f: Vec<String>, index: Option<usize>) -> Vec<String> {
+    let mut f = f;
     if let Some(i) = index {
         f.drain(..i);
     }
+    f
 }
 
 fn clone_folders(
@@ -137,10 +140,11 @@ pub fn notoize(text: &str) -> FontStack {
             .unwrap_or(&(codepoint, vec![]))
             .1
             .clone();
-        drain_before(f.clone(), f.iter().position(|x| x == "Sans"));
+        let f = drain_before(f.clone(), f.iter().position(|x| x == "Sans"));
         if f.len() > 0 {
             let sel = &f[0];
             if !fonts.contains(&format!("Noto {}", sel)) {
+                eprintln!("need {sel} for u+{codepoint:04x}");
                 fonts.push(format!("Noto {}", sel));
             }
         } else {
