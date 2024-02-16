@@ -90,7 +90,7 @@ fn clone_folders(
     repo: &str,
     folders: Vec<&str>,
 ) -> Result<gh_file_curler::Files, String> {
-    let gh_token = env::var("GITHUB_API_TOKEN").unwrap();
+    let gh_token = env::var("GITHUB_TOKEN").unwrap();
     let gh_token = &gh_token;
     speedrun(
         author,
