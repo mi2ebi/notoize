@@ -1,8 +1,7 @@
-use dotenv::dotenv;
-use gh_file_curler::speedrun;
+use gh_file_curler::{fetch, wrapped_first};
 use itertools::Itertools;
 use serde::Deserialize;
-use std::{collections::HashMap, env, fs, path::Path};
+use std::{collections::HashMap, fs};
 
 #[derive(Debug)]
 pub struct FontStack(pub Vec<String>);
@@ -21,7 +20,7 @@ impl FontStack {
             .iter()
             .map(|x| {
                 let cjkfile = format!(
-                    ".notoize/noto-cjk/{}/OTF/SimplifiedChinese/Noto{0}CJKsc-Regular.otf",
+                    "{}/OTF/SimplifiedChinese/Noto{0}CJKsc-Regular.otf",
                     x.split_ascii_whitespace().collect::<Vec<_>>()[1]
                 );
                 let f = if x.contains("CJK") {
@@ -37,28 +36,15 @@ impl FontStack {
                     fontname: x.to_string(),
                     bytes: {
                         let path =
-                            format!("fonts/{}/full/otf", f.split('-').collect::<Vec<_>>()[0]);
-                        if Path::new(".notoize/noto-cjk").exists() || clone_folders("notofonts", "notofonts.github.io", vec![&path]).is_ok() {
-                            fs::read(format!(".notoize/notofonts.github.io/{path}/{f}"))
-                        } else {
-                            fs::read(".")
-                        }
+                            format!("fonts/{}/full/otf/{f}", f.split('-').collect::<Vec<_>>()[0]);
+                        wrapped_first(fetch("notofonts", "notofonts.github.io", vec![&path]))
                     }
-                    .unwrap_or_else(|_| {
-                        {
-                            if !Path::new(".notoize/noto-cjk").exists() {
-                                clone_folders("notofonts", "noto-cjk", vec!["Sans", "Serif"])
-                                    .unwrap();
-                            }
-                            fs::read(cjkfile)
-                        }
-                        .unwrap_or_else(|_| {
-                            if !Path::new(".notoize/noto-emoji").exists() {
-                                clone_folders("googlefonts", "noto-emoji", vec!["fonts"]).unwrap();
-                            }
-                            fs::read(".notoize/noto-emoji/fonts/NotoColorEmoji.ttf")
-                                .unwrap_or_else(|_| vec![])
-                        })
+                    .unwrap_or_else(|| {
+                        wrapped_first(fetch("notofonts", "noto-cjk", vec![&cjkfile]))
+                            .unwrap_or_else(|| {
+                                wrapped_first(fetch("googlefonts", "noto-emoji", vec!["fonts"]))
+                                    .unwrap_or_default()
+                            })
                     }),
                 }
             })
@@ -85,31 +71,20 @@ fn drain_before(f: Vec<String>, index: Option<usize>) -> Vec<String> {
     f
 }
 
-fn clone_folders(
-    author: &str,
-    repo: &str,
-    folders: Vec<&str>,
-) -> Result<gh_file_curler::Files, String> {
-    let gh_token = env::var("GITHUB_TOKEN").unwrap();
-    let gh_token = &gh_token;
-    speedrun(
-        author,
-        repo,
-        &format!(".notoize/{repo}"),
-        folders,
-        true,
-        gh_token,
-    )
-}
 /// Returns a minimal font stack for rendering `text`
 pub fn notoize(text: &str) -> FontStack {
-    dotenv().ok();
-    clone_folders("notofonts", "overview", vec!["blocks"]).unwrap();
     // parse data
     let font_support = (0..=323)
         .map(|i| {
+            fetch(
+                "notofonts",
+                "overview",
+                vec![&format!("blocks/block-{i:03}.json")],
+            )
+            .unwrap()
+            .write_to(".notoize");
             serde_json::from_str::<BlockData>(
-                &fs::read_to_string(format!(".notoize/overview/blocks/block-{i:03}.json")).unwrap(),
+                &fs::read_to_string(format!(".notoize/blocks/block-{i:03}.json")).unwrap(),
             )
             .unwrap()
         })
@@ -141,7 +116,7 @@ pub fn notoize(text: &str) -> FontStack {
             .1
             .clone();
         let f = drain_before(f.clone(), f.iter().position(|x| x == "Sans"));
-        if f.len() > 0 {
+        if !f.is_empty() {
             let sel = &f[0];
             if !fonts.contains(&format!("Noto {}", sel)) {
                 eprintln!("need {sel} for u+{codepoint:04x}");
