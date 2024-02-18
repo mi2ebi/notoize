@@ -1,11 +1,12 @@
 use notoize::*;
-use std::fs;
+use std::{fs, time::Instant};
 
 fn main() {
-    let the = notoize("ᵼഔᎇℴ↤ب𝄞").files();
+    let start = Instant::now();
+    let client = NotoizeClient::new();
+    let the = client.notoize("ᵼഔᎇℴ↤ب𝄞").files();
     for f in the {
         fs::write("test/".to_string() + &f.filename, &f.bytes).expect("test doesn't exist");
     }
-    // no one will know >:3
-    fs::remove_dir_all(".notoize").unwrap();
+    println!("{:?}", start.elapsed());
 }

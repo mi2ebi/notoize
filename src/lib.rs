@@ -71,60 +71,84 @@ fn drain_before(f: Vec<String>, index: Option<usize>) -> Vec<String> {
     f
 }
 
-/// Returns a minimal font stack for rendering `text`
-pub fn notoize(text: &str) -> FontStack {
-    // parse data
-    let font_support = (0..=323)
-        .map(|i| {
-            fetch(
-                "notofonts",
-                "overview",
-                vec![&format!("blocks/block-{i:03}.json")],
-            )
-            .unwrap()
-            .write_to(".notoize");
-            serde_json::from_str::<BlockData>(
-                &fs::read_to_string(format!(".notoize/blocks/block-{i:03}.json")).unwrap(),
-            )
-            .unwrap()
-        })
-        .flat_map(move |e| {
-            e.cps
-                .iter()
-                .map(move |(k, v)| {
-                    (
-                        k.clone(),
-                        match e.fonts.clone() {
-                            None => v.fonts.clone().unwrap_or(vec![]),
-                            Some(f) => f,
-                        },
+#[derive(Clone)]
+pub struct NotoizeClient {
+    font_support: Vec<(u32, Vec<String>)>,
+}
+
+impl Default for NotoizeClient {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+impl NotoizeClient {
+    pub fn new() -> Self {
+        Self {
+            font_support: (0..=323)
+                .map(|i| {
+                    fetch(
+                        "notofonts",
+                        "overview",
+                        vec![&format!("blocks/block-{i:03}.json")],
                     )
+                    .unwrap()
+                    .write_to(".notoize");
+                    serde_json::from_str::<BlockData>(
+                        &fs::read_to_string(format!(".notoize/blocks/block-{i:03}.json")).unwrap(),
+                    )
+                    .unwrap()
                 })
-                .collect::<HashMap<_, _>>()
-        })
-        .map(|(k, v)| (k.parse::<u32>().unwrap(), v.clone()))
-        .sorted_by_key(|&(k, _)| k)
-        .collect_vec();
-    // actually do things
-    let mut fonts = vec![];
-    for c in text.chars() {
-        let codepoint = c as u32;
-        let f = font_support
-            .iter()
-            .find(|(n, _)| n == &codepoint)
-            .unwrap_or(&(codepoint, vec![]))
-            .1
-            .clone();
-        let f = drain_before(f.clone(), f.iter().position(|x| x == "Sans"));
-        if !f.is_empty() {
-            let sel = &f[0];
-            if !fonts.contains(&format!("Noto {}", sel)) {
-                eprintln!("need {sel} for u+{codepoint:04x}");
-                fonts.push(format!("Noto {}", sel));
-            }
-        } else {
-            eprintln!("no fonts support u+{codepoint:04x}")
+                .flat_map(move |e| {
+                    e.cps
+                        .iter()
+                        .map(move |(k, v)| {
+                            (
+                                k.clone(),
+                                match e.fonts.clone() {
+                                    None => v.fonts.clone().unwrap_or(vec![]),
+                                    Some(f) => f,
+                                },
+                            )
+                        })
+                        .collect::<HashMap<_, _>>()
+                })
+                .map(|(k, v)| (k.parse::<u32>().unwrap(), v.clone()))
+                .sorted_by_key(|&(k, _)| k)
+                .collect_vec(),
         }
     }
-    FontStack(fonts)
+
+    /// Returns a minimal font stack for rendering `text`
+    pub fn notoize(self, text: &str) -> FontStack {
+        // actually do things
+        let mut fonts = vec![];
+        for c in text.chars() {
+            let codepoint = c as u32;
+            let f = self
+                .font_support
+                .iter()
+                .find(|(n, _)| n == &codepoint)
+                .unwrap_or(&(codepoint, vec![]))
+                .1
+                .clone();
+            let f = drain_before(f.clone(), f.iter().position(|x| x == "Sans"));
+            if !f.is_empty() {
+                let sel = &f[0];
+                if !fonts.contains(&format!("Noto {}", sel)) {
+                    eprintln!("need {sel} for u+{codepoint:04x}");
+                    fonts.push(format!("Noto {}", sel));
+                }
+            } else {
+                // eprintln!("no fonts support u+{codepoint:04x}")
+            }
+        }
+        FontStack(fonts)
+    }
+}
+
+impl Drop for NotoizeClient {
+    fn drop(&mut self) {
+        fs::remove_dir_all(".notoize").unwrap_or(());
+    }
 }
