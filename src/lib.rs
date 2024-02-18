@@ -6,7 +6,7 @@ use std::{collections::HashMap, fs};
 #[derive(Debug)]
 pub struct FontStack(pub Vec<String>);
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct Font {
     pub filename: String,
     pub fontname: String,
