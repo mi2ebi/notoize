@@ -121,9 +121,9 @@ impl NotoizeClient {
 
     /// Returns a minimal font stack for rendering `text`
     pub fn notoize(self, text: &str) -> FontStack {
-        // actually do things
         let mut fonts = vec![];
-        for c in text.chars() {
+        let text = text.chars().sorted().dedup();
+        for c in text {
             let codepoint = c as u32;
             let f = self
                 .font_support
