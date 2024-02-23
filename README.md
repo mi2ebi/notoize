@@ -6,21 +6,25 @@ This is ***not*** "not oize". what's oize
 
 ## Beware:
 
-- no config options yet
+- no config options yet [wip]
 - Sometimes outputs FangsongKSSRotated instead of CJK.
 - Fetches CJK when encountering emoji
 
-## `notoize()`
+## Options
 
-Takes a `&str` and returns a `FontStack`.
+- **`font_ext`:** TTF, OTF
 
-## `FontStack`
+The rest: you give a `Vec` of these to the function with the same name. Italics here indicate defaults; where there are several the first is used by `new_sans()` and the second by `prefer_serif()`.
 
-A `Vec<`font names`>`.
+`bool`s:
+- **`join_adlam`** *false*
 
-- **`files()`** returns a `Vec<Font>`.
+`Serifness` variants (`Sans`, `Serif`):
+- **`armenian`**
 
-## `Font`
+Other `enum` variants:
+- **`lgc`** *Sans*; *Serif*; Mono
+- **`arabic`** *Sans*, Kufi; *Naskh*, Nastaliq
+-
 
-- **`filename`, `bytes`:** for writing the font file elsewhere
-- **`fontname`:** for CSS
+Everything else has no options.

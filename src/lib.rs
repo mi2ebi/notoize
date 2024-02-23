@@ -2,6 +2,8 @@ use gh_file_curler::{fetch, wrapped_first};
 use itertools::Itertools;
 use serde::Deserialize;
 use std::{collections::HashMap, fs};
+pub mod config;
+use config::*;
 
 #[derive(Debug)]
 pub struct FontStack(pub Vec<String>);
@@ -74,16 +76,17 @@ fn drain_before(f: Vec<String>, index: Option<usize>) -> Vec<String> {
 #[derive(Clone)]
 pub struct NotoizeClient {
     font_support: Vec<(u32, Vec<String>)>,
+    config: NotoizeConfig,
 }
 
 impl Default for NotoizeClient {
     fn default() -> Self {
-        Self::new()
+        Self::new(NotoizeConfig::new_sans(vec![FontExt::Ttf]))
     }
 }
 
 impl NotoizeClient {
-    pub fn new() -> Self {
+    pub fn new(config: NotoizeConfig) -> Self {
         Self {
             font_support: (0..=323)
                 .map(|i| {
@@ -99,10 +102,10 @@ impl NotoizeClient {
                     )
                     .unwrap()
                 })
-                .flat_map(move |e| {
+                .flat_map(|e| {
                     e.cps
                         .iter()
-                        .map(move |(k, v)| {
+                        .map(|(k, v)| {
                             (
                                 k.clone(),
                                 match e.fonts.clone() {
@@ -116,39 +119,75 @@ impl NotoizeClient {
                 .map(|(k, v)| (k.parse::<u32>().unwrap(), v.clone()))
                 .sorted_by_key(|&(k, _)| k)
                 .collect_vec(),
+            config,
         }
     }
 
     /// Returns a minimal font stack for rendering `text`
     pub fn notoize(self, text: &str) -> FontStack {
-        let mut fonts = vec![];
+        let mut out = vec![];
         let text = text.chars().sorted().dedup();
+        let mut hold = vec![];
         for c in text {
             let codepoint = c as u32;
-            let f = self
+            let fonts = self
                 .font_support
                 .iter()
                 .find(|(n, _)| n == &codepoint)
                 .unwrap_or(&(codepoint, vec![]))
                 .1
                 .clone();
-            let f = drain_before(f.clone(), f.iter().position(|x| x == "Sans"));
-            if !f.is_empty() {
-                let sel = &f[0];
-                if !fonts.contains(&format!("Noto {}", sel)) {
-                    eprintln!("need {sel} for u+{codepoint:04x}");
-                    fonts.push(format!("Noto {}", sel));
+            // let f = drain_before(f.clone(), f.iter().position(|x| x == "Sans"));
+            if !fonts.is_empty() {
+                let mut sel = vec![];
+                // is this char supported by Sans/Serif?
+                if fonts
+                    .iter()
+                    .any(|x| ["Sans", "Sans Mono", "Serif"].contains(&x.as_str()))
+                {
+                    // anything else?
+                    if !fonts
+                        .iter()
+                        .filter(|x| {
+                            !["Sans", "Sans Mono", "Serif", "Serif Display"].contains(&x.as_str())
+                        })
+                        .collect::<Vec<_>>()
+                        .is_empty()
+                    {
+                        hold.push(c);
+                        continue;
+                    }
+                    // no
+                    // add the   cf config
+                    let mut s = vec![];
+                    for option in self.config {
+                        
+                    }
+                    sel.extend(s);
+                } else {
+                    // pick variant
+                    for font in fonts {
+                        let mut s = vec![2];
+                        // get the script, fallback from config
+
+                        sel.extend(s);
+                    }
+                }
+                if !sel.is_empty() {
+                    for s in sel {
+                        eprintln!("need {s} for u+{codepoint:04x}");
+                        if !out.contains(&format!("Noto {s}")) {
+                            out.push(format!("Noto {s}"));
+                        }
+                    }
                 }
             } else {
                 // eprintln!("no fonts support u+{codepoint:04x}")
             }
         }
-        FontStack(fonts)
+        FontStack(out)
     }
-}
-
-impl Drop for NotoizeClient {
-    fn drop(&mut self) {
-        fs::remove_dir_all(".notoize").unwrap_or(());
+    pub fn bury_the_evidence(&mut self) {
+        // fs::remove_dir_all(".notoize").unwrap_or(());
     }
 }
