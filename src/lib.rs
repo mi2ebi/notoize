@@ -65,12 +65,20 @@ pub struct CodepointFontSupport {
     fonts: Option<Vec<String>>,
 }
 
-fn drain_before(f: Vec<String>, index: Option<usize>) -> Vec<String> {
-    let mut f = f;
-    if let Some(i) = index {
-        f.drain(..i);
+// fn drain_before(f: Vec<String>, index: Option<usize>) -> Vec<String> {
+//     let mut f = f;
+//     if let Some(i) = index {
+//         f.drain(..i);
+//     }
+//     f
+// }
+
+fn try_finding(codepoint: u32, fonts: &[String], option: String, name: &str) -> String {
+    if let Some(x) = fonts.iter().find(|x| *x == name) {
+        x.to_string()
+    } else {
+        panic!("requested font variant not supported: wanted {option} for u+{codepoint:04x}");
     }
-    f
 }
 
 #[derive(Clone)]
@@ -139,7 +147,7 @@ impl NotoizeClient {
                 .clone();
             // let f = drain_before(f.clone(), f.iter().position(|x| x == "Sans"));
             if !fonts.is_empty() {
-                let mut sel = vec![];
+                let mut sel: Vec<String> = vec![];
                 // is this char supported by Sans/Serif?
                 if fonts
                     .iter()
@@ -160,14 +168,23 @@ impl NotoizeClient {
                     // no
                     // add the   cf config
                     let mut s = vec![];
-                    for option in self.config {
-                        
+                    for option in self.config.lgc.iter().map(|x| x.to_string()) {
+                        s.push(
+                            // todo: make to_string() return actual font name! => no match
+                            match option.as_str() {
+                                "lgc_sans" => try_finding(codepoint, &fonts, option, "Sans"),
+                                "lgc_serif" => try_finding(codepoint, &fonts, option, "Serif"),
+                                "lgc_mono" => try_finding(codepoint, &fonts, option, "Mono"),
+                                _ => panic!("unknown font variant `{option}`"),
+                            }
+                            .to_owned(),
+                        )
                     }
                     sel.extend(s);
                 } else {
                     // pick variant
                     for font in fonts {
-                        let mut s = vec![2];
+                        let mut s = vec![];
                         // get the script, fallback from config
 
                         sel.extend(s);
@@ -187,7 +204,9 @@ impl NotoizeClient {
         }
         FontStack(out)
     }
-    pub fn bury_the_evidence(&mut self) {
+}
+impl Drop for NotoizeClient {
+    fn drop(&mut self) {
         // fs::remove_dir_all(".notoize").unwrap_or(());
     }
 }
