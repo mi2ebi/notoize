@@ -1,7 +1,7 @@
 use gh_file_curler::{fetch, wrapped_first};
 use itertools::Itertools;
 use serde::Deserialize;
-use std::{collections::HashMap, fs};
+use std::{collections::HashMap, fs, path::Path};
 
 #[derive(Debug)]
 pub struct FontStack(pub Vec<String>);
@@ -87,15 +87,18 @@ impl NotoizeClient {
         Self {
             font_support: (0..=323)
                 .map(|i| {
-                    fetch(
-                        "notofonts",
-                        "overview",
-                        vec![&format!("blocks/block-{i:03}.json")],
-                    )
-                    .unwrap()
-                    .write_to(".notoize");
+                    // if for some reason we already have some of them.
+                    // ideally we only pull the blocks we need - wip
+                    let path = format!("blocks/block-{i:03}.json");
+                    if Path::new(&format!(".notoize/{path}")).exists() {
+                        eprintln!("warning: .notoize/{path} already exists. it may not be up to date");
+                    } else {
+                        fetch("notofonts", "overview", vec![&path])
+                            .unwrap()
+                            .write_to(".notoize");
+                    }
                     serde_json::from_str::<BlockData>(
-                        &fs::read_to_string(format!(".notoize/blocks/block-{i:03}.json")).unwrap(),
+                        &fs::read_to_string(format!(".notoize/{path}")).unwrap(),
                     )
                     .unwrap()
                 })
