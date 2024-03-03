@@ -1,7 +1,7 @@
 use gh_file_curler::{fetch, wrapped_first};
 use itertools::Itertools;
 use serde::Deserialize;
-use std::{collections::HashMap, fs};
+use std::{collections::HashMap, fs, path::Path};
 
 #[derive(Debug)]
 pub struct FontStack(pub Vec<String>);
@@ -71,8 +71,16 @@ fn drain_before(f: Vec<String>, index: Option<usize>) -> Vec<String> {
     f
 }
 
+#[derive(Clone, Deserialize, Debug)]
+struct BlockEndpoints {
+    ix: usize,
+    start: u32,
+    end: u32,
+}
+
 #[derive(Clone)]
 pub struct NotoizeClient {
+    blocks: Vec<BlockEndpoints>,
     font_support: Vec<(u32, Vec<String>)>,
 }
 
@@ -85,44 +93,66 @@ impl Default for NotoizeClient {
 impl NotoizeClient {
     pub fn new() -> Self {
         Self {
-            font_support: (0..=323)
-                .map(|i| {
-                    fetch(
-                        "notofonts",
-                        "overview",
-                        vec![&format!("blocks/block-{i:03}.json")],
-                    )
+            blocks: {
+                fetch("notofonts", "overview", vec!["blocks.json"])
                     .unwrap()
                     .write_to(".notoize");
-                    serde_json::from_str::<BlockData>(
-                        &fs::read_to_string(format!(".notoize/blocks/block-{i:03}.json")).unwrap(),
-                    )
-                    .unwrap()
-                })
-                .flat_map(move |e| {
-                    e.cps
-                        .iter()
-                        .map(move |(k, v)| {
-                            (
-                                k.clone(),
-                                match e.fonts.clone() {
-                                    None => v.fonts.clone().unwrap_or(vec![]),
-                                    Some(f) => f,
-                                },
-                            )
-                        })
-                        .collect::<HashMap<_, _>>()
-                })
-                .map(|(k, v)| (k.parse::<u32>().unwrap(), v.clone()))
-                .sorted_by_key(|&(k, _)| k)
-                .collect_vec(),
+                serde_json::from_str::<Vec<BlockEndpoints>>(
+                    &fs::read_to_string(".notoize/blocks.json").unwrap(),
+                )
+                .unwrap()
+            },
+            font_support: vec![],
         }
     }
 
     /// Returns a minimal font stack for rendering `text`
-    pub fn notoize(self, text: &str) -> FontStack {
+    pub fn notoize(mut self, text: &str) -> FontStack {
         let mut fonts = vec![];
         let text = text.chars().sorted().dedup();
+        let codepoints = text.clone().map(|c| c as u32);
+        for c in codepoints {
+            if let Some(i) = self
+                .blocks
+                .iter()
+                .find(|b| b.start <= c && c <= b.end)
+                .map(|b| b.ix)
+            {
+                self.font_support.extend(
+                    [{
+                        // if for some reason we already have some of them
+                        let path = format!("blocks/block-{i:03}.json");
+                        if !Path::new(&format!(".notoize/{path}")).exists() {
+                            fetch("notofonts", "overview", vec![&path])
+                                .unwrap()
+                                .write_to(".notoize");
+                        }
+                        serde_json::from_str::<BlockData>(
+                            &fs::read_to_string(format!(".notoize/{path}")).unwrap(),
+                        )
+                        .unwrap()
+                    }]
+                    .iter()
+                    .flat_map(move |e| {
+                        e.cps
+                            .iter()
+                            .map(move |(k, v)| {
+                                (
+                                    k.clone(),
+                                    match e.fonts.clone() {
+                                        None => v.fonts.clone().unwrap_or(vec![]),
+                                        Some(f) => f,
+                                    },
+                                )
+                            })
+                            .collect::<HashMap<_, _>>()
+                    })
+                    .map(|(k, v)| (k.parse::<u32>().unwrap(), v.clone()))
+                    .sorted_by_key(|&(k, _)| k)
+                    .collect_vec(),
+                )
+            }
+        }
         for c in text {
             let codepoint = c as u32;
             let f = self
