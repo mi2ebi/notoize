@@ -20,7 +20,7 @@ impl FontStack {
             .iter()
             .map(|x| {
                 let cjkfile = format!(
-                    "{}/OTF/SimplifiedChinese/Noto{0}CJKsc-Regular.otf",
+                    "{}/TTF/SimplifiedChinese/Noto{0}CJKsc-Regular.ttf",
                     x.split_ascii_whitespace().collect::<Vec<_>>()[1]
                 );
                 let f = if x.contains("CJK") {
@@ -28,7 +28,7 @@ impl FontStack {
                 } else if x == "Noto Color Emoji" {
                     "NotoColorEmoji.ttf".to_string()
                 } else {
-                    format!("{}-Regular.otf", x.replace(' ', ""))
+                    format!("{}-Regular.ttf", x.replace(' ', ""))
                 };
                 eprintln!("fetching {x} ({f})");
                 Font {
@@ -36,15 +36,19 @@ impl FontStack {
                     fontname: x.to_string(),
                     bytes: {
                         let path =
-                            format!("fonts/{}/full/otf/{f}", f.split('-').collect::<Vec<_>>()[0]);
+                            format!("fonts/{}/hinted/ttf/{f}", f.split('-').collect::<Vec<_>>()[0]);
                         wrapped_first(fetch("notofonts", "notofonts.github.io", vec![&path]))
                     }
                     .unwrap_or_else(|| {
-                        wrapped_first(fetch("notofonts", "noto-cjk", vec![&cjkfile]))
+                        if x.contains("CJK") || x.contains("Emoji") {
+                         wrapped_first(fetch("notofonts", "noto-cjk", vec![&cjkfile]))
                             .unwrap_or_else(|| {
                                 wrapped_first(fetch("googlefonts", "noto-emoji", vec!["fonts"]))
                                     .unwrap_or_default()
                             })
+                        } else {
+                            panic!("could not find {x}");
+                        }
                     }),
                 }
             })
