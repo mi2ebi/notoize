@@ -19,12 +19,12 @@ impl FontStack {
             .clone()
             .iter()
             .map(|x| {
-                let cjkfile = format!(
-                    "{}/TTF/SimplifiedChinese/Noto{0}CJKsc-Regular.ttf",
-                    x.split_ascii_whitespace().collect::<Vec<_>>()[1]
-                );
                 let f = if x.contains("CJK") {
-                    cjkfile.split('/').last().unwrap().to_string()
+                    format!(
+                        "Noto{}CJK{}-Regular.otf",
+                        x.split_ascii_whitespace().collect::<Vec<_>>()[1],
+                        x.split_ascii_whitespace().collect::<Vec<_>>()[3].to_lowercase()
+                    )
                 } else if x == "Noto Color Emoji" {
                     "NotoColorEmoji.ttf".to_string()
                 } else {
@@ -35,13 +35,32 @@ impl FontStack {
                     filename: f.clone(),
                     fontname: x.to_string(),
                     bytes: {
-                        let path =
-                            format!("fonts/{}/hinted/ttf/{f}", f.split('-').collect::<Vec<_>>()[0]);
+                        let path = format!(
+                            "fonts/{}/hinted/ttf/{f}",
+                            f.split('-').collect::<Vec<_>>()[0]
+                        );
                         wrapped_first(fetch("notofonts", "notofonts.github.io", vec![&path]))
                     }
                     .unwrap_or_else(|| {
                         if x.contains("CJK") || x.contains("Emoji") {
-                         wrapped_first(fetch("notofonts", "noto-cjk", vec![&cjkfile]))
+                            let var =
+                                x.split_ascii_whitespace().collect::<Vec<_>>()[3].to_lowercase();
+                            wrapped_first(fetch(
+                                "notofonts",
+                                "noto-cjk",
+                                vec![&format!(
+                                    "{}/OTF/{}/{f}",
+                                    x.split_ascii_whitespace().collect::<Vec<_>>()[1],
+                                    match var.as_str() {
+                                        "jp" => "Japanese",
+                                        "kr" => "Korean",
+                                        "sc" => "SimplifiedChinese",
+                                        "tc" => "TraditionalChinese",
+                                        "hk" => "TraditionalChineseHK",
+                                        _ => panic!("unknown CJK variety \"{var}\""),
+                                    }
+                                )],
+                            ))
                             .unwrap_or_else(|| {
                                 wrapped_first(fetch("googlefonts", "noto-emoji", vec!["fonts"]))
                                     .unwrap_or_default()
