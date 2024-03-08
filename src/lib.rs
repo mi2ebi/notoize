@@ -42,7 +42,7 @@ impl FontStack {
                         wrapped_first(fetch("notofonts", "notofonts.github.io", vec![&path]))
                     }
                     .unwrap_or_else(|| {
-                        if x.contains("CJK") || x.contains("Emoji") {
+                        if x.contains("CJK") {
                             wrapped_first(fetch(
                                 "notofonts",
                                 "noto-cjk",
@@ -63,10 +63,12 @@ impl FontStack {
                                     }
                                 )],
                             ))
-                            .unwrap_or_else(|| {
-                                wrapped_first(fetch("googlefonts", "noto-emoji", vec!["fonts"]))
-                                    .unwrap_or_default()
-                            })
+                            .unwrap()
+                        }
+                        else if x.contains("Emoji") {
+                                wrapped_first(fetch("googlefonts", "noto-emoji", vec!["fonts/NotoColorEmoji.ttf"]))
+                                    .unwrap()
+                            
                         } else {
                             panic!("could not find {x}");
                         }
