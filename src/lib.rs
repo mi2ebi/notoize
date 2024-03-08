@@ -43,21 +43,23 @@ impl FontStack {
                     }
                     .unwrap_or_else(|| {
                         if x.contains("CJK") || x.contains("Emoji") {
-                            let var =
-                                x.split_ascii_whitespace().collect::<Vec<_>>()[3].to_lowercase();
                             wrapped_first(fetch(
                                 "notofonts",
                                 "noto-cjk",
                                 vec![&format!(
                                     "{}/OTF/{}/{f}",
                                     x.split_ascii_whitespace().collect::<Vec<_>>()[1],
-                                    match var.as_str() {
-                                        "jp" => "Japanese",
-                                        "kr" => "Korean",
-                                        "sc" => "SimplifiedChinese",
-                                        "tc" => "TraditionalChinese",
-                                        "hk" => "TraditionalChineseHK",
-                                        _ => panic!("unknown CJK variety \"{var}\""),
+                                    {
+                                        let var = x.split_ascii_whitespace().collect::<Vec<_>>()[3]
+                                            .to_lowercase();
+                                        match var.as_str() {
+                                            "jp" => "Japanese",
+                                            "kr" => "Korean",
+                                            "sc" => "SimplifiedChinese",
+                                            "tc" => "TraditionalChinese",
+                                            "hk" => "TraditionalChineseHK",
+                                            _ => panic!("unknown CJK variety \"{var}\""),
+                                        }
                                     }
                                 )],
                             ))
