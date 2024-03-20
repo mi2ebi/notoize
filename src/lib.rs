@@ -41,7 +41,7 @@ impl FontStack {
                         );
                         wrapped_first(fetch("notofonts", "notofonts.github.io", vec![&path]))
                     }
-                    .unwrap_or_else(|| {
+                    .unwrap_or_else(|e| {
                         if x.contains("CJK") {
                             wrapped_first(fetch(
                                 "notofonts",
@@ -64,13 +64,15 @@ impl FontStack {
                                 )],
                             ))
                             .unwrap()
-                        }
-                        else if x.contains("Emoji") {
-                                wrapped_first(fetch("googlefonts", "noto-emoji", vec!["fonts/NotoColorEmoji.ttf"]))
-                                    .unwrap()
-                            
+                        } else if x.contains("Emoji") {
+                            wrapped_first(fetch(
+                                "googlefonts",
+                                "noto-emoji",
+                                vec!["fonts/NotoColorEmoji.ttf"],
+                            ))
+                            .unwrap()
                         } else {
-                            panic!("could not find {x}");
+                            panic!("could not find {x}. The err from gh-file-curler is:\n    {e}");
                         }
                     }),
                 }
@@ -197,7 +199,7 @@ impl NotoizeClient {
                     fonts.push(format!("Noto {}", sel));
                 }
             } else {
-                // eprintln!("no fonts support u+{codepoint:04x}")
+                eprintln!("no fonts support u+{codepoint:04x}")
             }
         }
         FontStack(fonts)
