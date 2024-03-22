@@ -156,10 +156,12 @@ impl NotoizeClient {
                                 .unwrap()
                                 .write_to(".notoize");
                         }
-                        serde_json::from_str::<BlockData>(
+                        let data = serde_json::from_str::<BlockData>(
                             &fs::read_to_string(format!(".notoize/{path}")).unwrap(),
                         )
-                        .unwrap()
+                        .unwrap();
+                        fs::remove_file(format!(".notoize/{path}")).unwrap();
+                        data
                     }]
                     .iter()
                     .flat_map(move |e| {
@@ -182,6 +184,7 @@ impl NotoizeClient {
                 )
             }
         }
+        fs::remove_dir_all(".notoize").unwrap();
         for c in text {
             let codepoint = c as u32;
             let f = self
@@ -203,11 +206,5 @@ impl NotoizeClient {
             }
         }
         FontStack(fonts)
-    }
-}
-
-impl Drop for NotoizeClient {
-    fn drop(&mut self) {
-        fs::remove_dir_all(".notoize").unwrap_or(());
     }
 }
