@@ -105,6 +105,7 @@ struct BlockEndpoints {
     ix: usize,
     start: u32,
     end: u32,
+    name: String,
 }
 
 #[derive(Clone)]
@@ -137,9 +138,14 @@ impl NotoizeClient {
 
     /// Returns a minimal font stack for rendering `text`
     pub fn notoize(mut self, text: &str) -> FontStack {
+        fs::remove_dir_all(".notoize").unwrap_or_default();
         let mut fonts = vec![];
         let text = text.chars().sorted().dedup();
         let codepoints = text.clone().map(|c| c as u32);
+        let mut data = BlockData {
+            cps: HashMap::new(),
+            fonts: None,
+        };
         for c in codepoints {
             if let Some(i) = self
                 .blocks
@@ -149,19 +155,28 @@ impl NotoizeClient {
             {
                 self.font_support.extend(
                     [{
-                        // if for some reason we already have some of them
                         let path = format!("blocks/block-{i:03}.json");
                         if !Path::new(&format!(".notoize/{path}")).exists() {
+                            fs::remove_dir_all(".notoize").unwrap_or_default();
+                            let block = self
+                                .blocks
+                                .iter()
+                                .find(|b| b.start <= c && c <= b.end)
+                                .unwrap();
+                            eprintln!(
+                                "loading support for {:04x}-{:04x} `{}`",
+                                block.start, block.end, block.name
+                            );
                             fetch("notofonts", "overview", vec![&path])
                                 .unwrap()
                                 .write_to(".notoize");
+                            data = serde_json::from_str::<BlockData>(
+                                &fs::read_to_string(format!(".notoize/{path}")).unwrap(),
+                            )
+                            .unwrap();
                         }
-                        let data = serde_json::from_str::<BlockData>(
-                            &fs::read_to_string(format!(".notoize/{path}")).unwrap(),
-                        )
-                        .unwrap();
-                        fs::remove_file(format!(".notoize/{path}")).unwrap();
-                        data
+                        // fs::remove_file(format!(".notoize/{path}")).unwrap();
+                        data.clone()
                     }]
                     .iter()
                     .flat_map(move |e| {
