@@ -16,7 +16,6 @@ pub struct Font {
 impl FontStack {
     pub fn files(&self) -> Vec<Font> {
         self.0
-            .clone()
             .iter()
             .map(|x| {
                 let f = if x.contains("CJK") {
@@ -92,8 +91,8 @@ pub struct CodepointFontSupport {
     fonts: Option<Vec<String>>,
 }
 
-fn drain_before(f: Vec<String>, index: Option<usize>) -> Vec<String> {
-    let mut f = f;
+fn drain_before(f: &[String], index: Option<usize>) -> Vec<String> {
+    let mut f = f.to_vec();
     if let Some(i) = index {
         f.drain(..i);
     }
@@ -179,12 +178,12 @@ impl NotoizeClient {
                         data.clone()
                     }]
                     .iter()
-                    .flat_map(move |e| {
+                    .flat_map(|e| {
                         e.cps
                             .iter()
-                            .map(move |(k, v)| {
+                            .map(|(k, v)| {
                                 (
-                                    k.clone(),
+                                    k,
                                     match e.fonts.clone() {
                                         None => v.fonts.clone().unwrap_or(vec![]),
                                         Some(f) => f,
@@ -193,7 +192,7 @@ impl NotoizeClient {
                             })
                             .collect::<HashMap<_, _>>()
                     })
-                    .map(|(k, v)| (k.parse::<u32>().unwrap(), v.clone()))
+                    .map(|(k, v)| (k.parse::<u32>().unwrap(), v))
                     .sorted_by_key(|&(k, _)| k)
                     .collect_vec(),
                 )
@@ -209,7 +208,7 @@ impl NotoizeClient {
                 .unwrap_or(&(codepoint, vec![]))
                 .1
                 .clone();
-            let f = drain_before(f.clone(), f.iter().position(|x| x == "Sans"));
+            let f = drain_before(&f, f.iter().position(|x| x == "Sans"));
             if !f.is_empty() {
                 let sel = &f[0];
                 if !fonts.contains(&format!("Noto {}", sel)) {
