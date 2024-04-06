@@ -24,10 +24,36 @@ impl FontStack {
                         x.split_ascii_whitespace().collect::<Vec<_>>()[1],
                         x.split_ascii_whitespace().collect::<Vec<_>>()[3].to_lowercase()
                     )
-                } else if x == "Noto Color Emoji" {
-                    "NotoColorEmoji.ttf".to_string()
+                } else if [
+                    "Noto Color Emoji",
+                    "Noto Sans ImpAramaic",
+                    "Noto Sans OldSouArab",
+                    "Noto Sans OldNorArab",
+                    "Noto Sans InsPahlavi",
+                    "Noto Sans PsaPahlavi",
+                    "Noto Sans OldHung",
+                    "Noto Sans Zanabazar",
+                    "Noto Sans EgyptHiero",
+                    "Noto Sans AnatoHiero",
+                ]
+                .contains(&x.as_str())
+                {
+                    match x.as_str() {
+                        "Noto Color Emoji" => "NotoColorEmoji.ttf",
+                        "Noto Sans ImpAramaic" => "NotoSansImperialAramaic-Regular.ttf",
+                        "Noto Sans OldSouArab" => "NotoSansOldSouthArabian-Regular.ttf",
+                        "Noto Sans OldNorArab" => "NotoSansOldNorthArabian-Regular.ttf",
+                        "Noto Sans InsPahlavi" => "NotoSansInscriptionalPahlavi-Regular.ttf",
+                        "Noto Sans PsaPahlavi" => "NotoSansPsalterPahlavi-Regular.ttf",
+                        "Noto Sans OldHung" => "NotoSansOldHungarian-Regular.ttf",
+                        "Noto Sans Zanabazar" => "NotoSansZanabazarSquare-Regular.ttf",
+                        "Noto Sans EgyptHiero" => "NotoSansEgyptianHieroglyphs-Regular.ttf",
+                        "Noto Sans AnatoHiero" => "NotoSansAnatolianHieroglyphs-Regular.ttf",
+                        _ => "the universe broke, sorry",
+                    }
+                    .to_string()
                 } else {
-                    format!("{}-Regular.ttf", x.replace(' ', ""))
+                    format!("{}-Regular.ttf", x.replace(' ', "").replace("-", ""))
                 };
                 eprintln!("fetching {x} ({f})");
                 Font {
@@ -38,14 +64,14 @@ impl FontStack {
                             "fonts/{}/hinted/ttf/{f}",
                             f.split('-').collect::<Vec<_>>()[0]
                         );
-                        wrapped_first(fetch("notofonts", "notofonts.github.io", vec![&path]))
+                        wrapped_first(fetch("notofonts", "notofonts.github.io", &[&path]))
                     }
                     .unwrap_or_else(|e| {
                         if x.contains("CJK") {
                             wrapped_first(fetch(
                                 "notofonts",
                                 "noto-cjk",
-                                vec![&format!(
+                                &[&format!(
                                     "{}/OTF/{}/{f}",
                                     x.split_ascii_whitespace().collect::<Vec<_>>()[1],
                                     {
@@ -67,7 +93,7 @@ impl FontStack {
                             wrapped_first(fetch(
                                 "googlefonts",
                                 "noto-emoji",
-                                vec!["fonts/NotoColorEmoji.ttf"],
+                                &["fonts/NotoColorEmoji.ttf"],
                             ))
                             .unwrap()
                         } else {
@@ -123,7 +149,7 @@ impl NotoizeClient {
     pub fn new() -> Self {
         Self {
             blocks: {
-                fetch("notofonts", "overview", vec!["blocks.json"])
+                fetch("notofonts", "overview", &["blocks.json"])
                     .unwrap()
                     .write_to(".notoize");
                 serde_json::from_str::<Vec<BlockEndpoints>>(
@@ -137,7 +163,7 @@ impl NotoizeClient {
 
     /// Returns a minimal font stack for rendering `text`
     pub fn notoize(mut self, text: &str) -> FontStack {
-        fs::remove_dir_all(".notoize").unwrap_or_default();
+        fs::create_dir_all(".notoize").unwrap_or_default();
         let mut fonts = vec![];
         let text = text.chars().sorted().dedup();
         let codepoints = text.clone().map(|c| c as u32);
@@ -145,6 +171,7 @@ impl NotoizeClient {
             cps: HashMap::new(),
             fonts: None,
         };
+        let mut map = vec![];
         for c in codepoints {
             if let Some(i) = self
                 .blocks
@@ -152,7 +179,7 @@ impl NotoizeClient {
                 .find(|b| b.start <= c && c <= b.end)
                 .map(|b| b.ix)
             {
-                self.font_support.extend(
+                self.font_support.push(
                     [{
                         let path = format!("blocks/block-{i:03}.json");
                         if !Path::new(&format!(".notoize/{path}")).exists() {
@@ -166,7 +193,7 @@ impl NotoizeClient {
                                 "loading support for {:04x}-{:04x} `{}`",
                                 block.start, block.end, block.name
                             );
-                            fetch("notofonts", "overview", vec![&path])
+                            fetch("notofonts", "overview", &[&path])
                                 .unwrap()
                                 .write_to(".notoize");
                             data = serde_json::from_str::<BlockData>(
@@ -174,8 +201,8 @@ impl NotoizeClient {
                             )
                             .unwrap();
                         }
-                        // fs::remove_file(format!(".notoize/{path}")).unwrap();
-                        data.clone()
+                        // eprint!("{c:04x}\r");
+                        &data
                     }]
                     .iter()
                     .flat_map(|e| {
@@ -184,30 +211,29 @@ impl NotoizeClient {
                             .map(|(k, v)| {
                                 (
                                     k,
-                                    match e.fonts.clone() {
+                                    match &e.fonts {
                                         None => v.fonts.clone().unwrap_or(vec![]),
-                                        Some(f) => f,
+                                        Some(f) => f.to_vec(),
                                     },
                                 )
                             })
                             .collect::<HashMap<_, _>>()
                     })
                     .map(|(k, v)| (k.parse::<u32>().unwrap(), v))
-                    .sorted_by_key(|&(k, _)| k)
-                    .collect_vec(),
-                )
+                    .find(|(k, _)| *k == c)
+                    .unwrap_or((c, vec![])),
+                );
             }
         }
-        fs::remove_dir_all(".notoize").unwrap();
         for c in text {
             let codepoint = c as u32;
-            let f = self
+            let missing = &(codepoint, vec![]);
+            let f = &self
                 .font_support
                 .iter()
                 .find(|(n, _)| n == &codepoint)
-                .unwrap_or(&(codepoint, vec![]))
-                .1
-                .clone();
+                .unwrap_or(missing)
+                .1;
             let f = drain_before(&f, f.iter().position(|x| x == "Sans"));
             if !f.is_empty() {
                 let sel = &f[0];
@@ -215,10 +241,18 @@ impl NotoizeClient {
                     eprintln!("need {sel} for u+{codepoint:04x}");
                     fonts.push(format!("Noto {}", sel));
                 }
+                map.push((codepoint, f.clone()));
             } else {
-                eprintln!("no fonts support u+{codepoint:04x}")
+                // eprintln!("no fonts support u+{codepoint:04x}");
             }
         }
+        let mut mapstring = String::new();
+        for (c, fonts) in map {
+            let fonts_str = fonts.join("\r\n    ");
+            mapstring += &format!("{c:04x}\r\n    {}\r\n", fonts_str);
+        }
+        fs::write(".notoize/mapping.txt", mapstring).unwrap();
+        fs::remove_dir_all(".notoize/blocks").unwrap();
         FontStack(fonts)
     }
 }
