@@ -53,7 +53,7 @@ impl FontStack {
                     }
                     .to_string()
                 } else {
-                    format!("{}-Regular.ttf", x.replace(' ', "").replace("-", ""))
+                    format!("{}-Regular.ttf", x.replace([' ', '-'], ""))
                 };
                 eprintln!("fetching {x} ({f})");
                 Font {
@@ -162,7 +162,7 @@ impl NotoizeClient {
     }
 
     /// Returns a minimal font stack for rendering `text`
-    pub fn notoize(mut self, text: &str) -> FontStack {
+    pub fn notoize(&mut self, text: &str) -> FontStack {
         fs::create_dir_all(".notoize").unwrap_or_default();
         let mut fonts = vec![];
         let text = text.chars().sorted().dedup();
@@ -234,7 +234,7 @@ impl NotoizeClient {
                 .find(|(n, _)| n == &codepoint)
                 .unwrap_or(missing)
                 .1;
-            let f = drain_before(&f, f.iter().position(|x| x == "Sans"));
+            let f = drain_before(f, f.iter().position(|x| x == "Sans"));
             if !f.is_empty() {
                 let sel = &f[0];
                 if !fonts.contains(&format!("Noto {}", sel)) {

@@ -5,7 +5,7 @@ fn main() {
     let start = Instant::now();
     fs::remove_dir_all("test").unwrap_or_default();
     fs::remove_dir_all(".notoize").unwrap_or_default();
-    let client = NotoizeClient::new();
+    let mut client = NotoizeClient::new();
     let the = client
         .notoize(
             &(0..0x110000)
@@ -17,5 +17,6 @@ fn main() {
     for f in the {
         fs::write("test/".to_string() + &f.filename, &f.bytes).unwrap();
     }
+    let _ = client.notoize("e");
     println!("{:?}", start.elapsed());
 }
