@@ -17,6 +17,6 @@ fn main() {
     for f in the {
         fs::write("test/".to_string() + &f.filename, &f.bytes).unwrap();
     }
-    let _ = client.notoize("e");
+    let _ = client.notoize("e").files();
     println!("{:?}", start.elapsed());
 }

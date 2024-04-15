@@ -182,8 +182,9 @@ impl NotoizeClient {
                 self.font_support.push(
                     [{
                         let path = format!("blocks/block-{i:03}.json");
-                        if !Path::new(&format!(".notoize/{path}")).exists() {
-                            fs::remove_dir_all(".notoize").unwrap_or_default();
+                        if !Path::new(&format!(".notoize/{path}")).exists()
+                            && !self.font_support.iter().any(|f| f.0 == c)
+                        {
                             let block = self
                                 .blocks
                                 .iter()
@@ -252,7 +253,7 @@ impl NotoizeClient {
             mapstring += &format!("{c:04x}\r\n    {}\r\n", fonts_str);
         }
         fs::write(".notoize/mapping.txt", mapstring).unwrap();
-        fs::remove_dir_all(".notoize/blocks").unwrap();
+        fs::remove_dir_all(".notoize/blocks").unwrap_or_default();
         FontStack(fonts)
     }
 }
