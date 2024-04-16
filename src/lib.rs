@@ -49,7 +49,7 @@ impl FontStack {
                         "Noto Sans Zanabazar" => "NotoSansZanabazarSquare-Regular.ttf",
                         "Noto Sans EgyptHiero" => "NotoSansEgyptianHieroglyphs-Regular.ttf",
                         "Noto Sans AnatoHiero" => "NotoSansAnatolianHieroglyphs-Regular.ttf",
-                        _ => "the universe broke, sorry",
+                        _ => panic!("the universe broke, sorry"),
                     }
                     .to_string()
                 } else {
@@ -60,9 +60,14 @@ impl FontStack {
                     filename: f.clone(),
                     fontname: x.to_string(),
                     bytes: {
+                        let n = f.split('-').collect::<Vec<_>>()[0];
                         let path = format!(
-                            "fonts/{}/hinted/ttf/{f}",
-                            f.split('-').collect::<Vec<_>>()[0]
+                            "fonts/{}/{}/ttf/{f}",
+                            n,
+                            match n {
+                                "NotoSans" | "NotoSansMono" | "NotoSansDuployan" => "hinted",
+                                _ => "full",
+                            }
                         );
                         wrapped_first(fetch("notofonts", "notofonts.github.io", &[&path]))
                     }
