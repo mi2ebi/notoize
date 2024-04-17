@@ -60,14 +60,9 @@ impl FontStack {
                     filename: f.clone(),
                     fontname: x.to_string(),
                     bytes: {
-                        let n = f.split('-').collect::<Vec<_>>()[0];
                         let path = format!(
-                            "fonts/{}/{}/ttf/{f}",
-                            n,
-                            match n {
-                                "NotoSans" | "NotoSansMono" | "NotoSansDuployan" => "hinted",
-                                _ => "full",
-                            }
+                            "fonts/{}/hinted/ttf/{f}",
+                            f.split('-').collect::<Vec<_>>()[0]
                         );
                         wrapped_first(fetch("notofonts", "notofonts.github.io", &[&path]))
                     }
