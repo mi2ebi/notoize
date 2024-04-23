@@ -60,23 +60,15 @@ impl FontStack {
                     filename: f.clone(),
                     fontname: x.to_string(),
                     bytes: {
-                        let path = format!(
-                            "fonts/{}/hinted/ttf/{f}",
-                            f.split('-').collect::<Vec<_>>()[0]
-                        );
+                        let path = format!("fonts/{}/hinted/ttf/{f}", f.split('-').collect::<Vec<_>>()[0]);
                         wrapped_first(fetch("notofonts", "notofonts.github.io", &[&path]))
-                    }
-                    .unwrap_or_else(|e| {
-                        if x.contains("CJK") {
-                            wrapped_first(fetch(
-                                "notofonts",
-                                "noto-cjk",
-                                &[&format!(
-                                    "{}/OTF/{}/{f}",
-                                    x.split_ascii_whitespace().collect::<Vec<_>>()[1],
-                                    {
-                                        let var = x.split_ascii_whitespace().collect::<Vec<_>>()[3]
-                                            .to_lowercase();
+                        .unwrap_or_else(|e| {
+                            if x.contains("CJK") {
+                                wrapped_first(fetch(
+                                    "notofonts",
+                                    "noto-cjk",
+                                    &[&format!("{}/OTF/{}/{f}", x.split_ascii_whitespace().collect::<Vec<_>>()[1], {
+                                        let var = x.split_ascii_whitespace().collect::<Vec<_>>()[3].to_lowercase();
                                         match var.as_str() {
                                             "jp" => "Japanese",
                                             "kr" => "Korean",
@@ -85,21 +77,16 @@ impl FontStack {
                                             "hk" => "TraditionalChineseHK",
                                             _ => panic!("unknown CJK variety \"{var}\""),
                                         }
-                                    }
-                                )],
-                            ))
-                            .unwrap()
-                        } else if x.contains("Emoji") {
-                            wrapped_first(fetch(
-                                "googlefonts",
-                                "noto-emoji",
-                                &["fonts/NotoColorEmoji.ttf"],
-                            ))
-                            .unwrap()
-                        } else {
-                            panic!("could not find {x}. The err from gh-file-curler is:\n    {e}");
-                        }
-                    }),
+                                    })],
+                                ))
+                                .unwrap()
+                            } else if x.contains("Emoji") {
+                                wrapped_first(fetch("googlefonts", "noto-emoji", &["fonts/NotoColorEmoji.ttf"])).unwrap()
+                            } else {
+                                panic!("could not find {x}. The err from gh-file-curler is:\n    {e}");
+                            }
+                        })
+                    },
                 }
             })
             .collect()
@@ -149,6 +136,7 @@ impl NotoizeClient {
     pub fn new() -> Self {
         Self {
             blocks: {
+                eprintln!("fetching block list");
                 fetch("notofonts", "overview", &["blocks.json"])
                     .unwrap()
                     .write_to(".notoize");
@@ -163,7 +151,8 @@ impl NotoizeClient {
 
     /// Returns a minimal font stack for rendering `text`
     pub fn notoize(&mut self, text: &str) -> FontStack {
-        fs::create_dir_all(".notoize").unwrap_or_default();
+        fs::remove_dir_all(".notoize").unwrap_or_default();
+        fs::create_dir(".notoize").unwrap_or_default();
         let mut fonts = vec![];
         let text = text.chars().sorted().dedup();
         let codepoints = text.clone().map(|c| c as u32);
@@ -235,12 +224,17 @@ impl NotoizeClient {
                 .find(|(n, _)| n == &codepoint)
                 .unwrap_or(missing)
                 .1;
-            let f = drain_before(f, f.iter().position(|x| x == "Sans"));
+            let f = f
+                .iter()
+                .filter(|e| !e.ends_with("UI") && !e.ends_with("Display"))
+                .map(|e| e.to_string())
+                .collect_vec();
+            let f = drain_before(&f, f.iter().position(|x| x == "Sans"));
             if !f.is_empty() {
                 let sel = &f[0];
-                if !fonts.contains(&format!("Noto {}", sel)) {
+                if !fonts.contains(&format!("Noto {sel}")) {
                     eprintln!("need {sel} for u+{codepoint:04x}");
-                    fonts.push(format!("Noto {}", sel));
+                    fonts.push(format!("Noto {sel}"));
                 }
                 map.push((codepoint, f.clone()));
             } else {
@@ -249,11 +243,52 @@ impl NotoizeClient {
         }
         let mut mapstring = String::new();
         for (c, fonts) in map {
-            let fonts_str = fonts.join("\r\n    ");
-            mapstring += &format!("{c:04x}\r\n    {}\r\n", fonts_str);
+            let fonts_str = fonts
+                .iter()
+                .sorted_by(|a, b| script(a.to_string()).cmp(&script(b.to_string())))
+                .group_by(|f| script(f.to_string()))
+                .into_iter()
+                .map(|(_, mut g)| g.join(", "))
+                .join("\r\n    ");
+            mapstring += &format!("{c:04x}\r\n    {fonts_str}\r\n");
         }
+        fs::remove_dir_all(".notoize").unwrap_or_default();
+        fs::create_dir(".notoize").unwrap_or_default();
         fs::write(".notoize/mapping.txt", mapstring).unwrap();
-        fs::remove_dir_all(".notoize/blocks").unwrap_or_default();
         FontStack(fonts)
+    }
+}
+
+fn script(name: String) -> String {
+    match name.as_str() {
+        // check via / ((?!Sans|Serif)[a-zA-Z]+)([ ,]|$).*\n.* \1([ ,]|$)/
+        "Sans" | "Serif" | "Sans Mono" => String::new(),
+        "Sans Adlam Unjoined" => "Adlam".to_string(),
+        "Nastaliq Urdu" => "Arabic".to_string(),
+        "Sans CJK HK" | "Sans CJK JP" | "Sans CJK KR" | "Sans CJK SC" | "Sans CJK TC" => {
+            "CJK".to_string()
+        }
+        "Serif Khitan Small Script" | "Fangsong KSS Rotated" | "Fangsong KSS Vertical" => {
+            "Khitan".to_string()
+        }
+        "Sans Lao Looped" => "Lao".to_string(),
+        "Music" => "Music".to_string(),
+        "Sans NKo Unjoined" => "NKo".to_string(),
+        "Sans Symbols" | "Sans Symbols 2" => "Symbols".to_string(),
+        "Sans Syriac Eastern" | "Sans Syriac Western" => "Syriac".to_string(),
+        "Sans Thai Looped" | "Sans Thai Looped Regular" => "Thai".to_string(),
+        "Sans Tifinagh"
+        | "Sans Tifinagh APT"
+        | "Sans Tifinagh Adrar"
+        | "Sans Tifinagh Agraw Imazighen"
+        | "Sans Tifinagh Ahaggar"
+        | "Sans Tifinagh Air"
+        | "Sans Tifinagh Azawagh"
+        | "Sans Tifinagh Ghat"
+        | "Sans Tifinagh Hawad"
+        | "Sans Tifinagh Rhissa Ixa"
+        | "Sans Tifinagh SIL"
+        | "Sans Tifinagh Tawellemmet" => "Tifinagh".to_string(),
+        _ => name.split_ascii_whitespace().skip(1).join(" "),
     }
 }

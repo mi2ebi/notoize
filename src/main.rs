@@ -4,7 +4,6 @@ use std::{fs, time::Instant};
 fn main() {
     let start = Instant::now();
     fs::remove_dir_all("test").unwrap_or_default();
-    fs::remove_dir_all(".notoize").unwrap_or_default();
     let mut client = NotoizeClient::new();
     let the = client
         .notoize(
@@ -17,6 +16,5 @@ fn main() {
     for f in the {
         fs::write("test/".to_string() + &f.filename, &f.bytes).unwrap();
     }
-    let _ = client.notoize("e").files();
     println!("{:?}", start.elapsed());
 }
