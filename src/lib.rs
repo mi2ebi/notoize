@@ -60,33 +60,46 @@ impl FontStack {
                     filename: f.clone(),
                     fontname: x.to_string(),
                     bytes: {
-                        let path = format!("fonts/{}/hinted/ttf/{f}", f.split('-').collect::<Vec<_>>()[0]);
+                        let path = format!(
+                            "fonts/{}/hinted/ttf/{f}",
+                            f.split('-').collect::<Vec<_>>()[0]
+                        );
                         wrapped_first(fetch("notofonts", "notofonts.github.io", &[&path]))
-                        .unwrap_or_else(|e| {
-                            if x.contains("CJK") {
-                                wrapped_first(fetch(
-                                    "notofonts",
-                                    "noto-cjk",
-                                    &[&format!("{}/OTF/{}/{f}", x.split_ascii_whitespace().collect::<Vec<_>>()[1], {
-                                        let var = x.split_ascii_whitespace().collect::<Vec<_>>()[3].to_lowercase();
+                    }
+                    .unwrap_or_else(|e| {
+                        if x.contains("CJK") {
+                            wrapped_first(fetch(
+                                "notofonts",
+                                "noto-cjk",
+                                &[&format!(
+                                    "{}/OTF/{}/{f}",
+                                    x.split_ascii_whitespace().collect::<Vec<_>>()[1],
+                                    {
+                                        let var = x.split_ascii_whitespace().collect::<Vec<_>>()[3]
+                                            .to_lowercase();
                                         match var.as_str() {
                                             "jp" => "Japanese",
                                             "kr" => "Korean",
                                             "sc" => "SimplifiedChinese",
                                             "tc" => "TraditionalChinese",
                                             "hk" => "TraditionalChineseHK",
-                                            _ => panic!("unknown CJK variety \"{var}\""),
+                                            _ => panic!("unknown CJK variety `{var}`"),
                                         }
-                                    })],
-                                ))
-                                .unwrap()
-                            } else if x.contains("Emoji") {
-                                wrapped_first(fetch("googlefonts", "noto-emoji", &["fonts/NotoColorEmoji.ttf"])).unwrap()
-                            } else {
-                                panic!("could not find {x}. The err from gh-file-curler is:\n    {e}");
-                            }
-                        })
-                    },
+                                    }
+                                )],
+                            ))
+                            .unwrap()
+                        } else if x.contains("Emoji") {
+                            wrapped_first(fetch(
+                                "googlefonts",
+                                "noto-emoji",
+                                &["fonts/NotoColorEmoji.ttf"],
+                            ))
+                            .unwrap()
+                        } else {
+                            panic!("could not find {x}. The err from gh-file-curler is:\n    {e}");
+                        }
+                    }),
                 }
             })
             .collect()
@@ -245,8 +258,8 @@ impl NotoizeClient {
         for (c, fonts) in map {
             let fonts_str = fonts
                 .iter()
-                .sorted_by(|a, b| script(a.to_string()).cmp(&script(b.to_string())))
-                .group_by(|f| script(f.to_string()))
+                .sorted_by(|a, b| script(a).cmp(&script(b)))
+                .group_by(|f| script(f))
                 .into_iter()
                 .map(|(_, mut g)| g.join(", "))
                 .join("\r\n    ");
@@ -259,8 +272,8 @@ impl NotoizeClient {
     }
 }
 
-fn script(name: String) -> String {
-    match name.as_str() {
+fn script(name: &str) -> String {
+    match name {
         // check via / ((?!Sans|Serif)[a-zA-Z]+)([ ,]|$).*\n.* \1([ ,]|$)/
         "Sans" | "Serif" | "Sans Mono" => String::new(),
         "Sans Adlam Unjoined" => "Adlam".to_string(),

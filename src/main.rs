@@ -3,18 +3,14 @@ use std::{fs, time::Instant};
 
 fn main() {
     let start = Instant::now();
-    fs::remove_dir_all("test").unwrap_or_default();
     let mut client = NotoizeClient::new();
     let the = client
-        .notoize(
-            &(0..0x110000)
-                .map(|i| char::from_u32(i).unwrap_or_default())
-                .collect::<String>(),
-        )
+        .notoize(&(0..0x110000).filter_map(char::from_u32).collect::<String>())
         .files();
+    fs::remove_dir_all("test").unwrap_or_default();
     fs::create_dir("test").unwrap();
     for f in the {
-        fs::write("test/".to_string() + &f.filename, &f.bytes).unwrap();
+        fs::write(format!("test/{}", f.filename), &f.bytes).unwrap();
     }
     println!("{:?}", start.elapsed());
 }
