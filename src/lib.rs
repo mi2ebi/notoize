@@ -3,8 +3,11 @@ use itertools::Itertools;
 use serde::Deserialize;
 use std::{collections::HashMap, fs, path::Path};
 
-#[derive(Debug)]
-pub struct FontStack(pub Vec<String>);
+#[derive(Debug, Clone)]
+pub struct FontStack {
+    pub names: Vec<String>,
+    pub map: Vec<(u32, Vec<String>)>,
+}
 
 #[derive(Debug, Clone)]
 pub struct Font {
@@ -13,16 +16,22 @@ pub struct Font {
     pub bytes: Vec<u8>,
 }
 
+#[derive(Debug)]
+pub struct MapString {
+    pub all: String,
+    pub conflicts: String,
+}
+
 impl FontStack {
     pub fn files(&self) -> Vec<Font> {
-        self.0
+        self.names
             .iter()
             .map(|x| {
                 let f = if x.contains("CJK") {
                     format!(
                         "Noto{}CJK{}-Regular.otf",
-                        x.split_ascii_whitespace().collect::<Vec<_>>()[1],
-                        x.split_ascii_whitespace().collect::<Vec<_>>()[3].to_lowercase()
+                        x.split_ascii_whitespace().nth(1).unwrap(),
+                        x.split_ascii_whitespace().nth(3).unwrap().to_lowercase()
                     )
                 } else if [
                     "Noto Color Emoji",
@@ -60,10 +69,7 @@ impl FontStack {
                     filename: f.clone(),
                     fontname: x.to_string(),
                     bytes: {
-                        let path = format!(
-                            "fonts/{}/hinted/ttf/{f}",
-                            f.split('-').collect::<Vec<_>>()[0]
-                        );
+                        let path = format!("fonts/{}/hinted/ttf/{f}", f.split('-').next().unwrap());
                         wrapped_first(fetch("notofonts", "notofonts.github.io", &[&path]))
                     }
                     .unwrap_or_else(|e| {
@@ -73,9 +79,12 @@ impl FontStack {
                                 "noto-cjk",
                                 &[&format!(
                                     "{}/OTF/{}/{f}",
-                                    x.split_ascii_whitespace().collect::<Vec<_>>()[1],
+                                    x.split_ascii_whitespace().nth(1).unwrap(),
                                     {
-                                        let var = x.split_ascii_whitespace().collect::<Vec<_>>()[3]
+                                        let var = x
+                                            .split_ascii_whitespace()
+                                            .nth(3)
+                                            .unwrap()
                                             .to_lowercase();
                                         match var.as_str() {
                                             "jp" => "Japanese",
@@ -103,6 +112,26 @@ impl FontStack {
                 }
             })
             .collect()
+    }
+
+    pub fn map_string(self) -> MapString {
+        let mut all = String::new();
+        let mut conflicts = String::new();
+        for (c, fonts) in self.map.iter().filter(|m| !m.1.is_empty()) {
+            let fonts_str = fonts
+                .iter()
+                .sorted_by(|a, b| script(a).cmp(&script(b)))
+                .group_by(|f| script(f))
+                .into_iter()
+                .map(|(_, mut g)| g.join(", "))
+                .join("\r\n    ");
+            all += &format!("{c:04x}\r\n    {fonts_str}\r\n");
+            if scripts(fonts).len() > 1 {
+                conflicts += &format!("{c:04x}\r\n    {fonts_str}\r\n");
+            }
+        }
+        MapString { all, conflicts }
+        // todo - check for all variants
     }
 }
 
@@ -164,17 +193,20 @@ impl NotoizeClient {
 
     /// Returns a minimal font stack for rendering `text`
     pub fn notoize(&mut self, text: &str) -> FontStack {
-        fs::remove_dir_all(".notoize").unwrap_or_default();
-        fs::create_dir(".notoize").unwrap_or_default();
+        fs::remove_dir_all(".notoize").unwrap_or(());
+        fs::create_dir(".notoize").unwrap_or(());
         let mut fonts = vec![];
-        let text = text.chars().sorted().dedup();
-        let codepoints = text.clone().map(|c| c as u32);
+        let codepoints = text
+            .chars()
+            .map(|c| c as u32)
+            .sorted()
+            .dedup()
+            .collect_vec();
         let mut data = BlockData {
             cps: HashMap::new(),
             fonts: None,
         };
-        let mut map = vec![];
-        for c in codepoints {
+        for &c in &codepoints {
             if let Some(i) = self
                 .blocks
                 .iter()
@@ -222,58 +254,52 @@ impl NotoizeClient {
                             })
                             .collect::<HashMap<_, _>>()
                     })
-                    .map(|(k, v)| (k.parse::<u32>().unwrap(), v))
+                    .map(|(k, v)| {
+                        (
+                            k.parse::<u32>().unwrap(),
+                            v.iter()
+                                .filter(|f| !["UI", "Display"].iter().any(|a| f.contains(a)))
+                                .cloned()
+                                .collect_vec(),
+                        )
+                    })
                     .find(|(k, _)| *k == c)
                     .unwrap_or((c, vec![])),
                 );
             }
         }
-        for c in text {
-            let codepoint = c as u32;
-            let missing = &(codepoint, vec![]);
-            let f = &self
-                .font_support
+        let font_support = &self.font_support;
+        for c in codepoints {
+            let f = font_support
                 .iter()
-                .find(|(n, _)| n == &codepoint)
-                .unwrap_or(missing)
+                .find(|(n, _)| n == &c)
+                .cloned()
+                .unwrap_or((c, vec![]))
                 .1;
-            let f = f
-                .iter()
-                .filter(|e| !e.ends_with("UI") && !e.ends_with("Display"))
-                .map(|e| e.to_string())
-                .collect_vec();
+            let f = f.iter().map(|e| e.to_string()).collect_vec();
             let f = drain_before(&f, f.iter().position(|x| x == "Sans"));
             if !f.is_empty() {
                 let sel = &f[0];
                 if !fonts.contains(&format!("Noto {sel}")) {
-                    eprintln!("need {sel} for u+{codepoint:04x}");
+                    eprintln!("need {sel} for u+{c:04x}");
                     fonts.push(format!("Noto {sel}"));
                 }
-                map.push((codepoint, f.clone()));
             } else {
                 // eprintln!("no fonts support u+{codepoint:04x}");
             }
         }
-        let mut mapstring = String::new();
-        for (c, fonts) in map {
-            let fonts_str = fonts
-                .iter()
-                .sorted_by(|a, b| script(a).cmp(&script(b)))
-                .group_by(|f| script(f))
-                .into_iter()
-                .map(|(_, mut g)| g.join(", "))
-                .join("\r\n    ");
-            mapstring += &format!("{c:04x}\r\n    {fonts_str}\r\n");
+        fs::remove_dir_all(".notoize").unwrap_or(());
+        fs::create_dir(".notoize").unwrap_or(());
+        FontStack {
+            names: fonts,
+            map: font_support.to_vec(),
         }
-        fs::remove_dir_all(".notoize").unwrap_or_default();
-        fs::create_dir(".notoize").unwrap_or_default();
-        fs::write(".notoize/mapping.txt", mapstring).unwrap();
-        FontStack(fonts)
     }
 }
 
-fn script(name: &str) -> String {
-    match name {
+#[allow(clippy::ptr_arg)] // &String is deliberate here
+pub fn script(name: &String) -> String {
+    match name.as_str() {
         // check via / ((?!Sans|Serif)[a-zA-Z]+)([ ,]|$).*\n.* \1([ ,]|$)/
         "Sans" | "Serif" | "Sans Mono" => String::new(),
         "Sans Adlam Unjoined" => "Adlam".to_string(),
@@ -290,6 +316,7 @@ fn script(name: &str) -> String {
         "Sans Symbols" | "Sans Symbols 2" => "Symbols".to_string(),
         "Sans Syriac Eastern" | "Sans Syriac Western" => "Syriac".to_string(),
         "Sans Thai Looped" | "Sans Thai Looped Regular" => "Thai".to_string(),
+        // i have no clue what these variants are
         "Sans Tifinagh"
         | "Sans Tifinagh APT"
         | "Sans Tifinagh Adrar"
@@ -304,4 +331,8 @@ fn script(name: &str) -> String {
         | "Sans Tifinagh Tawellemmet" => "Tifinagh".to_string(),
         _ => name.split_ascii_whitespace().skip(1).join(" "),
     }
+}
+
+pub fn scripts(fonts: &[String]) -> Vec<String> {
+    fonts.iter().map(script).sorted().dedup().collect_vec()
 }

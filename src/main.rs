@@ -1,11 +1,13 @@
 use notoize::*;
-use std::time::Instant;
+use std::{fs, time::Instant};
 
 fn main() {
     let start = Instant::now();
     let mut client = NotoizeClient::new();
-    let _ = client
+    let the = client
         .notoize(&(0..0x110000).filter_map(char::from_u32).collect::<String>())
-        .files();
+        .map_string();
+    fs::write(".notoize/mapping.txt", the.all).unwrap();
+    fs::write(".notoize/script_conflicts.txt", the.conflicts).unwrap();
     println!("{:?}", start.elapsed());
 }
