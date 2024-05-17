@@ -1352,24 +1352,24 @@
     Music
     Sans Myanmar, Serif Myanmar
     Sans NKo, Sans NKo Unjoined
-    Serif NP Hmong
     Sans Nabataean
     Sans Nag Mundari
     Sans Nandinagari
     Sans New Tai Lue
     Sans Newa
     Sans Nushu, Traditional Nushu
+    Serif NP Hmong
     Sans Ogham
     Sans Ol Chiki
-    Sans Old Italic
-    Sans Old Permic
-    Sans Old Turkic
-    Serif Old Uyghur
     Sans OldHung
+    Sans Old Italic
     Sans OldNorArab
+    Sans Old Permic
     Sans OldPersian
     Sans OldSogdian
     Sans OldSouArab
+    Sans Old Turkic
+    Serif Old Uyghur
     Sans Oriya, Serif Oriya
     Sans Osage
     Sans Osmanya
@@ -3819,8 +3819,8 @@
     Sans Nandinagari
     Sans New Tai Lue
     Sans Newa
-    Sans Old Turkic
     Sans OldHung
+    Sans Old Turkic
     Sans Oriya, Serif Oriya
     Sans Pahawh Hmong
     Sans PhagsPa
@@ -6876,13 +6876,13 @@
     Music
     Sans Myanmar, Serif Myanmar
     Sans NKo, Sans NKo Unjoined
-    Serif NP Hmong
     Sans Nag Mundari
     Sans Nandinagari
     Sans Newa
+    Serif NP Hmong
     Sans Old Permic
-    Serif Old Uyghur
     Sans OldSogdian
+    Serif Old Uyghur
     Sans Oriya, Serif Oriya
     Sans Osage
     Sans Pahawh Hmong
