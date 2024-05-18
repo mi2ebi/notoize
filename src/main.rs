@@ -9,5 +9,6 @@ fn main() {
         .map_string();
     fs::write(".notoize/mapping.txt", the.all).unwrap();
     fs::write(".notoize/script_conflicts.txt", the.conflicts).unwrap();
+    fs::write(".notoize/missing_variants.txt", the.missing).unwrap();
     println!("{:?}", start.elapsed());
 }
