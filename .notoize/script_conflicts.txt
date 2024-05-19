@@ -393,7 +393,8 @@
     Sans Nag Mundari
     Sans Oriya, Serif Oriya
     Sans Sinhala, Serif Sinhala
-    Sans Symbols, Sans Symbols 2
+    Sans Symbols
+    Sans Symbols 2
     Sans Tamil, Serif Tamil
     Serif Tangut
     Sans Telugu, Serif Telugu
@@ -417,7 +418,8 @@
     Sans Nag Mundari
     Sans Oriya, Serif Oriya
     Sans Sinhala, Serif Sinhala
-    Sans Symbols, Sans Symbols 2
+    Sans Symbols
+    Sans Symbols 2
     Sans Tamil, Serif Tamil
     Serif Tangut
     Sans Telugu, Serif Telugu
@@ -441,7 +443,8 @@
     Sans Nag Mundari
     Sans Oriya, Serif Oriya
     Sans Sinhala, Serif Sinhala
-    Sans Symbols, Sans Symbols 2
+    Sans Symbols
+    Sans Symbols 2
     Sans Tamil, Serif Tamil
     Serif Tangut
     Sans Telugu, Serif Telugu
@@ -465,7 +468,8 @@
     Sans Nag Mundari
     Sans Oriya, Serif Oriya
     Sans Sinhala, Serif Sinhala
-    Sans Symbols, Sans Symbols 2
+    Sans Symbols
+    Sans Symbols 2
     Sans Tamil, Serif Tamil
     Serif Tangut
     Sans Telugu, Serif Telugu
@@ -489,7 +493,8 @@
     Sans Nag Mundari
     Sans Oriya, Serif Oriya
     Sans Sinhala, Serif Sinhala
-    Sans Symbols, Sans Symbols 2
+    Sans Symbols
+    Sans Symbols 2
     Sans Tamil, Serif Tamil
     Serif Tangut
     Sans Telugu, Serif Telugu
@@ -513,7 +518,8 @@
     Sans Nag Mundari
     Sans Oriya, Serif Oriya
     Sans Sinhala, Serif Sinhala
-    Sans Symbols, Sans Symbols 2
+    Sans Symbols
+    Sans Symbols 2
     Sans Tamil, Serif Tamil
     Serif Tangut
     Sans Telugu, Serif Telugu
@@ -537,7 +543,8 @@
     Sans Nag Mundari
     Sans Oriya, Serif Oriya
     Sans Sinhala, Serif Sinhala
-    Sans Symbols, Sans Symbols 2
+    Sans Symbols
+    Sans Symbols 2
     Sans Tamil, Serif Tamil
     Serif Tangut
     Sans Telugu, Serif Telugu
@@ -561,7 +568,8 @@
     Sans Nag Mundari
     Sans Oriya, Serif Oriya
     Sans Sinhala, Serif Sinhala
-    Sans Symbols, Sans Symbols 2
+    Sans Symbols
+    Sans Symbols 2
     Sans Tamil, Serif Tamil
     Serif Tangut
     Sans Telugu, Serif Telugu
@@ -585,7 +593,8 @@
     Sans Nag Mundari
     Sans Oriya, Serif Oriya
     Sans Sinhala, Serif Sinhala
-    Sans Symbols, Sans Symbols 2
+    Sans Symbols
+    Sans Symbols 2
     Sans Tamil, Serif Tamil
     Serif Tangut
     Sans Telugu, Serif Telugu
@@ -609,7 +618,8 @@
     Sans Nag Mundari
     Sans Oriya, Serif Oriya
     Sans Sinhala, Serif Sinhala
-    Sans Symbols, Sans Symbols 2
+    Sans Symbols
+    Sans Symbols 2
     Sans Tamil, Serif Tamil
     Serif Tangut
     Sans Telugu, Serif Telugu
@@ -1393,7 +1403,8 @@
     Sans Soyombo
     Sans Sundanese
     Sans Syloti Nagri
-    Sans Symbols, Sans Symbols 2
+    Sans Symbols
+    Sans Symbols 2
     Sans Syriac, Sans Syriac Eastern, Sans Syriac Western
     Sans Tamil, Serif Tamil
     Sans Tagalog
@@ -4290,9 +4301,13 @@
 20de
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Symbols
+20e2
+    Sans Symbols
+    Sans Symbols 2
 20e3
     Color Emoji
-    Sans Symbols, Sans Symbols 2
+    Sans Symbols
+    Sans Symbols 2
 20f0
     Sans, Sans Mono, Serif
     Sans Devanagari, Serif Devanagari
@@ -5424,6 +5439,9 @@
 237c
     Sans Math
     Sans Symbols
+2394
+    Sans Symbols
+    Sans Symbols 2
 2395
     Sans Mono
     Sans Math
@@ -6899,7 +6917,8 @@
     Sans Soyombo
     Sans Sundanese
     Sans Syloti Nagri
-    Sans Symbols, Sans Symbols 2
+    Sans Symbols
+    Sans Symbols 2
     Sans Syriac, Sans Syriac Eastern, Sans Syriac Western
     Sans Tamil, Serif Tamil
     Sans Tagalog

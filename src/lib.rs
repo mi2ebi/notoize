@@ -122,10 +122,7 @@ impl FontStack {
                 .sorted_by(|a, b| script(a).cmp(&script(b)))
                 .group_by(|f| script(f))
                 .into_iter()
-                .map(|(_, mut g)| {
-                    let j = g.join(", ");
-                    format!("{j}")
-                })
+                .map(|(_, mut g)| g.join(", "))
                 .join("\r\n    ")
         }
         let mut all = String::new();
@@ -264,7 +261,6 @@ impl NotoizeClient {
                                 },
                             )
                         })
-                        // .collect::<HashMap<_, _>>()
                         .map(|(k, v)| {
                             (
                                 k.parse::<u32>().unwrap(),
@@ -306,7 +302,6 @@ impl NotoizeClient {
     }
 }
 
-// no idea why this works but it does. thanks plecra
 macro_rules! generate_script {
     ($($($font:literal)|* => $script:literal),* $(,)?) => {
         #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
@@ -471,7 +466,8 @@ generate_script! {
     "Sans Soyombo" => "Soyombo",
     "Sans Sundanese" => "Sundanese",
     "Sans Syloti Nagri" => "Syloti Nagri",
-    "Sans Symbols" | "Sans Symbols 2" => "Symbols",
+    "Sans Symbols" => "Symbols",
+    "Sans Symbols 2" => "Symbols 2", // yeah
     "Sans Syriac" | "Sans Syriac Eastern" | "Sans Syriac Western" => "Syriac",
     "Sans Tamil" | "Serif Tamil" => "Tamil",
     "Sans Tamil Supplement" => "Tamil Supplement",
