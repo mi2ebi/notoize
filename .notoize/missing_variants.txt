@@ -441,8 +441,6 @@
     Sans Thai, Serif Thai
 17cb
     Sans Thai, Serif Thai
-1b4c
-    Serif Balinese
 1b7d
     Serif Balinese
 1b7e

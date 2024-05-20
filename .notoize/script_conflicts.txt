@@ -1236,6 +1236,7 @@
     Serif Tangut
     Sans Telugu, Serif Telugu
     Serif Tibetan
+    Znamenny Musical Notation
 007d
     Sans, Sans Mono, Serif
     Sans Adlam, Sans Adlam Unjoined
@@ -1481,6 +1482,7 @@
     Sans, Serif
     Sans Bengali, Serif Bengali
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
+    Sans Devanagari, Serif Devanagari
     Serif Gujarati
     Sans Gurmukhi, Serif Gurmukhi
     Sans Kannada, Serif Kannada
@@ -4195,7 +4197,6 @@
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
 2044
     Sans, Sans Mono, Serif
-    Sans Adlam, Sans Adlam Unjoined
     Sans Duployan
     Sans Math
     Sans Syriac, Sans Syriac Eastern, Sans Syriac Western
@@ -6936,6 +6937,7 @@
     Sans Wancho
     Serif Yezidi
     Sans Zanabazar
+    Znamenny Musical Notation
 25cd
     Sans Mono
     Sans Math

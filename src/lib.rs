@@ -506,6 +506,7 @@ generate_script! {
     "Serif Yezidi" => "Yezidi",
     "Sans Yi" => "Yi",
     "Sans Zanabazar" => "Zanabazar",
+    "Znamenny Musical Notation" => "Znamenny Musical Notation",
 }
 
 pub fn scripts(fonts: &[String]) -> Vec<Script> {
