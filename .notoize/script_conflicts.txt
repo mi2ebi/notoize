@@ -1039,7 +1039,6 @@
 0060
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Sans Math
     Sans Nag Mundari
     Serif Tangut
 0061
@@ -1823,9 +1822,6 @@
 011b
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-0123
-    Sans, Sans Mono, Serif
-    Sans Math
 0128
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
@@ -2129,6 +2125,9 @@
 0313
     Sans, Sans Mono, Serif
     Sans Old Permic
+0315
+    Sans, Sans Mono, Serif
+    Sans Math
 0316
     Sans, Sans Mono, Serif
     Sans Duployan
@@ -2709,9 +2708,25 @@
 0605
     Kufi Arabic, Naskh Arabic, Sans Arabic
     Sans Coptic
+0606
+    Kufi Arabic, Naskh Arabic, Sans Arabic
+    Sans Math
+0607
+    Kufi Arabic, Naskh Arabic, Sans Arabic
+    Sans Math
+0608
+    Kufi Arabic, Naskh Arabic, Sans Arabic
+    Sans Math
+0609
+    Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
+    Sans Math
+060a
+    Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
+    Sans Math
 060c
     Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
     Sans Hanifi Rohingya
+    Sans Math
     Sans NKo, Sans NKo Unjoined
     Sans Syriac, Sans Syriac Eastern, Sans Syriac Western
     Sans Thaana
@@ -2737,6 +2752,61 @@
 0627
     Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
     Sans Indic Siyaq Numbers
+    Sans Math
+0628
+    Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
+    Sans Math
+062a
+    Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
+    Sans Math
+062b
+    Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
+    Sans Math
+062c
+    Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
+    Sans Math
+062d
+    Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
+    Sans Math
+062e
+    Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
+    Sans Math
+062f
+    Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
+    Sans Math
+0630
+    Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
+    Sans Math
+0631
+    Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
+    Sans Math
+0632
+    Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
+    Sans Math
+0633
+    Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
+    Sans Math
+0634
+    Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
+    Sans Math
+0635
+    Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
+    Sans Math
+0636
+    Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
+    Sans Math
+0637
+    Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
+    Sans Math
+0638
+    Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
+    Sans Math
+0639
+    Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
+    Sans Math
+063a
+    Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
+    Sans Math
 0640
     Sans Adlam, Sans Adlam Unjoined
     Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
@@ -2747,6 +2817,36 @@
     Sans PsaPahlavi
     Sans Sogdian
     Sans Syriac, Sans Syriac Eastern, Sans Syriac Western
+0641
+    Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
+    Sans Math
+0642
+    Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
+    Sans Math
+0643
+    Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
+    Sans Math
+0644
+    Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
+    Sans Math
+0645
+    Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
+    Sans Math
+0646
+    Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
+    Sans Math
+0647
+    Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
+    Sans Math
+0648
+    Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
+    Sans Math
+0649
+    Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
+    Sans Math
+064a
+    Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
+    Sans Math
 064b
     Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
     Sans Syriac, Sans Syriac Eastern, Sans Syriac Western
@@ -2784,72 +2884,97 @@
     Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
     Sans Hanifi Rohingya
     Sans Indic Siyaq Numbers
+    Sans Math
     Sans Syriac, Sans Syriac Eastern, Sans Syriac Western
     Sans Thaana
 0661
     Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
     Sans Indic Siyaq Numbers
+    Sans Math
     Sans Syriac, Sans Syriac Eastern, Sans Syriac Western
     Sans Thaana
 0662
     Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
     Sans Indic Siyaq Numbers
+    Sans Math
     Sans Syriac, Sans Syriac Eastern, Sans Syriac Western
     Sans Thaana
 0663
     Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
     Sans Indic Siyaq Numbers
+    Sans Math
     Sans Syriac, Sans Syriac Eastern, Sans Syriac Western
     Sans Thaana
 0664
     Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
     Sans Indic Siyaq Numbers
+    Sans Math
     Sans Syriac, Sans Syriac Eastern, Sans Syriac Western
     Sans Thaana
 0665
     Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
     Sans Indic Siyaq Numbers
+    Sans Math
     Sans Syriac, Sans Syriac Eastern, Sans Syriac Western
     Sans Thaana
 0666
     Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
     Sans Indic Siyaq Numbers
+    Sans Math
     Sans Syriac, Sans Syriac Eastern, Sans Syriac Western
     Sans Thaana
 0667
     Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
     Sans Indic Siyaq Numbers
+    Sans Math
     Sans Syriac, Sans Syriac Eastern, Sans Syriac Western
     Sans Thaana
 0668
     Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
     Sans Indic Siyaq Numbers
+    Sans Math
     Sans Syriac, Sans Syriac Eastern, Sans Syriac Western
     Sans Thaana
 0669
     Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
     Sans Indic Siyaq Numbers
+    Sans Math
     Sans Syriac, Sans Syriac Eastern, Sans Syriac Western
     Sans Thaana
 066a
     Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
+    Sans Math
     Sans NKo, Sans NKo Unjoined
     Sans Syriac, Sans Syriac Eastern, Sans Syriac Western
     Sans Thaana
 066b
     Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
+    Sans Math
     Sans Syriac, Sans Syriac Eastern, Sans Syriac Western
     Sans Thaana
 066c
     Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
+    Sans Math
     Sans Syriac, Sans Syriac Eastern, Sans Syriac Western
     Sans Thaana
 066d
     Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
     Sans Thaana
+066e
+    Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
+    Sans Math
+066f
+    Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
+    Sans Math
 0670
     Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
     Sans Syriac, Sans Syriac Eastern, Sans Syriac Western
+06a1
+    Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
+    Sans Math
+06ba
+    Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
+    Sans Math
 06d4
     Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
     Sans Hanifi Rohingya
@@ -2858,33 +2983,43 @@
 06f0
     Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
     Sans Indic Siyaq Numbers
+    Sans Math
 06f1
     Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
     Sans Indic Siyaq Numbers
+    Sans Math
 06f2
     Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
     Sans Indic Siyaq Numbers
+    Sans Math
 06f3
     Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
     Sans Indic Siyaq Numbers
+    Sans Math
 06f4
     Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
     Sans Indic Siyaq Numbers
+    Sans Math
 06f5
     Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
     Sans Indic Siyaq Numbers
+    Sans Math
 06f6
     Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
     Sans Indic Siyaq Numbers
+    Sans Math
 06f7
     Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
     Sans Indic Siyaq Numbers
+    Sans Math
 06f8
     Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
     Sans Indic Siyaq Numbers
+    Sans Math
 06f9
     Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
     Sans Indic Siyaq Numbers
+    Sans Math
 0951
     Sans Bengali, Serif Bengali
     Sans Devanagari, Serif Devanagari
@@ -3908,7 +4043,7 @@
     Serif Tibetan
 2011
     Sans, Sans Mono, Serif
-    Naskh Arabic, Nastaliq Urdu, Sans Arabic
+    Nastaliq Urdu, Sans Arabic
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Syloti Nagri
 2012
@@ -4192,6 +4327,9 @@
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Color Emoji
+2040
+    Sans, Sans Mono, Serif
+    Sans Math
 2042
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
@@ -4216,6 +4354,9 @@
     Sans, Sans Mono, Serif
     Sans Adlam, Sans Adlam Unjoined
     Kufi Arabic, Naskh Arabic, Sans Arabic
+2050
+    Sans, Sans Mono, Serif
+    Sans Math
 2051
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
@@ -4298,9 +4439,14 @@
 20dd
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Duployan
+    Sans Math
     Sans Symbols
 20de
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
+    Sans Math
+    Sans Symbols
+20df
+    Sans Math
     Sans Symbols
 20e2
     Sans Symbols
@@ -4309,10 +4455,14 @@
     Color Emoji
     Sans Symbols
     Sans Symbols 2
+20e4
+    Sans Math
+    Sans Symbols
 20f0
     Sans, Sans Mono, Serif
     Sans Devanagari, Serif Devanagari
     Sans Grantha, Serif Grantha
+    Sans Math
 2100
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
@@ -4634,6 +4784,9 @@
 21aa
     Color Emoji
     Sans Math
+21af
+    Sans Math
+    Sans Symbols 2
 21b8
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
@@ -4682,16 +4835,44 @@
 21e6
     Sans Mono
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
+    Sans Math
     Sans Symbols 2
 21e7
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
+    Sans Math
     Sans Symbols 2
 21e8
     Sans Mono
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
+    Sans Math
     Sans Symbols 2
 21e9
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
+    Sans Math
+    Sans Symbols 2
+21ea
+    Sans Math
+    Sans Symbols 2
+21eb
+    Sans Math
+    Sans Symbols 2
+21ec
+    Sans Math
+    Sans Symbols 2
+21ed
+    Sans Math
+    Sans Symbols 2
+21ee
+    Sans Math
+    Sans Symbols 2
+21ef
+    Sans Math
+    Sans Symbols 2
+21f0
+    Sans Math
+    Sans Symbols 2
+21f3
+    Sans Math
     Sans Symbols 2
 21f5
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
@@ -5160,36 +5341,58 @@
 22ef
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
+2300
+    Sans Math
+    Sans Symbols
+2302
+    Sans Math
+    Sans Symbols
 2305
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
+    Sans Math
     Sans Symbols
 2306
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
+    Sans Math
     Sans Symbols
 2307
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Symbols
 2308
     Sans Mono
+    Sans Duployan
     Sans Math
     Sans Symbols
 2309
     Sans Mono
+    Sans Duployan
     Sans Math
     Sans Symbols
 230a
     Sans Mono
+    Sans Duployan
     Sans Math
     Sans Symbols
 230b
     Sans Mono
+    Sans Duployan
     Sans Math
     Sans Symbols
 2310
     Sans Mono
     Sans Math
+2311
+    Sans Math
+    Sans Symbols
 2312
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
+    Sans Math
+    Sans Symbols
+2313
+    Sans Math
+    Sans Symbols
+2317
+    Sans Math
     Sans Symbols
 2318
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
@@ -5221,6 +5424,12 @@
 2321
     Sans Mono
     Sans Math
+2322
+    Sans Math
+    Sans Symbols
+2323
+    Sans Math
+    Sans Symbols
 2328
     Color Emoji
     Sans Symbols 2
@@ -5229,6 +5438,12 @@
     Sans Symbols
 232a
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
+    Sans Symbols
+232c
+    Sans Math
+    Sans Symbols
+2332
+    Sans Math
     Sans Symbols
 2336
     Sans Mono
@@ -5441,6 +5656,7 @@
     Sans Math
     Sans Symbols
 2394
+    Sans Math
     Sans Symbols
     Sans Symbols 2
 2395
@@ -5535,6 +5751,12 @@
 23b7
     Sans Mono
     Sans Math
+23b8
+    Sans Mono
+    Sans Math
+23b9
+    Sans Mono
+    Sans Math
 23be
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Symbols
@@ -5582,6 +5804,7 @@
     Sans Symbols
 23ce
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
+    Sans Math
     Sans Symbols 2
 23cf
     Color Emoji
@@ -5613,6 +5836,24 @@
 23e1
     Sans Mono
     Sans Math
+23e2
+    Sans Math
+    Sans Symbols
+23e3
+    Sans Math
+    Sans Symbols
+23e4
+    Sans Math
+    Sans Symbols
+23e5
+    Sans Math
+    Sans Symbols
+23e6
+    Sans Math
+    Sans Symbols
+23e7
+    Sans Math
+    Sans Symbols
 23e9
     Color Emoji
     Sans Symbols 2
@@ -5646,8 +5887,12 @@
 23fa
     Color Emoji
     Sans Symbols 2
+2422
+    Sans Math
+    Sans Symbols 2
 2423
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
+    Sans Math
     Sans Symbols 2
 2460
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
@@ -6156,6 +6401,7 @@
 2506
     Sans Mono
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
+    Sans Math
 2507
     Sans Mono
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
@@ -6530,6 +6776,7 @@
 2580
     Sans Mono
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
+    Sans Math
 2581
     Sans Mono
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
@@ -6542,6 +6789,7 @@
 2584
     Sans Mono
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
+    Sans Math
 2585
     Sans Mono
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
@@ -6554,6 +6802,7 @@
 2588
     Sans Mono
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
+    Sans Math
 2589
     Sans Mono
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
@@ -6566,6 +6815,7 @@
 258c
     Sans Mono
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
+    Sans Math
 258d
     Sans Mono
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
@@ -6578,15 +6828,19 @@
 2590
     Sans Mono
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
+    Sans Math
 2591
     Sans Mono
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
+    Sans Math
 2592
     Sans Mono
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
+    Sans Math
 2593
     Sans Mono
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
+    Sans Math
 2594
     Sans Mono
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
@@ -7187,6 +7441,7 @@
     Sans Symbols 2
 2609
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
+    Sans Math
     Sans Symbols 2
 260e
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
@@ -7231,6 +7486,9 @@
     Sans Duployan
     Color Emoji
     Sans Symbols 2
+2621
+    Sans Math
+    Sans Symbols 2
 2622
     Color Emoji
     Sans Symbols 2
@@ -7265,9 +7523,22 @@
 263a
     Color Emoji
     Sans Symbols
+263b
+    Sans Math
+    Sans Symbols
+263c
+    Sans Math
+    Sans Symbols 2
+263d
+    Sans Math
+    Sans Symbols
+263e
+    Sans Math
+    Sans Symbols
 2640
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Color Emoji
+    Sans Math
     Sans Symbols
 2641
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
@@ -7275,6 +7546,7 @@
 2642
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Color Emoji
+    Sans Math
     Sans Symbols
 2648
     Color Emoji
@@ -7318,30 +7590,38 @@
 2660
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Color Emoji
+    Sans Math
     Sans Symbols 2
 2661
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
+    Sans Math
     Sans Symbols 2
 2662
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
+    Sans Math
     Sans Symbols 2
 2663
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Color Emoji
+    Sans Math
     Sans Symbols 2
 2664
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
+    Sans Math
     Sans Symbols 2
 2665
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Color Emoji
+    Sans Math
     Sans Symbols 2
 2666
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Color Emoji
+    Sans Math
     Sans Symbols 2
 2667
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
+    Sans Math
     Sans Symbols 2
 2668
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
@@ -7349,18 +7629,22 @@
     Sans Symbols 2
 2669
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
+    Sans Math
     Music
     Sans Symbols
 266a
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
+    Sans Math
     Music
     Sans Symbols
 266b
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
+    Sans Math
     Music
     Sans Symbols
 266c
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
+    Sans Math
     Music
     Sans Symbols
 266d
@@ -7426,9 +7710,40 @@
     Sans Symbols
 267e
     Color Emoji
+    Sans Math
     Sans Symbols
 267f
     Color Emoji
+    Sans Symbols 2
+2680
+    Sans Math
+    Sans Symbols 2
+2681
+    Sans Math
+    Sans Symbols 2
+2682
+    Sans Math
+    Sans Symbols 2
+2683
+    Sans Math
+    Sans Symbols 2
+2684
+    Sans Math
+    Sans Symbols 2
+2685
+    Sans Math
+    Sans Symbols 2
+2686
+    Sans Math
+    Sans Symbols 2
+2687
+    Sans Math
+    Sans Symbols 2
+2688
+    Sans Math
+    Sans Symbols 2
+2689
+    Sans Math
     Sans Symbols 2
 2692
     Color Emoji
@@ -7464,6 +7779,9 @@
 26a1
     Color Emoji
     Sans Symbols 2
+26a5
+    Sans Math
+    Sans Symbols
 26a7
     Color Emoji
     Sans Symbols
@@ -7475,11 +7793,17 @@
     Color Emoji
     Sans Math
     Sans Symbols 2
+26ac
+    Sans Math
+    Sans Symbols 2
 26b0
     Color Emoji
     Sans Symbols
 26b1
     Color Emoji
+    Sans Symbols
+26b2
+    Sans Math
     Sans Symbols
 26bd
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
@@ -7594,9 +7918,15 @@
     Sans Duployan
     Color Emoji
     Sans Symbols
+2720
+    Sans Math
+    Sans Symbols
 2721
     Color Emoji
     Sans Symbols
+272a
+    Sans Math
+    Sans Symbols 2
 2733
     Color Emoji
     Sans Symbols 2
@@ -7605,12 +7935,14 @@
     Sans Symbols 2
 2736
     Sans Mono
+    Sans Math
     Sans Symbols 2
 2739
     Sans Math
     Sans Symbols 2
 273d
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
+    Sans Math
     Sans Symbols 2
 273f
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
@@ -7647,6 +7979,12 @@
     Sans Symbols 2
 2764
     Color Emoji
+    Sans Symbols 2
+2772
+    Sans Math
+    Sans Symbols 2
+2773
+    Sans Math
     Sans Symbols 2
 2776
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
@@ -7738,6 +8076,9 @@
 2793
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Symbols
+279b
+    Sans Math
+    Sans Symbols 2
 27a1
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Color Emoji
@@ -7829,6 +8170,21 @@
 2a06
     Sans Mono
     Sans Math
+2b00
+    Sans Math
+    Sans Symbols 2
+2b01
+    Sans Math
+    Sans Symbols 2
+2b02
+    Sans Math
+    Sans Symbols 2
+2b03
+    Sans Math
+    Sans Symbols 2
+2b04
+    Sans Math
+    Sans Symbols 2
 2b05
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Color Emoji
@@ -7840,6 +8196,18 @@
 2b07
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Color Emoji
+    Sans Symbols 2
+2b12
+    Sans Math
+    Sans Symbols 2
+2b13
+    Sans Math
+    Sans Symbols 2
+2b14
+    Sans Math
+    Sans Symbols 2
+2b15
+    Sans Math
     Sans Symbols 2
 2b16
     Sans Math
@@ -7864,8 +8232,27 @@
     Sans Symbols 2
 2b1c
     Color Emoji
+    Sans Math
     Sans Symbols 2
 2b1d
+    Sans Math
+    Sans Symbols 2
+2b1e
+    Sans Math
+    Sans Symbols 2
+2b1f
+    Sans Math
+    Sans Symbols 2
+2b20
+    Sans Math
+    Sans Symbols 2
+2b21
+    Sans Math
+    Sans Symbols 2
+2b22
+    Sans Math
+    Sans Symbols 2
+2b23
     Sans Math
     Sans Symbols 2
 2b24
@@ -7874,8 +8261,51 @@
 2b25
     Sans Math
     Sans Symbols 2
+2b26
+    Sans Math
+    Sans Symbols 2
+2b27
+    Sans Math
+    Sans Symbols 2
+2b28
+    Sans Math
+    Sans Symbols 2
+2b29
+    Sans Math
+    Sans Symbols 2
+2b2a
+    Sans Math
+    Sans Symbols 2
+2b2b
+    Sans Math
+    Sans Symbols 2
+2b2c
+    Sans Math
+    Sans Symbols 2
+2b2d
+    Sans Math
+    Sans Symbols 2
+2b2e
+    Sans Math
+    Sans Symbols 2
+2b2f
+    Sans Math
+    Sans Symbols 2
 2b50
     Color Emoji
+    Sans Math
+    Sans Symbols 2
+2b51
+    Sans Math
+    Sans Symbols 2
+2b52
+    Sans Math
+    Sans Symbols 2
+2b53
+    Sans Math
+    Sans Symbols 2
+2b54
+    Sans Math
     Sans Symbols 2
 2b55
     Color Emoji
@@ -8060,6 +8490,9 @@
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans PhagsPa
     Sans Yi
+3012
+    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
+    Sans Math
 3014
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans PhagsPa
@@ -8095,6 +8528,7 @@
 3030
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Color Emoji
+    Sans Math
 303d
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Color Emoji

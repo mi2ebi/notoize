@@ -454,7 +454,7 @@
     Sans Lao, Serif Lao
     Serif Oriya
 2011
-    Kufi Arabic
+    Kufi Arabic, Naskh Arabic
 2012
     Sans Lao, Serif Lao
     Sans Thai, Serif Thai
