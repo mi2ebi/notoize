@@ -1,5 +1,6 @@
 name: quarterly support check
-
+permissions:
+  contents: write
 on:
   workflow_dispatch:
   schedule:
