@@ -290,9 +290,9 @@
     Rashi Hebrew, Sans Hebrew, Serif Hebrew
     Sans Kaithi
     Sans Kannada, Serif Kannada
-    Fangsong KSS Rotated, Fangsong KSS Vertical, Serif Khitan Small Script
     Sans Kayah Li
     Sans Kharoshthi
+    Fangsong KSS Rotated, Fangsong KSS Vertical, Serif Khitan Small Script
     Sans Khmer, Serif Khmer
     Serif Khojki
     Sans Lao Looped
@@ -751,8 +751,8 @@
 003f
     Sans, Sans Mono, Serif
     Sans Adlam, Sans Adlam Unjoined
-    Sans Bengali, Serif Bengali
     Sans Balinese
+    Sans Bengali, Serif Bengali
     Sans Cham
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Devanagari, Serif Devanagari
@@ -1279,11 +1279,11 @@
     Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
     Sans Armenian, Serif Armenian
     Sans Avestan
-    Sans Bengali, Serif Bengali
     Sans Balinese, Serif Balinese
     Sans Bamum
     Sans Bassa Vah
     Sans Batak
+    Sans Bengali, Serif Bengali
     Sans Bhaiksuki
     Sans Brahmi
     Sans Buginese
@@ -1328,9 +1328,9 @@
     Sans Kaithi
     Sans Kannada, Serif Kannada
     Sans Kawi
-    Fangsong KSS Rotated, Fangsong KSS Vertical, Serif Khitan Small Script
     Sans Kayah Li
     Sans Kharoshthi
+    Fangsong KSS Rotated, Fangsong KSS Vertical, Serif Khitan Small Script
     Sans Khmer, Serif Khmer
     Sans Khojki, Serif Khojki
     Sans Khudawadi
@@ -1343,12 +1343,12 @@
     Sans Lycian
     Sans Lydian
     Sans Mahajani
+    Serif Makasar
     Sans Malayalam, Serif Malayalam
     Sans Mandaic
-    Serif Makasar
     Sans Manichaean
-    Sans Masaram Gondi
     Sans Marchen
+    Sans Masaram Gondi
     Sans Math
     Sans Mayan Numerals
     Sans Medefaidrin
@@ -1367,8 +1367,8 @@
     Sans New Tai Lue
     Sans Newa
     Sans NKo, Sans NKo Unjoined
-    Serif NP Hmong
     Sans Nushu, Traditional Nushu
+    Serif NP Hmong
     Sans Ogham
     Sans Ol Chiki
     Sans OldHung
@@ -1394,8 +1394,8 @@
     Sans Samaritan
     Sans Saurashtra
     Sans Sharada
-    Sans Siddham
     Sans Shavian
+    Sans Siddham
     Sans SignWriting
     Sans Sinhala, Serif Sinhala
     Sans Sogdian
@@ -1406,21 +1406,21 @@
     Sans Symbols
     Sans Symbols 2
     Sans Syriac, Sans Syriac Eastern, Sans Syriac Western
-    Sans Tamil, Serif Tamil
     Sans Tagalog
     Sans Tagbanwa
     Sans Tai Le
     Sans Tai Tham
     Sans Tai Viet
     Sans Takri
+    Sans Tamil, Serif Tamil
     Sans Tangsa
     Serif Tangut
     Sans Telugu, Serif Telugu
     Sans Thaana
     Sans Thai, Sans Thai Looped Regular, Serif Thai
-    Sans Tirhuta
     Serif Tibetan
     Sans Tifinagh, Sans Tifinagh APT, Sans Tifinagh Adrar, Sans Tifinagh Agraw Imazighen, Sans Tifinagh Ahaggar, Sans Tifinagh Air, Sans Tifinagh Azawagh, Sans Tifinagh Ghat, Sans Tifinagh Hawad, Sans Tifinagh Rhissa Ixa, Sans Tifinagh SIL, Sans Tifinagh Tawellemmet
+    Sans Tirhuta
     Serif Toto
     Sans Ugaritic
     Sans Vai
@@ -3061,8 +3061,8 @@
     Sans Oriya, Serif Oriya
     Sans Sinhala, Serif Sinhala
     Sans Syloti Nagri
-    Sans Tamil, Serif Tamil
     Sans Takri
+    Sans Tamil, Serif Tamil
     Sans Telugu, Serif Telugu
     Sans Tirhuta
 0965
@@ -3083,8 +3083,8 @@
     Sans Oriya, Serif Oriya
     Sans Sinhala, Serif Sinhala
     Sans Syloti Nagri
-    Sans Tamil, Serif Tamil
     Sans Takri
+    Sans Tamil, Serif Tamil
     Sans Telugu, Serif Telugu
     Sans Tirhuta
 0966
@@ -3803,9 +3803,9 @@
     Sans, Sans Mono, Serif
     Sans AnatoHiero
     Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
-    Sans Bengali, Serif Bengali
     Sans Balinese, Serif Balinese
     Sans Batak
+    Sans Bengali, Serif Bengali
     Sans Bhaiksuki
     Sans Brahmi
     Sans Buginese
@@ -3834,12 +3834,12 @@
     Sans Sinhala, Serif Sinhala
     Sans Sundanese
     Sans Syloti Nagri
-    Sans Tamil, Serif Tamil
     Sans Tagalog
     Sans Tagbanwa
     Sans Tai Le
     Sans Tai Tham
     Sans Tai Viet
+    Sans Tamil, Serif Tamil
     Sans Telugu, Serif Telugu
     Sans Thaana
     Sans Thai, Sans Thai Looped Regular, Serif Thai
@@ -3848,9 +3848,9 @@
     Sans, Sans Mono, Serif
     Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
     Sans Avestan
-    Sans Bengali, Serif Bengali
     Sans Balinese, Serif Balinese
     Sans Batak
+    Sans Bengali, Serif Bengali
     Sans Brahmi
     Sans Buginese
     Sans Buhid
@@ -3907,27 +3907,27 @@
     Sans Sundanese
     Sans Syloti Nagri
     Sans Syriac, Sans Syriac Eastern, Sans Syriac Western
-    Sans Tamil, Serif Tamil
     Sans Tagalog
     Sans Tagbanwa
     Sans Tai Le
     Sans Tai Tham
     Sans Tai Viet
     Sans Takri
+    Sans Tamil, Serif Tamil
     Sans Telugu, Serif Telugu
     Sans Thaana
     Sans Thai, Sans Thai Looped Regular, Serif Thai
-    Sans Tirhuta
     Serif Tibetan
     Sans Tifinagh, Sans Tifinagh APT, Sans Tifinagh Adrar, Sans Tifinagh Agraw Imazighen, Sans Tifinagh Ahaggar, Sans Tifinagh Air, Sans Tifinagh Azawagh, Sans Tifinagh Ghat, Sans Tifinagh Hawad, Sans Tifinagh Rhissa Ixa, Sans Tifinagh SIL, Sans Tifinagh Tawellemmet
+    Sans Tirhuta
     Sans WarangCiti
 200d
     Sans, Sans Mono, Serif
     Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
     Sans Avestan
-    Sans Bengali, Serif Bengali
     Sans Balinese, Serif Balinese
     Sans Batak
+    Sans Bengali, Serif Bengali
     Sans Brahmi
     Sans Buginese
     Sans Buhid
@@ -3981,19 +3981,19 @@
     Sans Sundanese
     Sans Syloti Nagri
     Sans Syriac, Sans Syriac Eastern, Sans Syriac Western
-    Sans Tamil, Serif Tamil
     Sans Tagalog
     Sans Tagbanwa
     Sans Tai Le
     Sans Tai Tham
     Sans Tai Viet
     Sans Takri
+    Sans Tamil, Serif Tamil
     Sans Telugu, Serif Telugu
     Sans Thaana
     Sans Thai, Sans Thai Looped Regular, Serif Thai
-    Sans Tirhuta
     Serif Tibetan
     Sans Tifinagh, Sans Tifinagh APT, Sans Tifinagh Adrar, Sans Tifinagh Agraw Imazighen, Sans Tifinagh Ahaggar, Sans Tifinagh Air, Sans Tifinagh Azawagh, Sans Tifinagh Ghat, Sans Tifinagh Hawad, Sans Tifinagh Rhissa Ixa, Sans Tifinagh SIL, Sans Tifinagh Tawellemmet
+    Sans Tirhuta
     Sans WarangCiti
 200e
     Sans, Sans Mono, Serif
@@ -7090,11 +7090,11 @@
     Serif Ahom
     Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
     Sans Armenian, Serif Armenian
-    Sans Bengali, Serif Bengali
     Sans Balinese, Serif Balinese
     Sans Bamum
     Sans Bassa Vah
     Sans Batak
+    Sans Bengali, Serif Bengali
     Sans Bhaiksuki
     Sans Brahmi
     Sans Buginese
@@ -7134,12 +7134,12 @@
     Sans Lepcha
     Sans Limbu
     Sans Mahajani
+    Serif Makasar
     Sans Malayalam, Serif Malayalam
     Sans Mandaic
-    Serif Makasar
     Sans Manichaean
-    Sans Masaram Gondi
     Sans Marchen
+    Sans Masaram Gondi
     Sans Math
     Sans Meetei Mayek
     Sans Mende Kikakui
@@ -7175,18 +7175,18 @@
     Sans Symbols
     Sans Symbols 2
     Sans Syriac, Sans Syriac Eastern, Sans Syriac Western
-    Sans Tamil, Serif Tamil
     Sans Tagalog
     Sans Tagbanwa
     Sans Tai Le
     Sans Tai Viet
     Sans Takri
+    Sans Tamil, Serif Tamil
     Sans Telugu, Serif Telugu
     Sans Thaana
     Sans Thai, Sans Thai Looped Regular, Serif Thai
-    Sans Tirhuta
     Serif Tibetan
     Sans Tifinagh, Sans Tifinagh APT, Sans Tifinagh Adrar, Sans Tifinagh Agraw Imazighen, Sans Tifinagh Ahaggar, Sans Tifinagh Air, Sans Tifinagh Azawagh, Sans Tifinagh Ghat, Sans Tifinagh Hawad, Sans Tifinagh Rhissa Ixa, Sans Tifinagh SIL, Sans Tifinagh Tawellemmet
+    Sans Tirhuta
     Serif Toto
     Sans Wancho
     Serif Yezidi

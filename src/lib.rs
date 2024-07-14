@@ -119,8 +119,8 @@ impl FontStack {
         fn stringify(stuff: &[String]) -> String {
             stuff
                 .iter()
-                .sorted_by(|a, b| script(a).cmp(&script(b)))
-                .group_by(|f| script(f))
+                .sorted_by_key(|f| script(f).0.to_lowercase())
+                .group_by(|f| script(f).0.to_lowercase())
                 .into_iter()
                 .map(|(_, mut g)| g.join(", "))
                 .join("\r\n    ")
@@ -305,16 +305,13 @@ impl NotoizeClient {
 macro_rules! generate_script {
     ($($($font:literal)|* => $script:literal),* $(,)?) => {
         #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
-        pub struct Script(u16);
+        pub struct Script(String);
         pub fn script(font: &str) -> Script {
-            let mut n = 0;
             $(
             if let $($font)|* = font {
-                return Script(n);
+                return Script($script.to_string());
             }
-            n += 1;
             )*
-            _ = n;
             panic!(
                 "unknown font name `{font}` - please file an issue on the github repo or i'll catch \
                  it in up to three months"
@@ -339,11 +336,11 @@ generate_script! {
     "Sans Arabic" | "Kufi Arabic" | "Naskh Arabic" | "Nastaliq Urdu" => "Arabic",
     "Sans Armenian" | "Serif Armenian" => "Armenian",
     "Sans Avestan" => "Avestan",
-    "Sans Bengali" | "Serif Bengali" => "Bengali",
     "Sans Balinese" | "Serif Balinese" => "Balinese",
     "Sans Bamum" => "Bamum",
     "Sans Bassa Vah" => "Bassa Vah",
     "Sans Batak" => "Batak",
+    "Sans Bengali" | "Serif Bengali" => "Bengali",
     "Sans Bhaiksuki" => "Bhaiksuki",
     "Sans Brahmi" => "Brahmi",
     "Sans Buginese" => "Buginese",
@@ -366,9 +363,9 @@ generate_script! {
     "Serif Dogra" => "Dogra",
     "Sans Duployan" => "Duployan",
     "Sans EgyptHiero" => "Egyptian Hieroglyphs",
-    "Color Emoji" => "Emoji",
     "Sans Elbasan" => "Elbasan",
     "Sans Elymaic" => "Elymaic",
+    "Color Emoji" => "Emoji",
     "Sans Ethiopic" | "Serif Ethiopic" => "Ethiopic",
     "Sans Georgian" | "Serif Georgian" => "Georgian",
     "Sans Glagolitic" => "Glagolitic",
@@ -429,8 +426,8 @@ generate_script! {
     "Sans New Tai Lue" => "New Tai Lue",
     "Sans Newa" => "Newa",
     "Sans NKo" | "Sans NKo Unjoined" => "NKo",
-    "Serif NP Hmong" => "Nyiakeng Puachue Hmong",
     "Sans Nushu" | "Traditional Nushu" => "Nushu",
+    "Serif NP Hmong" => "Nyiakeng Puachue Hmong",
     "Sans Ogham" => "Ogham",
     "Sans Ol Chiki" => "Ol Chiki",
     "Sans OldHung" => "Old Hungarian",
@@ -457,8 +454,8 @@ generate_script! {
     "Sans Samaritan" => "Samaritan",
     "Sans Saurashtra" => "Saurashtra",
     "Sans Sharada" => "Sharada",
-    "Sans Siddham" => "Siddham",
     "Sans Shavian" => "Shavian",
+    "Sans Siddham" => "Siddham",
     "Sans SignWriting" => "SignWriting",
     "Sans Sinhala" | "Serif Sinhala" => "Sinhala",
     "Sans Sogdian" => "Sogdian",
@@ -482,7 +479,6 @@ generate_script! {
     "Sans Telugu" | "Serif Telugu" => "Telugu",
     "Sans Thaana" => "Thaana",
     "Sans Thai" | "Sans Thai Looped Regular" | "Serif Thai" => "Thai",
-    "Sans Tirhuta" => "Tirhuta",
     "Serif Tibetan" => "Tibetan",
     // i have no clue what these variants are
     "Sans Tifinagh"
@@ -497,6 +493,7 @@ generate_script! {
     | "Sans Tifinagh Rhissa Ixa"
     | "Sans Tifinagh SIL"
     | "Sans Tifinagh Tawellemmet" => "Tifinagh",
+    "Sans Tirhuta" => "Tirhuta",
     "Serif Toto" => "Toto",
     "Sans Ugaritic" => "Ugaritic",
     "Sans Vai" => "Vai",
@@ -514,7 +511,7 @@ pub fn scripts(fonts: &[String]) -> Vec<Script> {
         .iter()
         .map(|f| f.as_str())
         .map(script)
-        .sorted()
+        .sorted_by_key(|f| f.0.to_lowercase())
         .dedup()
         .collect_vec()
 }
