@@ -464,7 +464,7 @@ generate_script! {
     "Sans Sundanese" => "Sundanese",
     "Sans Syloti Nagri" => "Syloti Nagri",
     "Sans Symbols" => "Symbols",
-    "Sans Symbols 2" => "Symbols 2", // yeah
+    "Sans Symbols 2" => "Symbols 2", // there are only ~15 characters that both support
     "Sans Syriac" | "Sans Syriac Eastern" | "Sans Syriac Western" => "Syriac",
     "Sans Tamil" | "Serif Tamil" => "Tamil",
     "Sans Tamil Supplement" => "Tamil Supplement",
