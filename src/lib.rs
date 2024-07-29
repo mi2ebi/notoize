@@ -158,14 +158,6 @@ pub struct CodepointFontSupport {
     fonts: Option<Vec<String>>,
 }
 
-fn drain_before(f: &[String], index: Option<usize>) -> Vec<String> {
-    let mut f = f.to_vec();
-    if let Some(i) = index {
-        f.drain(..i);
-    }
-    f
-}
-
 #[derive(Clone, Deserialize, Debug)]
 struct BlockEndpoints {
     ix: usize,
@@ -219,74 +211,74 @@ impl NotoizeClient {
             fonts: None,
         };
         for &c in &codepoints {
-            if let Some(i) = self
-                .blocks
-                .iter()
-                .find(|b| b.start <= c && c <= b.end)
-                .map(|b| b.ix)
-            {
-                self.font_support.push({
-                    let e = {
-                        let path = format!("blocks/block-{i:03}.json");
-                        if !Path::new(&format!(".notoize/{path}")).exists()
-                            && !self.font_support.iter().any(|f| f.0 == c)
-                        {
-                            let block = self
-                                .blocks
-                                .iter()
-                                .find(|b| b.start <= c && c <= b.end)
+            if !self.font_support.iter().any(|(k, _)| *k == c) {
+                if let Some(i) = self
+                    .blocks
+                    .iter()
+                    .find(|b| b.start <= c && c <= b.end)
+                    .map(|b| b.ix)
+                {
+                    self.font_support.push({
+                        let e = {
+                            let path = format!("blocks/block-{i:03}.json");
+                            if !Path::new(&format!(".notoize/{path}")).exists()
+                                && !self.font_support.iter().any(|f| f.0 == c)
+                            {
+                                let block = self
+                                    .blocks
+                                    .iter()
+                                    .find(|b| b.start <= c && c <= b.end)
+                                    .unwrap();
+                                eprintln!(
+                                    "loading support for {:04x}-{:04x} `{}`",
+                                    block.start, block.end, block.name
+                                );
+                                fetch("notofonts", "overview", &[&path])
+                                    .unwrap()
+                                    .write_to(".notoize");
+                                data = serde_json::from_str::<BlockData>(
+                                    &fs::read_to_string(format!(".notoize/{path}")).unwrap(),
+                                )
                                 .unwrap();
-                            eprintln!(
-                                "loading support for {:04x}-{:04x} `{}`",
-                                block.start, block.end, block.name
-                            );
-                            fetch("notofonts", "overview", &[&path])
-                                .unwrap()
-                                .write_to(".notoize");
-                            data = serde_json::from_str::<BlockData>(
-                                &fs::read_to_string(format!(".notoize/{path}")).unwrap(),
-                            )
-                            .unwrap();
-                        }
-                        &data
-                    };
-                    e.cps
-                        .iter()
-                        .map(|(k, v)| {
-                            (
-                                k,
-                                match &e.fonts {
-                                    None => v.fonts.clone().unwrap_or(vec![]),
-                                    Some(f) => f.to_vec(),
-                                },
-                            )
-                        })
-                        .map(|(k, v)| {
-                            (
-                                k.parse::<u32>().unwrap(),
-                                v.iter()
+                            }
+                            &data
+                        };
+                        e.cps
+                            .iter()
+                            .map(|(k, v)| {
+                                (
+                                    k.parse::<u32>().unwrap(),
+                                    match &e.fonts {
+                                        None => v.fonts.clone().unwrap_or(vec![]),
+                                        Some(f) => f.to_vec(),
+                                    }
+                                    .iter()
                                     .filter(|f| !["UI", "Display"].iter().any(|a| f.contains(a)))
                                     .cloned()
                                     .collect_vec(),
-                            )
-                        })
-                        .find(|(k, _)| *k == c)
-                        .unwrap_or((c, vec![]))
-                })
+                                )
+                            })
+                            .find(|(k, _)| *k == c)
+                            .unwrap_or((c, vec![]))
+                    });
+                }
             }
         }
         let font_support = &self.font_support;
         for c in codepoints {
-            let f = font_support
+            let f = font_support.iter().find(|(n, _)| n == &c);
+            if f.is_none() {
+                continue;
+            }
+            let f = f
+                .unwrap()
+                .1
                 .iter()
-                .find(|(n, _)| n == &c)
-                .cloned()
-                .unwrap_or((c, vec![]))
-                .1;
-            let f = f.iter().map(|e| e.to_string()).collect_vec();
-            let f = drain_before(&f, f.iter().position(|x| x == "Sans"));
-            if !f.is_empty() {
-                let sel = &f[0];
+                .map(|e| e.to_string())
+                .sorted_by_key(|e| (!e.contains("Sans"), e.clone()))
+                .collect_vec();
+            // let f = drain_before(&f, f.iter().position(|x| x == "Sans"));
+            if let Some(sel) = f.first() {
                 if !fonts.contains(&format!("Noto {sel}")) {
                     eprintln!("need {sel} for u+{c:04x}");
                     fonts.push(format!("Noto {sel}"));

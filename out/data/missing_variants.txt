@@ -377,8 +377,6 @@
     Nastaliq Urdu
 08b5
     Nastaliq Urdu
-08c8
-    Nastaliq Urdu
 08c9
     Nastaliq Urdu
 08ca
@@ -3091,8 +3089,6 @@ feac
     Nastaliq Urdu
 fead
     Nastaliq Urdu
-feae
-    Nastaliq Urdu
 feaf
     Nastaliq Urdu
 feb0
@@ -3218,8 +3214,6 @@ feeb
 feec
     Nastaliq Urdu
 feed
-    Nastaliq Urdu
-feee
     Nastaliq Urdu
 feef
     Nastaliq Urdu
