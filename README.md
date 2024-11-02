@@ -7,8 +7,6 @@ This is ***not*** "not oize". what's oize
 ## Beware:
 
 - no config options yet
-- Sometimes outputs FangsongKSSRotated instead of CJK.
-- Fetches CJK when encountering emoji
 
 ## `notoize()`
 

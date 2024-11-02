@@ -1,10 +1,12 @@
 use notoize::*;
-use std::{fs, time::Instant};
+use std::{fs, sync::LazyLock, time::Instant};
 
 fn main() {
     let start = Instant::now();
     let mut client = NotoizeClient::new();
-    let the = client.notoize(&(0..0x110000).filter_map(char::from_u32).collect::<String>());
+    static ALL: LazyLock<String> =
+        LazyLock::new(|| (0..0x110000).filter_map(char::from_u32).collect::<String>());
+    let the = client.notoize(&ALL);
     let map = the.clone().map_string();
     fs::remove_dir_all("out/data").unwrap();
     fs::create_dir_all("out/data").unwrap();
@@ -16,5 +18,5 @@ fn main() {
     for font in the.files() {
         fs::write(format!("out/fonts/{}", font.filename), font.bytes).unwrap();
     }
-    println!("{:?}", start.elapsed());
+    println!("\x1b[92m{:?}\x1b[m", start.elapsed());
 }
