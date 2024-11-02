@@ -156,7 +156,7 @@ impl FontStack {
         let mut all = String::new();
         let mut conflicts = String::new();
         let mut missing = String::new();
-        for (c, fonts) in self.map.iter().filter(|m| !m.1.is_empty()) {
+        for (c, fonts) in self.map.iter().filter(|m| !m.1.is_empty()).collect_vec().into_iter().sorted() {
             let fonts_str = stringify(fonts);
             all += &format!("{c:04x}\r\n    {fonts_str}\r\n");
             if scripts(fonts).len() > 1 {
