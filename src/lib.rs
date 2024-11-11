@@ -98,30 +98,23 @@ impl FontStack {
                     }
                     .unwrap_or_else(|e| {
                         if x.contains("CJK") {
+                            let words = x.split_ascii_whitespace().collect_vec();
                             wrapped_first(fetch(
                                 "notofonts",
                                 "noto-cjk",
-                                &[&format!(
-                                    "{}/OTF/{}/{f}",
-                                    x.split_ascii_whitespace().nth(1).unwrap(),
-                                    {
-                                        let var = x
-                                            .split_ascii_whitespace()
-                                            .nth(3)
-                                            .unwrap()
-                                            .to_lowercase();
-                                        match var.as_str() {
-                                            "jp" => "Japanese",
-                                            "kr" => "Korean",
-                                            "sc" => "SimplifiedChinese",
-                                            "tc" => "TraditionalChinese",
-                                            "hk" => "TraditionalChineseHK",
-                                            _ => {
-                                                panic!("unknown CJK variety `\x1b[91m{var}\x1b[m`")
-                                            }
+                                &[&format!("{}/OTF/{}/{f}", words[1], {
+                                    let var = words[3].to_lowercase();
+                                    match var.as_str() {
+                                        "jp" => "Japanese",
+                                        "kr" => "Korean",
+                                        "sc" => "SimplifiedChinese",
+                                        "tc" => "TraditionalChinese",
+                                        "hk" => "TraditionalChineseHK",
+                                        _ => {
+                                            panic!("unknown CJK variety `\x1b[91m{var}\x1b[m`")
                                         }
                                     }
-                                )],
+                                })],
                             ))
                             .unwrap()
                         } else if x.contains("Emoji") {
@@ -143,11 +136,11 @@ impl FontStack {
             .collect()
     }
 
-    pub fn map_string(self) -> MapString {
+    pub fn map_string(&self) -> MapString {
         fn stringify(stuff: &[String]) -> String {
             stuff
                 .iter()
-                .sorted_by_key(|f| script(f).0.to_lowercase())
+                .sorted_by_cached_key(|f| script(f).0.to_lowercase())
                 .group_by(|f| script(f).0.to_lowercase())
                 .into_iter()
                 .map(|(_, mut g)| g.join(", "))
@@ -156,11 +149,19 @@ impl FontStack {
         let mut all = String::new();
         let mut conflicts = String::new();
         let mut missing = String::new();
-        for (c, fonts) in self.map.iter().filter(|m| !m.1.is_empty()).collect_vec().into_iter().sorted() {
+        for (c, fonts) in self
+            .map
+            .iter()
+            .filter(|m| !m.1.is_empty())
+            .collect_vec()
+            .into_iter()
+            .sorted()
+        {
             let fonts_str = stringify(fonts);
-            all += &format!("{c:04x}\r\n    {fonts_str}\r\n");
+            let entry = &format!("{c:04x}\r\n    {fonts_str}\r\n");
+            all += entry;
             if scripts(fonts).len() > 1 {
-                conflicts += &format!("{c:04x}\r\n    {fonts_str}\r\n");
+                conflicts += entry;
             }
             let bad = missing_variants(fonts);
             if !bad.is_empty() {
@@ -239,16 +240,19 @@ impl NotoizeClient {
             fonts: None,
         };
         let mut old_block = None;
-        for &c in &codepoints {
-            let block = self.blocks.iter().find(|b| b.start <= c && c <= b.end);
+        for (i, c) in codepoints.iter().enumerate() {
+            // blocks can only start at u+xxxxx0
+            if i > 0 && (c >> 3) % 16 == (codepoints[i - 1] >> 3) % 16 {
+                continue;
+            }
+            let block = self.blocks.iter().find(|b| b.start <= *c && *c <= b.end);
             if block != old_block {
                 if let Some(i) = block.map(|b| b.ix) {
                     let path = format!("blocks/block-{i:03}.json");
                     let block = block.unwrap();
                     let e = {
                         if !Path::new(&format!(".notoize/{path}")).exists()
-                            && (!self.font_support.contains_key(&c)
-                                || !self.font_support.contains_key(&c))
+                            && !self.font_support.contains_key(c)
                         {
                             eprintln!(
                                 "\x1b[92mfetching\x1b[m {:04x}-{:04x} {}",
@@ -291,11 +295,11 @@ impl NotoizeClient {
             old_block = block;
         }
         let font_support = &self.font_support;
-        for c in codepoints {
-            let f = font_support.get(&c);
-            if f.is_none() {
-                continue;
-            }
+        for (c, f) in codepoints
+            .iter()
+            .filter(|c| !font_support.get(c).unwrap_or(&vec![]).is_empty())
+            .map(|c| (c, font_support.get(c)))
+        {
             let f = f
                 .unwrap()
                 .iter()
@@ -310,7 +314,6 @@ impl NotoizeClient {
             }
         }
         fs::remove_dir_all(".notoize").unwrap_or(());
-        fs::create_dir(".notoize").unwrap_or(());
         FontStack {
             names: fonts,
             map: font_support.clone(),

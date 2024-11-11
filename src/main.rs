@@ -7,7 +7,7 @@ fn main() {
     static ALL: LazyLock<String> =
         LazyLock::new(|| (0..0x110000).filter_map(char::from_u32).collect::<String>());
     let the = client.notoize(&ALL);
-    let map = the.clone().map_string();
+    let map = the.map_string();
     let _ = fs::remove_dir_all("out/data");
     fs::create_dir_all("out/data").unwrap();
     fs::write("out/data/mapping.txt", map.all).unwrap();
