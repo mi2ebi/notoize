@@ -242,7 +242,7 @@ impl NotoizeClient {
         let mut old_block = None;
         for (i, c) in codepoints.iter().enumerate() {
             // blocks can only start at u+xxxxx0
-            if i > 0 && (c >> 3) == (codepoints[i - 1] >> 3) {
+            if i > 0 && (c >> 4) == (codepoints[i - 1] >> 4) {
                 continue;
             }
             let block = self.blocks.iter().find(|b| b.start <= *c && *c <= b.end);
