@@ -290,6 +290,7 @@ impl NotoizeClient {
                         let insert = formatted.get_key_value(&c).unwrap_or((&c, &v));
                         self.font_support.insert(*insert.0, insert.1.clone());
                     }
+                    fs::remove_file(format!(".notoize/blocks/block-{i:03}.json")).unwrap();
                 }
             }
             old_block = block;
