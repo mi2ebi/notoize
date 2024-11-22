@@ -1,7 +1,7 @@
 use gh_file_curler::{fetch, wrapped_first};
 use itertools::Itertools;
 use serde::Deserialize;
-use std::{collections::HashMap, fs, path::Path, sync::LazyLock};
+use std::{collections::HashMap, sync::LazyLock};
 
 #[derive(Debug, Clone)]
 pub struct FontStack {
@@ -212,11 +212,10 @@ impl NotoizeClient {
         Self {
             blocks: {
                 eprintln!("\x1b[92mfetching\x1b[m block list");
-                fetch("notofonts", "overview", &["blocks.json"])
-                    .unwrap()
-                    .write_to(".notoize");
-                serde_json::from_str::<Vec<BlockEndpoints>>(
-                    &fs::read_to_string(".notoize/blocks.json").unwrap(),
+                serde_json::from_slice::<Vec<BlockEndpoints>>(
+                    &fetch("notofonts", "overview", &["blocks.json"]).unwrap().0[0]
+                        .content
+                        .clone(),
                 )
                 .unwrap()
             },
@@ -226,8 +225,6 @@ impl NotoizeClient {
 
     /// Returns a minimal font stack for rendering `text`
     pub fn notoize(&mut self, text: &str) -> FontStack {
-        fs::remove_dir_all(".notoize").unwrap_or(());
-        fs::create_dir(".notoize").unwrap_or(());
         let codepoints = text
             .chars()
             .map(|c| c as u32)
@@ -251,18 +248,15 @@ impl NotoizeClient {
                     let path = format!("blocks/block-{i:03}.json");
                     let block = block.unwrap();
                     let e = {
-                        if !Path::new(&format!(".notoize/{path}")).exists()
-                            && !self.font_support.contains_key(c)
-                        {
+                        if !self.font_support.contains_key(c) {
                             eprintln!(
                                 "\x1b[92mfetching\x1b[m {:04x}-{:04x} {}",
                                 block.start, block.end, block.name
                             );
-                            fetch("notofonts", "overview", &[&path])
-                                .unwrap()
-                                .write_to(".notoize");
-                            data = serde_json::from_str::<BlockData>(
-                                &fs::read_to_string(format!(".notoize/{path}")).unwrap(),
+                            data = serde_json::from_slice::<BlockData>(
+                                &fetch("notofonts", "overview", &[&path]).unwrap().0[0]
+                                    .content
+                                    .clone(),
                             )
                             .unwrap();
                         }
@@ -290,7 +284,6 @@ impl NotoizeClient {
                         let insert = formatted.get_key_value(&c).unwrap_or((&c, &v));
                         self.font_support.insert(*insert.0, insert.1.clone());
                     }
-                    fs::remove_file(format!(".notoize/blocks/block-{i:03}.json")).unwrap();
                 }
             }
             old_block = block;
@@ -314,7 +307,6 @@ impl NotoizeClient {
                 }
             }
         }
-        fs::remove_dir_all(".notoize").unwrap_or(());
         FontStack {
             names: fonts,
             map: font_support.clone(),
