@@ -274,6 +274,10 @@ impl NotoizeClient {
                                 }
                                 .iter()
                                 .filter(|f| !["UI", "Display"].iter().any(|a| f.contains(a)))
+                                .filter(|f| {
+                                    script(f);
+                                    true
+                                })
                                 .cloned()
                                 .collect_vec(),
                             )
