@@ -14,7 +14,6 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
       - name: do the
         run: cargo run --release
-
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: quarterly support check
