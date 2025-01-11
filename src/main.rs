@@ -1,11 +1,14 @@
-use notoize::*;
+use notoize::NotoizeClient;
 use std::{fs, sync::LazyLock, time::Instant};
 
 fn main() {
+    static ALL: LazyLock<String> = LazyLock::new(|| {
+        (0..0x11_0000)
+            .filter_map(char::from_u32)
+            .collect::<String>()
+    });
     let start = Instant::now();
     let mut client = NotoizeClient::new();
-    static ALL: LazyLock<String> =
-        LazyLock::new(|| (0..0x110000).filter_map(char::from_u32).collect::<String>());
     let the = client.notoize(&ALL);
     let map = the.map_string();
     let _ = fs::remove_dir_all("out/data");

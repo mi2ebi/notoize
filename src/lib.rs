@@ -82,7 +82,7 @@ impl FontStack {
                     SPECIAL_FILENAMES
                         .iter()
                         .find(|(name, _)| *name == x.as_str())
-                        .map(|(_, filename)| filename.to_string())
+                        .map(|(_, filename)| (*filename).to_string())
                         .unwrap()
                         .to_string()
                 } else {
@@ -270,7 +270,7 @@ impl NotoizeClient {
                                 k.parse::<u32>().unwrap(),
                                 match &e.fonts {
                                     None => v.fonts.clone().unwrap_or(vec![]),
-                                    Some(f) => f.to_vec(),
+                                    Some(f) => f.clone(),
                                 }
                                 .iter()
                                 .filter(|f| !["UI", "Display"].iter().any(|a| f.contains(a)))
@@ -301,7 +301,7 @@ impl NotoizeClient {
             let f = f
                 .unwrap()
                 .iter()
-                .map(|e| e.to_string())
+                .map(ToString::to_string)
                 .sorted_by_key(|e| (!e.contains("Sans"), e.clone()))
                 .collect_vec();
             if let Some(sel) = f.first() {
@@ -525,7 +525,7 @@ generate_script! {
 pub fn scripts(fonts: &[String]) -> Vec<Script> {
     fonts
         .iter()
-        .map(|f| f.as_str())
+        .map(String::as_str)
         .map(script)
         .sorted_by_key(|f| f.0.to_lowercase())
         .dedup()
