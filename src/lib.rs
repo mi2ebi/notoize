@@ -84,7 +84,6 @@ impl FontStack {
                         .find(|(name, _)| *name == x.as_str())
                         .map(|(_, filename)| (*filename).to_string())
                         .unwrap()
-                        .to_string()
                 } else {
                     format!("{}-Regular.ttf", x.replace([' ', '-'], ""))
                 };
@@ -268,18 +267,17 @@ impl NotoizeClient {
                         .map(|(k, v)| {
                             (
                                 k.parse::<u32>().unwrap(),
-                                match &e.fonts {
-                                    None => v.fonts.clone().unwrap_or(vec![]),
-                                    Some(f) => f.clone(),
-                                }
-                                .iter()
-                                .filter(|f| !["UI", "Display"].iter().any(|a| f.contains(a)))
-                                .filter(|f| {
-                                    script(f);
-                                    true
-                                })
-                                .cloned()
-                                .collect_vec(),
+                                e.fonts
+                                    .as_ref()
+                                    .map_or_else(|| v.fonts.clone().unwrap_or(vec![]), Clone::clone)
+                                    .iter()
+                                    .filter(|f| !["UI", "Display"].iter().any(|a| f.contains(a)))
+                                    .filter(|f| {
+                                        script(f);
+                                        true
+                                    })
+                                    .cloned()
+                                    .collect_vec(),
                             )
                         })
                         .collect::<HashMap<_, _>>();
