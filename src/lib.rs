@@ -294,19 +294,24 @@ impl NotoizeClient {
         for (c, f) in codepoints
             .iter()
             .filter(|c| !font_support.get(c).unwrap_or(&vec![]).is_empty())
-            .map(|c| (c, font_support.get(c)))
+            .map(|c| {
+                (
+                    c,
+                    font_support
+                        .get(c)
+                        .unwrap()
+                        .iter()
+                        .map(ToString::to_string)
+                        .sorted_by_key(|e| (!e.contains("Sans"), e.clone()))
+                        .collect_vec(),
+                )
+            })
+            .filter(|(_, f)| !f.is_empty())
         {
-            let f = f
-                .unwrap()
-                .iter()
-                .map(ToString::to_string)
-                .sorted_by_key(|e| (!e.contains("Sans"), e.clone()))
-                .collect_vec();
-            if let Some(sel) = f.first() {
-                if !fonts.contains(&format!("Noto {sel}")) {
-                    eprintln!("\x1b[96mneed\x1b[m {sel} for u+{c:04x}");
-                    fonts.push(format!("Noto {sel}"));
-                }
+            let sel = f.first().unwrap();
+            if !fonts.contains(&format!("Noto {sel}")) {
+                eprintln!("\x1b[96mneed\x1b[m {sel} for u+{c:04x}");
+                fonts.push(format!("Noto {sel}"));
             }
         }
         FontStack {
