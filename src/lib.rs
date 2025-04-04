@@ -1,5 +1,5 @@
 use gh_file_curler::{fetch, wrapped_first};
-use itertools::Itertools;
+use itertools::Itertools as _;
 use serde::Deserialize;
 use std::{collections::HashMap, sync::LazyLock};
 
@@ -90,7 +90,7 @@ impl FontStack {
                 eprintln!("\x1b[92mfetching\x1b[m {x}");
                 Font {
                     filename: f.clone(),
-                    fontname: x.to_string(),
+                    fontname: x.clone(),
                     bytes: {
                         let path = format!("fonts/{}/hinted/ttf/{f}", f.split('-').next().unwrap());
                         wrapped_first(fetch("notofonts", "notofonts.github.io", &[&path]))
