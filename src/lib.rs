@@ -1,7 +1,7 @@
 use gh_file_curler::{fetch, wrapped_first};
 use itertools::Itertools as _;
 use serde::Deserialize;
-use std::{collections::HashMap, sync::LazyLock};
+use std::{collections::HashMap, fmt::Write as _, sync::LazyLock};
 
 #[derive(Debug, Clone)]
 pub struct FontStack {
@@ -71,6 +71,9 @@ static SPECIAL_FILENAMES: LazyLock<[(&str, &str); 10]> = LazyLock::new(|| {
 });
 
 impl FontStack {
+    /// retrieves the font files from github
+    /// # Panics
+    /// if the font somehow doesn't exist (should never happen)
     pub fn files(&self) -> Vec<Font> {
         self.names
             .iter()
@@ -87,7 +90,7 @@ impl FontStack {
                 } else {
                     format!("{}-Regular.ttf", x.replace([' ', '-'], ""))
                 };
-                eprintln!("\x1b[92mfetching\x1b[m {x}");
+                println!("\x1b[92mfetching\x1b[m {x}");
                 Font {
                     filename: f.clone(),
                     fontname: x.clone(),
@@ -164,7 +167,7 @@ impl FontStack {
             }
             let bad = missing_variants(fonts);
             if !bad.is_empty() {
-                missing += &format!("{c:04x}\r\n    {}\r\n", stringify(&bad));
+                let _ = write!(missing, "{c:04x}\r\n    {}\r\n", stringify(&bad));
             }
         }
         MapString {
@@ -207,10 +210,13 @@ impl Default for NotoizeClient {
 }
 
 impl NotoizeClient {
+    /// make a client
+    /// # Panics
+    /// if the json can't be parsed (should never happen)
     pub fn new() -> Self {
         Self {
             blocks: {
-                eprintln!("\x1b[92mfetching\x1b[m block list");
+                println!("\x1b[92mfetching\x1b[m block list");
                 serde_json::from_slice::<Vec<BlockEndpoints>>(
                     &fetch("notofonts", "overview", &["blocks.json"]).unwrap().0[0]
                         .content
@@ -222,7 +228,9 @@ impl NotoizeClient {
         }
     }
 
-    /// Returns a minimal font stack for rendering `text`
+    /// returns a minimal font stack for rendering the text
+    /// # Panics
+    /// if the block data can;t be found (should never happen)
     pub fn notoize(&mut self, text: &str) -> FontStack {
         let codepoints = text
             .chars()
@@ -248,7 +256,7 @@ impl NotoizeClient {
                     let block = block.unwrap();
                     let e = {
                         if !self.font_support.contains_key(c) {
-                            eprintln!(
+                            println!(
                                 "\x1b[92mfetching\x1b[m {:04x}-{:04x} {}",
                                 block.start, block.end, block.name
                             );
@@ -310,7 +318,7 @@ impl NotoizeClient {
         {
             let sel = f.first().unwrap();
             if !fonts.contains(&format!("Noto {sel}")) {
-                eprintln!("\x1b[96mneed\x1b[m {sel} for u+{c:04x}");
+                println!("\x1b[96mneed\x1b[m {sel} for u+{c:04x}");
                 fonts.push(format!("Noto {sel}"));
             }
         }
