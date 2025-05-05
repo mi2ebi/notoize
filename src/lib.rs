@@ -3,6 +3,15 @@ use itertools::Itertools as _;
 use serde::Deserialize;
 use std::{collections::HashMap, fmt::Write as _, sync::LazyLock};
 
+macro_rules! cprint {
+    ($s:literal$(, $($f:expr),+)?) => {
+        print!("\x1b[2K\x1b[G");
+        print!($s$(, $($f),+)?);
+        use std::io::Write as _;
+        std::io::stdout().flush().unwrap();
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct FontStack {
     pub names: Vec<String>,
@@ -75,7 +84,8 @@ impl FontStack {
     /// # Panics
     /// if the font somehow doesn't exist (should never happen)
     pub fn files(&self) -> Vec<Font> {
-        self.names
+        let res = self
+            .names
             .iter()
             .map(|x| {
                 let f = if x.contains("CJK") {
@@ -90,7 +100,7 @@ impl FontStack {
                 } else {
                     format!("{}-Regular.ttf", x.replace([' ', '-'], ""))
                 };
-                println!("\x1b[92mfetching\x1b[m {x}");
+                cprint!("\x1b[92mfetching\x1b[m {x}");
                 Font {
                     filename: f.clone(),
                     fontname: x.clone(),
@@ -135,7 +145,9 @@ impl FontStack {
                     }),
                 }
             })
-            .collect()
+            .collect();
+        cprint!("retrieved font files");
+        res
     }
 
     pub fn map_string(&self) -> MapString {
@@ -146,7 +158,7 @@ impl FontStack {
                 .group_by(|f| script(f).0.to_lowercase())
                 .into_iter()
                 .map(|(_, mut g)| g.join(", "))
-                .join("\r\n    ")
+                .join("\n    ")
         }
         let mut all = String::new();
         let mut conflicts = String::new();
@@ -160,14 +172,14 @@ impl FontStack {
             .sorted()
         {
             let fonts_str = stringify(fonts);
-            let entry = &format!("{c:04x}\r\n    {fonts_str}\r\n");
+            let entry = &format!("{c:04x}\n    {fonts_str}\n");
             all += entry;
             if scripts(fonts).len() > 1 {
                 conflicts += entry;
             }
             let bad = missing_variants(fonts);
             if !bad.is_empty() {
-                let _ = write!(missing, "{c:04x}\r\n    {}\r\n", stringify(&bad));
+                let _ = write!(missing, "{c:04x}\n    {}\n", stringify(&bad));
             }
         }
         MapString {
@@ -216,7 +228,7 @@ impl NotoizeClient {
     pub fn new() -> Self {
         Self {
             blocks: {
-                println!("\x1b[92mfetching\x1b[m block list");
+                cprint!("\x1b[92mfetching\x1b[m block list");
                 serde_json::from_slice::<Vec<BlockEndpoints>>(
                     &fetch("notofonts", "overview", &["blocks.json"]).unwrap().0[0]
                         .content
@@ -256,9 +268,11 @@ impl NotoizeClient {
                     let block = block.unwrap();
                     let e = {
                         if !self.font_support.contains_key(c) {
-                            println!(
+                            cprint!(
                                 "\x1b[92mfetching\x1b[m {:04x}-{:04x} {}",
-                                block.start, block.end, block.name
+                                block.start,
+                                block.end,
+                                block.name
                             );
                             data = serde_json::from_slice::<BlockData>(
                                 &fetch("notofonts", "overview", &[&path]).unwrap().0[0]
@@ -318,10 +332,11 @@ impl NotoizeClient {
         {
             let sel = f.first().unwrap();
             if !fonts.contains(&format!("Noto {sel}")) {
-                println!("\x1b[96mneed\x1b[m {sel} for u+{c:04x}");
+                cprint!("\x1b[96mneed\x1b[m {sel} for u+{c:04x}");
                 fonts.push(format!("Noto {sel}"));
             }
         }
+        cprint!("determined necessary fonts");
         FontStack {
             names: fonts,
             map: font_support.clone(),

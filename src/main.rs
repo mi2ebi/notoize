@@ -21,5 +21,5 @@ fn main() {
     for font in the.files() {
         fs::write(format!("out/fonts/{}", font.filename), font.bytes).unwrap();
     }
-    println!("\x1b[92m{:?}\x1b[m", start.elapsed());
+    println!(" in \x1b[92m{:?}\x1b[m", start.elapsed());
 }
