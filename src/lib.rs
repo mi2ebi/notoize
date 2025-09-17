@@ -349,22 +349,19 @@ macro_rules! generate_script {
         #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
         pub struct Script(String);
         pub fn script(font: &str) -> Script {
-            $(
-            if let $($font)|* = font {
-                return Script($script.to_string());
+            match font {
+                $(
+                    $($font)|* => Script($script.to_string()),
+                )*
+                _ => panic!(
+                        "unknown font name `\x1b[91m{font}\x1b[m` - please file an issue on the github repo or i'll catch \
+                        it in up to three months"
+                     )
             }
-            )*
-            panic!(
-                "unknown font name `\x1b[91m{font}\x1b[m` - please file an issue on the github repo or i'll catch \
-                 it in up to three months"
-            )
         }
         pub fn all_variants() -> Vec<String> {
-            let mut a = vec![];
-            $(
-            a.extend([$($font),*]);
-            )*
-            a.iter().map(|v| v.to_string()).collect_vec()
+            let a = [$($($font),*),*];
+            a.into_iter().map(|v| v.to_string()).collect_vec()
         }
     }
 }
