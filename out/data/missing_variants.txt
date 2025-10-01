@@ -5,14 +5,18 @@
     Sans Lao, Serif Lao
     Sans Thai, Serif Thai
 0022
+    Sans Bengali
     Sans Gujarati
     Sans Khojki
     Sans Lao, Serif Lao
     Sans Thai, Serif Thai
 0023
+    Sans Bengali
     Sans Gujarati
     Sans Khojki
+    Sans Thai, Serif Thai
 0025
+    Sans Bengali
     Sans Gujarati
     Sans Khojki
     Sans Thai, Serif Thai
@@ -20,33 +24,40 @@
     Sans Lao, Serif Lao
     Sans Thai, Serif Thai
 0027
+    Sans Bengali
     Sans Gujarati
     Sans Khojki
     Sans Lao, Serif Lao
     Sans Thai, Serif Thai
 0028
     Sans Arabic, Kufi Arabic, Naskh Arabic
+    Sans Bengali
     Sans Gujarati
     Sans Khojki
     Sans Lao, Serif Lao
     Sans Thai, Serif Thai
 0029
     Sans Arabic, Kufi Arabic, Naskh Arabic
+    Sans Bengali
     Sans Gujarati
     Sans Khojki
     Sans Lao, Serif Lao
     Sans Thai, Serif Thai
 002a
+    Sans Bengali
     Sans Gujarati
     Sans Khojki
     Sans Lao, Serif Lao
     Sans Thai, Serif Thai
 002b
     Sans Arabic, Kufi Arabic, Naskh Arabic
+    Sans Bengali
     Sans Gujarati
     Sans Khojki
+    Sans Thai, Serif Thai
 002c
     Kufi Arabic
+    Sans Bengali
     Sans Gujarati
     Sans Khojki
     Sans Lao, Serif Lao
@@ -54,6 +65,7 @@
     Sans Thai, Serif Thai
 002d
     Kufi Arabic, Naskh Arabic
+    Sans Bengali
     Sans Gujarati
     Sans Khojki
     Sans Lao, Serif Lao
@@ -61,6 +73,7 @@
     Sans Oriya
 002e
     Kufi Arabic
+    Sans Bengali
     Sans Gujarati
     Sans Khojki
     Sans Lao, Serif Lao
@@ -68,59 +81,76 @@
     Sans Thai, Serif Thai
 002f
     Sans Arabic, Kufi Arabic, Naskh Arabic
+    Sans Bengali
     Sans Gujarati
     Sans Khojki
     Sans Lao, Serif Lao
     Sans Thai, Serif Thai
 0030
+    Sans Bengali
     Sans Gujarati
     Sans Khojki
 0031
+    Sans Bengali
     Sans Gujarati
     Sans Khojki
 0032
+    Sans Bengali
     Sans Gujarati
     Sans Khojki
 0033
+    Sans Bengali
     Sans Gujarati
     Sans Khojki
 0034
+    Sans Bengali
     Sans Gujarati
     Sans Khojki
 0035
+    Sans Bengali
     Sans Gujarati
     Sans Khojki
 0036
+    Sans Bengali
     Sans Gujarati
     Sans Khojki
 0037
+    Sans Bengali
     Sans Gujarati
     Sans Khojki
 0038
+    Sans Bengali
     Sans Gujarati
     Sans Khojki
 0039
+    Sans Bengali
     Sans Gujarati
     Sans Khojki
 003a
     Kufi Arabic
+    Sans Bengali
     Sans Gujarati
     Sans Khojki
     Sans Lao, Serif Lao
     Sans Thai, Serif Thai
 003b
+    Sans Bengali
     Sans Gujarati
     Sans Khojki
     Sans Lao, Serif Lao
     Sans Thai, Serif Thai
 003c
+    Sans Bengali
     Sans Gujarati
     Sans Khojki
 003d
     Sans Arabic, Kufi Arabic, Naskh Arabic
+    Sans Bengali
     Sans Gujarati
     Sans Khojki
+    Sans Thai, Serif Thai
 003e
+    Sans Bengali
     Sans Gujarati
     Sans Khojki
 003f
@@ -136,32 +166,42 @@
     Sans Thai, Serif Thai
 005c
     Sans Arabic, Kufi Arabic, Naskh Arabic
+    Sans Bengali
     Sans Gujarati
     Sans Khojki
+    Sans Thai, Serif Thai
 005d
     Sans Arabic, Kufi Arabic, Naskh Arabic
     Sans Gujarati
     Sans Khojki
     Sans Thai, Serif Thai
 005e
+    Sans Bengali
     Sans Gujarati
     Sans Khojki
 005f
+    Sans Bengali
     Sans Gujarati
     Sans Khojki
+    Sans Thai, Serif Thai
 007b
     Sans Arabic, Kufi Arabic, Naskh Arabic
     Sans Gujarati
     Sans Khojki
+    Sans Thai, Serif Thai
 007c
     Sans Arabic, Kufi Arabic, Naskh Arabic
+    Sans Bengali
     Sans Gujarati
     Sans Khojki
+    Sans Thai, Serif Thai
 007d
     Sans Arabic, Kufi Arabic, Naskh Arabic
     Sans Gujarati
     Sans Khojki
+    Sans Thai, Serif Thai
 007e
+    Sans Bengali
     Sans Gujarati
     Sans Khojki
 00a0
@@ -172,8 +212,11 @@
     Sans Thai, Serif Thai
 00ad
     Sans Mono
+    Sans Bengali
     Sans Gujarati
     Sans Khojki
+00b6
+    Sans Thai, Serif Thai
 00b7
     Sans Arabic, Kufi Arabic, Naskh Arabic
 00bb
@@ -182,14 +225,19 @@
     Sans Thai, Serif Thai
 00d7
     Sans Arabic, Kufi Arabic, Naskh Arabic
+    Sans Bengali
     Sans Gujarati
     Sans Khojki
     Sans Lao, Serif Lao
     Sans Thai, Serif Thai
 00f7
     Sans Arabic, Kufi Arabic, Naskh Arabic
+    Sans Bengali
     Sans Gujarati
     Sans Khojki
+    Sans Thai, Serif Thai
+02dc
+    Sans Thai, Serif Thai
 0301
     Sans Georgian
 0302
@@ -202,7 +250,6 @@
     Kufi Arabic, Naskh Arabic, Nastaliq Urdu
     Serif Hebrew, Rashi Hebrew
     Sans Lao, Serif Lao
-    Sans Thai, Serif Thai
 035e
     Sans Thai, Serif Thai
 0605
@@ -435,10 +482,6 @@
     Sans Lao, Serif Lao
 0e5b
     Sans Lao, Serif Lao
-17c9
-    Sans Thai, Serif Thai
-17cb
-    Sans Thai, Serif Thai
 1b7d
     Serif Balinese
 1b7e
@@ -458,12 +501,14 @@
     Sans Thai, Serif Thai
 2013
     Sans Arabic, Kufi Arabic, Naskh Arabic
+    Sans Bengali
     Sans Gujarati
     Sans Khojki
     Sans Lao, Serif Lao
     Sans Thai, Serif Thai
 2014
     Sans Arabic, Kufi Arabic, Naskh Arabic
+    Sans Bengali
     Sans Gujarati
     Sans Khojki
     Sans Lao, Serif Lao
@@ -502,6 +547,7 @@
     Sans Arabic, Kufi Arabic, Naskh Arabic
 2026
     Sans Arabic, Kufi Arabic, Naskh Arabic
+    Sans Bengali
     Sans Gujarati
     Sans Khojki
     Sans Lao, Serif Lao
@@ -605,8 +651,10 @@
     Sans, Serif
 2212
     Sans Arabic, Kufi Arabic, Naskh Arabic
+    Sans Bengali
     Sans Gujarati
     Sans Khojki
+    Sans Thai, Serif Thai
 2218
     Sans, Serif
 2219
@@ -1536,7 +1584,6 @@
     Sans Khojki
 2638
     Sans Lao, Serif Lao
-    Sans Thai, Serif Thai
 266d
     Sans, Serif
 266e

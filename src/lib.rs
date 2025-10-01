@@ -1,7 +1,8 @@
+use std::{collections::HashMap, fmt::Write as _, sync::LazyLock};
+
 use gh_file_curler::{fetch, wrapped_first};
 use itertools::Itertools as _;
 use serde::Deserialize;
-use std::{collections::HashMap, fmt::Write as _, sync::LazyLock};
 
 macro_rules! cprint {
     ($s:literal$(, $($f:expr),+)?) => {
@@ -49,33 +50,15 @@ static SPECIAL_NAMES: LazyLock<[&str; 10]> = LazyLock::new(|| {
 static SPECIAL_FILENAMES: LazyLock<[(&str, &str); 10]> = LazyLock::new(|| {
     [
         ("Noto Color Emoji", "NotoColorEmoji.ttf"),
-        (
-            "Noto Sans ImpAramaic",
-            "NotoSansImperialAramaic-Regular.ttf",
-        ),
-        (
-            "Noto Sans OldSouArab",
-            "NotoSansOldSouthArabian-Regular.ttf",
-        ),
-        (
-            "Noto Sans OldNorArab",
-            "NotoSansOldNorthArabian-Regular.ttf",
-        ),
-        (
-            "Noto Sans InsPahlavi",
-            "NotoSansInscriptionalPahlavi-Regular.ttf",
-        ),
+        ("Noto Sans ImpAramaic", "NotoSansImperialAramaic-Regular.ttf"),
+        ("Noto Sans OldSouArab", "NotoSansOldSouthArabian-Regular.ttf"),
+        ("Noto Sans OldNorArab", "NotoSansOldNorthArabian-Regular.ttf"),
+        ("Noto Sans InsPahlavi", "NotoSansInscriptionalPahlavi-Regular.ttf"),
         ("Noto Sans PsaPahlavi", "NotoSansPsalterPahlavi-Regular.ttf"),
         ("Noto Sans OldHung", "NotoSansOldHungarian-Regular.ttf"),
         ("Noto Sans Zanabazar", "NotoSansZanabazarSquare-Regular.ttf"),
-        (
-            "Noto Sans EgyptHiero",
-            "NotoSansEgyptianHieroglyphs-Regular.ttf",
-        ),
-        (
-            "Noto Sans AnatoHiero",
-            "NotoSansAnatolianHieroglyphs-Regular.ttf",
-        ),
+        ("Noto Sans EgyptHiero", "NotoSansEgyptianHieroglyphs-Regular.ttf"),
+        ("Noto Sans AnatoHiero", "NotoSansAnatolianHieroglyphs-Regular.ttf"),
     ]
 });
 
@@ -111,10 +94,10 @@ impl FontStack {
                     .unwrap_or_else(|e| {
                         if x.contains("CJK") {
                             let words = x.split_ascii_whitespace().collect_vec();
-                            wrapped_first(fetch(
-                                "notofonts",
-                                "noto-cjk",
-                                &[&format!("{}/OTF/{}/{f}", words[1], {
+                            wrapped_first(fetch("notofonts", "noto-cjk", &[&format!(
+                                "{}/OTF/{}/{f}",
+                                words[1],
+                                {
                                     let var = words[3].to_lowercase();
                                     match var.as_str() {
                                         "jp" => "Japanese",
@@ -126,15 +109,13 @@ impl FontStack {
                                             panic!("unknown CJK variety `\x1b[91m{var}\x1b[m`")
                                         }
                                     }
-                                })],
-                            ))
+                                }
+                            )]))
                             .unwrap()
                         } else if x.contains("Emoji") {
-                            wrapped_first(fetch(
-                                "googlefonts",
-                                "noto-emoji",
-                                &["fonts/NotoColorEmoji.ttf"],
-                            ))
+                            wrapped_first(fetch("googlefonts", "noto-emoji", &[
+                                "fonts/NotoColorEmoji.ttf",
+                            ]))
                             .unwrap()
                         } else {
                             panic!(
@@ -163,13 +144,8 @@ impl FontStack {
         let mut all = String::new();
         let mut conflicts = String::new();
         let mut missing = String::new();
-        for (c, fonts) in self
-            .map
-            .iter()
-            .filter(|m| !m.1.is_empty())
-            .collect_vec()
-            .into_iter()
-            .sorted()
+        for (c, fonts) in
+            self.map.iter().filter(|m| !m.1.is_empty()).collect_vec().into_iter().sorted()
         {
             let fonts_str = stringify(fonts);
             let entry = &format!("{c:04x}\n    {fonts_str}\n");
@@ -182,11 +158,7 @@ impl FontStack {
                 let _ = write!(missing, "{c:04x}\n    {}\n", stringify(&bad));
             }
         }
-        MapString {
-            all,
-            conflicts,
-            missing,
-        }
+        MapString { all, conflicts, missing }
     }
 }
 
@@ -216,9 +188,7 @@ pub struct NotoizeClient {
 }
 
 impl Default for NotoizeClient {
-    fn default() -> Self {
-        Self::new()
-    }
+    fn default() -> Self { Self::new() }
 }
 
 impl NotoizeClient {
@@ -230,9 +200,7 @@ impl NotoizeClient {
             blocks: {
                 cprint!("\x1b[92mfetching\x1b[m block list");
                 serde_json::from_slice::<Vec<BlockEndpoints>>(
-                    &fetch("notofonts", "overview", &["blocks.json"]).unwrap().0[0]
-                        .content
-                        .clone(),
+                    &fetch("notofonts", "overview", &["blocks.json"]).unwrap().0[0].content.clone(),
                 )
                 .unwrap()
             },
@@ -244,17 +212,9 @@ impl NotoizeClient {
     /// # Panics
     /// if the block data can;t be found (should never happen)
     pub fn notoize(&mut self, text: &str) -> FontStack {
-        let codepoints = text
-            .chars()
-            .map(|c| c as u32)
-            .sorted()
-            .dedup()
-            .collect_vec();
+        let codepoints = text.chars().map(|c| c as u32).sorted().dedup().collect_vec();
         let mut fonts = Vec::with_capacity(codepoints.len());
-        let mut data = BlockData {
-            cps: HashMap::new(),
-            fonts: None,
-        };
+        let mut data = BlockData { cps: HashMap::new(), fonts: None };
         let mut old_block = None;
         for (i, c) in codepoints.iter().enumerate() {
             // blocks can only start at u+xxxxx0
@@ -337,10 +297,7 @@ impl NotoizeClient {
             }
         }
         cprint!("determined necessary fonts");
-        FontStack {
-            names: fonts,
-            map: font_support.clone(),
-        }
+        FontStack { names: fonts, map: font_support.clone() }
     }
 }
 
@@ -501,6 +458,7 @@ generate_script! {
     "Sans Sora Sompeng" => "Sora Sompeng",
     "Sans Soyombo" => "Soyombo",
     "Sans Sundanese" => "Sundanese",
+    "Sans Sunuwar" => "Sunuwar",
     "Sans Syloti Nagri" => "Syloti Nagri",
     "Sans Symbols" => "Symbols",
     "Sans Symbols 2" => "Symbols 2", // there are only ~15 characters that both support
@@ -517,7 +475,7 @@ generate_script! {
     "Serif Tangut" => "Tangut",
     "Sans Telugu" | "Serif Telugu" => "Telugu",
     "Sans Thaana" => "Thaana",
-    "Sans Thai" | "Sans Thai Looped Regular" | "Serif Thai" => "Thai",
+    "Sans Thai" | "Sans Thai Looped" | "Serif Thai" => "Thai",
     "Serif Tibetan" => "Tibetan",
     // i have no clue what these variants are
     "Sans Tifinagh"

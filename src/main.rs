@@ -1,12 +1,10 @@
-use notoize::NotoizeClient;
 use std::{fs, sync::LazyLock, time::Instant};
 
+use notoize::NotoizeClient;
+
 fn main() {
-    static ALL: LazyLock<String> = LazyLock::new(|| {
-        (0..0x11_0000)
-            .filter_map(char::from_u32)
-            .collect::<String>()
-    });
+    static ALL: LazyLock<String> =
+        LazyLock::new(|| (0..0x11_0000).filter_map(char::from_u32).collect::<String>());
     let start = Instant::now();
     let mut client = NotoizeClient::new();
     let the = client.notoize(&ALL);

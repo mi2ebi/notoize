@@ -20,17 +20,17 @@
     Sans Math
     Sans Oriya, Serif Oriya
     Sans Sinhala, Serif Sinhala
+    Sans Sunuwar
     Sans Syriac, Sans Syriac Eastern, Sans Syriac Western
     Sans Tamil, Serif Tamil
-    Serif Tangut
     Sans Telugu, Serif Telugu
     Sans Thaana
-    Sans Thai Looped Regular
+    Sans Thai Looped
     Sans Vithkuqi, Serif Vithkuqi
 0022
     Sans, Sans Mono, Serif
     Sans Adlam, Sans Adlam Unjoined
-    Sans Bengali, Serif Bengali
+    Serif Bengali
     Sans Cham
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Devanagari, Serif Devanagari
@@ -45,17 +45,17 @@
     Sans Math
     Sans Oriya, Serif Oriya
     Sans Sinhala, Serif Sinhala
+    Sans Sunuwar
     Sans Tamil, Serif Tamil
-    Serif Tangut
     Sans Telugu, Serif Telugu
     Sans Thaana
-    Sans Thai Looped Regular
+    Sans Thai Looped
     Sans Vithkuqi, Serif Vithkuqi
     Sans Wancho
 0023
     Sans, Sans Mono, Serif
     Sans Adlam, Sans Adlam Unjoined
-    Sans Bengali, Serif Bengali
+    Serif Bengali
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Devanagari, Serif Devanagari
     Color Emoji
@@ -69,19 +69,18 @@
     Sans Sinhala, Serif Sinhala
     Sans Symbols 2
     Sans Tamil, Serif Tamil
-    Serif Tangut
     Sans Telugu, Serif Telugu
+    Sans Thai Looped
 0024
     Sans, Sans Mono, Serif
     Sans Adlam, Sans Adlam Unjoined
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Duployan
     Sans Math
-    Serif Tangut
 0025
     Sans, Sans Mono, Serif
     Sans Adlam, Sans Adlam Unjoined
-    Sans Bengali, Serif Bengali
+    Serif Bengali
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Devanagari, Serif Devanagari
     Serif Gujarati
@@ -94,22 +93,21 @@
     Sans Math
     Sans Oriya, Serif Oriya
     Sans Sinhala, Serif Sinhala
+    Sans Sunuwar
     Sans Tamil, Serif Tamil
-    Serif Tangut
     Sans Telugu, Serif Telugu
-    Sans Thai Looped Regular
+    Sans Thai Looped
 0026
     Sans, Sans Mono, Serif
     Sans Adlam, Sans Adlam Unjoined
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Lao Looped
     Sans Math
-    Serif Tangut
-    Sans Thai Looped Regular
+    Sans Thai Looped
 0027
     Sans, Sans Mono, Serif
     Sans Adlam, Sans Adlam Unjoined
-    Sans Bengali, Serif Bengali
+    Serif Bengali
     Sans Cham
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Devanagari, Serif Devanagari
@@ -125,11 +123,11 @@
     Sans Math
     Sans Oriya, Serif Oriya
     Sans Sinhala, Serif Sinhala
+    Sans Sunuwar
     Sans Tamil, Serif Tamil
-    Serif Tangut
     Sans Telugu, Serif Telugu
     Sans Thaana
-    Sans Thai Looped Regular
+    Sans Thai Looped
     Sans Vithkuqi, Serif Vithkuqi
     Sans Wancho
     Sans WarangCiti
@@ -137,7 +135,7 @@
     Sans, Sans Mono, Serif
     Sans Adlam, Sans Adlam Unjoined
     Nastaliq Urdu
-    Sans Bengali, Serif Bengali
+    Serif Bengali
     Sans Cham
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Devanagari, Serif Devanagari
@@ -153,19 +151,19 @@
     Sans Math
     Sans Oriya, Serif Oriya
     Sans Sinhala, Serif Sinhala
+    Sans Sunuwar
     Sans Syriac, Sans Syriac Eastern, Sans Syriac Western
     Sans Tamil, Serif Tamil
-    Serif Tangut
     Sans Telugu, Serif Telugu
     Sans Thaana
-    Sans Thai Looped Regular
+    Sans Thai Looped
     Sans Vithkuqi, Serif Vithkuqi
     Sans Wancho
 0029
     Sans, Sans Mono, Serif
     Sans Adlam, Sans Adlam Unjoined
     Nastaliq Urdu
-    Sans Bengali, Serif Bengali
+    Serif Bengali
     Sans Cham
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Devanagari, Serif Devanagari
@@ -181,18 +179,18 @@
     Sans Math
     Sans Oriya, Serif Oriya
     Sans Sinhala, Serif Sinhala
+    Sans Sunuwar
     Sans Syriac, Sans Syriac Eastern, Sans Syriac Western
     Sans Tamil, Serif Tamil
-    Serif Tangut
     Sans Telugu, Serif Telugu
     Sans Thaana
-    Sans Thai Looped Regular
+    Sans Thai Looped
     Sans Vithkuqi, Serif Vithkuqi
     Sans Wancho
 002a
     Sans, Sans Mono, Serif
     Sans Adlam, Sans Adlam Unjoined
-    Sans Bengali, Serif Bengali
+    Serif Bengali
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Devanagari, Serif Devanagari
     Sans Duployan
@@ -211,15 +209,14 @@
     Sans Symbols 2
     Sans Syriac, Sans Syriac Eastern, Sans Syriac Western
     Sans Tamil, Serif Tamil
-    Serif Tangut
     Sans Telugu, Serif Telugu
-    Sans Thai Looped Regular
+    Sans Thai Looped
     Sans Vithkuqi, Serif Vithkuqi
 002b
     Sans, Sans Mono, Serif
     Sans Adlam, Sans Adlam Unjoined
     Nastaliq Urdu
-    Sans Bengali, Serif Bengali
+    Serif Bengali
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Devanagari, Serif Devanagari
     Sans Duployan
@@ -235,14 +232,14 @@
     Sans Sinhala, Serif Sinhala
     Sans Syriac, Sans Syriac Eastern, Sans Syriac Western
     Sans Tamil, Serif Tamil
-    Serif Tangut
     Sans Telugu, Serif Telugu
+    Sans Thai Looped
     Sans Vithkuqi, Serif Vithkuqi
 002c
     Sans, Sans Mono, Serif
     Sans Adlam, Sans Adlam Unjoined
     Naskh Arabic, Nastaliq Urdu, Sans Arabic
-    Sans Bengali, Serif Bengali
+    Serif Bengali
     Sans Chakma
     Sans Cham
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
@@ -264,11 +261,11 @@
     Traditional Nushu
     Sans Oriya, Serif Oriya
     Sans Sinhala, Serif Sinhala
+    Sans Sunuwar
     Sans Tamil, Serif Tamil
-    Serif Tangut
     Sans Telugu, Serif Telugu
     Sans Thaana
-    Sans Thai Looped Regular
+    Sans Thai Looped
     Sans Vithkuqi, Serif Vithkuqi
     Sans Wancho
 002d
@@ -276,7 +273,7 @@
     Sans Adlam, Sans Adlam Unjoined
     Nastaliq Urdu, Sans Arabic
     Sans Armenian, Serif Armenian
-    Sans Bengali, Serif Bengali
+    Serif Bengali
     Sans Chakma
     Sans Cham
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
@@ -305,11 +302,11 @@
     Sans Sinhala, Serif Sinhala
     Sans Sora Sompeng
     Sans Sundanese
+    Sans Sunuwar
     Sans Syriac, Sans Syriac Eastern, Sans Syriac Western
     Sans Tamil, Serif Tamil
-    Serif Tangut
     Sans Telugu, Serif Telugu
-    Sans Thai, Sans Thai Looped Regular, Serif Thai
+    Sans Thai, Sans Thai Looped, Serif Thai
     Serif Tibetan
     Sans Vithkuqi, Serif Vithkuqi
     Sans Wancho
@@ -318,7 +315,7 @@
     Sans Adlam, Sans Adlam Unjoined
     Naskh Arabic, Nastaliq Urdu, Sans Arabic
     Sans Avestan
-    Sans Bengali, Serif Bengali
+    Serif Bengali
     Sans Cham
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Coptic
@@ -339,19 +336,19 @@
     Traditional Nushu
     Sans Oriya, Serif Oriya
     Sans Sinhala, Serif Sinhala
+    Sans Sunuwar
     Sans Syriac, Sans Syriac Eastern, Sans Syriac Western
     Sans Tamil, Serif Tamil
-    Serif Tangut
     Sans Telugu, Serif Telugu
     Sans Thaana
-    Sans Thai Looped Regular
+    Sans Thai Looped
     Sans Vithkuqi, Serif Vithkuqi
     Sans Wancho
 002f
     Sans, Sans Mono, Serif
     Sans Adlam, Sans Adlam Unjoined
     Nastaliq Urdu
-    Sans Bengali, Serif Bengali
+    Serif Bengali
     Sans Cham
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Devanagari, Serif Devanagari
@@ -370,15 +367,14 @@
     Sans Sinhala, Serif Sinhala
     Sans Syriac, Sans Syriac Eastern, Sans Syriac Western
     Sans Tamil, Serif Tamil
-    Serif Tangut
     Sans Telugu, Serif Telugu
-    Sans Thai Looped Regular
+    Sans Thai Looped
     Sans Vithkuqi, Serif Vithkuqi
     Sans Wancho
 0030
     Sans, Sans Mono, Serif
     Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
-    Sans Bengali, Serif Bengali
+    Serif Bengali
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Devanagari, Serif Devanagari
     Sans Duployan
@@ -396,14 +392,13 @@
     Sans Symbols
     Sans Symbols 2
     Sans Tamil, Serif Tamil
-    Serif Tangut
     Sans Telugu, Serif Telugu
     Sans Thaana
     Sans Vithkuqi, Serif Vithkuqi
 0031
     Sans, Sans Mono, Serif
     Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
-    Sans Bengali, Serif Bengali
+    Serif Bengali
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Devanagari, Serif Devanagari
     Sans Duployan
@@ -421,14 +416,13 @@
     Sans Symbols
     Sans Symbols 2
     Sans Tamil, Serif Tamil
-    Serif Tangut
     Sans Telugu, Serif Telugu
     Sans Thaana
     Sans Vithkuqi, Serif Vithkuqi
 0032
     Sans, Sans Mono, Serif
     Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
-    Sans Bengali, Serif Bengali
+    Serif Bengali
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Devanagari, Serif Devanagari
     Sans Duployan
@@ -446,14 +440,13 @@
     Sans Symbols
     Sans Symbols 2
     Sans Tamil, Serif Tamil
-    Serif Tangut
     Sans Telugu, Serif Telugu
     Sans Thaana
     Sans Vithkuqi, Serif Vithkuqi
 0033
     Sans, Sans Mono, Serif
     Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
-    Sans Bengali, Serif Bengali
+    Serif Bengali
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Devanagari, Serif Devanagari
     Sans Duployan
@@ -471,14 +464,13 @@
     Sans Symbols
     Sans Symbols 2
     Sans Tamil, Serif Tamil
-    Serif Tangut
     Sans Telugu, Serif Telugu
     Sans Thaana
     Sans Vithkuqi, Serif Vithkuqi
 0034
     Sans, Sans Mono, Serif
     Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
-    Sans Bengali, Serif Bengali
+    Serif Bengali
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Devanagari, Serif Devanagari
     Sans Duployan
@@ -496,14 +488,13 @@
     Sans Symbols
     Sans Symbols 2
     Sans Tamil, Serif Tamil
-    Serif Tangut
     Sans Telugu, Serif Telugu
     Sans Thaana
     Sans Vithkuqi, Serif Vithkuqi
 0035
     Sans, Sans Mono, Serif
     Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
-    Sans Bengali, Serif Bengali
+    Serif Bengali
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Devanagari, Serif Devanagari
     Sans Duployan
@@ -521,14 +512,13 @@
     Sans Symbols
     Sans Symbols 2
     Sans Tamil, Serif Tamil
-    Serif Tangut
     Sans Telugu, Serif Telugu
     Sans Thaana
     Sans Vithkuqi, Serif Vithkuqi
 0036
     Sans, Sans Mono, Serif
     Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
-    Sans Bengali, Serif Bengali
+    Serif Bengali
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Devanagari, Serif Devanagari
     Sans Duployan
@@ -546,14 +536,13 @@
     Sans Symbols
     Sans Symbols 2
     Sans Tamil, Serif Tamil
-    Serif Tangut
     Sans Telugu, Serif Telugu
     Sans Thaana
     Sans Vithkuqi, Serif Vithkuqi
 0037
     Sans, Sans Mono, Serif
     Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
-    Sans Bengali, Serif Bengali
+    Serif Bengali
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Devanagari, Serif Devanagari
     Sans Duployan
@@ -571,14 +560,13 @@
     Sans Symbols
     Sans Symbols 2
     Sans Tamil, Serif Tamil
-    Serif Tangut
     Sans Telugu, Serif Telugu
     Sans Thaana
     Sans Vithkuqi, Serif Vithkuqi
 0038
     Sans, Sans Mono, Serif
     Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
-    Sans Bengali, Serif Bengali
+    Serif Bengali
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Devanagari, Serif Devanagari
     Sans Duployan
@@ -596,14 +584,13 @@
     Sans Symbols
     Sans Symbols 2
     Sans Tamil, Serif Tamil
-    Serif Tangut
     Sans Telugu, Serif Telugu
     Sans Thaana
     Sans Vithkuqi, Serif Vithkuqi
 0039
     Sans, Sans Mono, Serif
     Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
-    Sans Bengali, Serif Bengali
+    Serif Bengali
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Devanagari, Serif Devanagari
     Sans Duployan
@@ -621,7 +608,6 @@
     Sans Symbols
     Sans Symbols 2
     Sans Tamil, Serif Tamil
-    Serif Tangut
     Sans Telugu, Serif Telugu
     Sans Thaana
     Sans Vithkuqi, Serif Vithkuqi
@@ -629,7 +615,7 @@
     Sans, Sans Mono, Serif
     Sans Adlam, Sans Adlam Unjoined
     Naskh Arabic, Nastaliq Urdu, Sans Arabic
-    Sans Bengali, Serif Bengali
+    Serif Bengali
     Sans Cham
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Coptic
@@ -649,17 +635,17 @@
     Sans Nag Mundari
     Sans Oriya, Serif Oriya
     Sans Sinhala, Serif Sinhala
+    Sans Sunuwar
     Sans Syriac, Sans Syriac Eastern, Sans Syriac Western
     Sans Tamil, Serif Tamil
-    Serif Tangut
     Sans Telugu, Serif Telugu
     Sans Thaana
-    Sans Thai Looped Regular
+    Sans Thai Looped
     Sans Vithkuqi, Serif Vithkuqi
 003b
     Sans, Sans Mono, Serif
     Sans Adlam, Sans Adlam Unjoined
-    Sans Bengali, Serif Bengali
+    Serif Bengali
     Sans Cham
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Coptic
@@ -677,16 +663,16 @@
     Sans Nag Mundari
     Sans Oriya, Serif Oriya
     Sans Sinhala, Serif Sinhala
+    Sans Sunuwar
     Sans Tamil, Serif Tamil
-    Serif Tangut
     Sans Telugu, Serif Telugu
     Sans Thaana
-    Sans Thai Looped Regular
+    Sans Thai Looped
     Sans Vithkuqi, Serif Vithkuqi
 003c
     Sans, Sans Mono, Serif
     Sans Adlam, Sans Adlam Unjoined
-    Sans Bengali, Serif Bengali
+    Serif Bengali
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Devanagari, Serif Devanagari
     Sans Duployan
@@ -701,14 +687,13 @@
     Sans Oriya, Serif Oriya
     Sans Sinhala, Serif Sinhala
     Sans Tamil, Serif Tamil
-    Serif Tangut
     Sans Telugu, Serif Telugu
     Sans Vithkuqi, Serif Vithkuqi
 003d
     Sans, Sans Mono, Serif
     Sans Adlam, Sans Adlam Unjoined
     Nastaliq Urdu
-    Sans Bengali, Serif Bengali
+    Serif Bengali
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Devanagari, Serif Devanagari
     Sans Duployan
@@ -724,13 +709,13 @@
     Sans Sinhala, Serif Sinhala
     Sans Syriac, Sans Syriac Eastern, Sans Syriac Western
     Sans Tamil, Serif Tamil
-    Serif Tangut
     Sans Telugu, Serif Telugu
+    Sans Thai Looped
     Sans Vithkuqi, Serif Vithkuqi
 003e
     Sans, Sans Mono, Serif
     Sans Adlam, Sans Adlam Unjoined
-    Sans Bengali, Serif Bengali
+    Serif Bengali
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Devanagari, Serif Devanagari
     Sans Duployan
@@ -745,7 +730,6 @@
     Sans Oriya, Serif Oriya
     Sans Sinhala, Serif Sinhala
     Sans Tamil, Serif Tamil
-    Serif Tangut
     Sans Telugu, Serif Telugu
     Sans Vithkuqi, Serif Vithkuqi
 003f
@@ -770,173 +754,146 @@
     Sans Myanmar, Serif Myanmar
     Sans Oriya, Serif Oriya
     Sans Sinhala, Serif Sinhala
+    Sans Sunuwar
     Sans Tamil, Serif Tamil
-    Serif Tangut
     Sans Telugu, Serif Telugu
-    Sans Thai Looped Regular
+    Sans Thai Looped
     Sans Vithkuqi, Serif Vithkuqi
 0040
     Sans, Sans Mono, Serif
     Sans Adlam, Sans Adlam Unjoined
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
-    Serif Tangut
 0041
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 0042
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 0043
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 0044
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 0045
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 0046
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 0047
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 0048
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 0049
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 004a
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 004b
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 004c
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 004d
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 004e
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 004f
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 0050
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 0051
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 0052
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 0053
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 0054
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 0055
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 0056
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 0057
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 0058
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 0059
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 005a
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 005b
     Sans, Sans Mono, Serif
     Sans Adlam, Sans Adlam Unjoined
@@ -953,17 +910,17 @@
     Sans Math
     Sans Oriya, Serif Oriya
     Sans Sinhala, Serif Sinhala
+    Sans Sunuwar
     Sans Syriac, Sans Syriac Eastern, Sans Syriac Western
     Sans Tamil, Serif Tamil
-    Serif Tangut
     Sans Telugu, Serif Telugu
-    Sans Thai Looped Regular
+    Sans Thai Looped
     Sans Wancho
 005c
     Sans, Sans Mono, Serif
     Sans Adlam, Sans Adlam Unjoined
     Nastaliq Urdu
-    Sans Bengali, Serif Bengali
+    Serif Bengali
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Devanagari, Serif Devanagari
     Serif Gujarati
@@ -976,8 +933,8 @@
     Sans Sinhala, Serif Sinhala
     Sans Syriac, Sans Syriac Eastern, Sans Syriac Western
     Sans Tamil, Serif Tamil
-    Serif Tangut
     Sans Telugu, Serif Telugu
+    Sans Thai Looped
     Sans Wancho
 005d
     Sans, Sans Mono, Serif
@@ -995,16 +952,16 @@
     Sans Math
     Sans Oriya, Serif Oriya
     Sans Sinhala, Serif Sinhala
+    Sans Sunuwar
     Sans Syriac, Sans Syriac Eastern, Sans Syriac Western
     Sans Tamil, Serif Tamil
-    Serif Tangut
     Sans Telugu, Serif Telugu
-    Sans Thai Looped Regular
+    Sans Thai Looped
     Sans Wancho
 005e
     Sans, Sans Mono, Serif
     Sans Adlam, Sans Adlam Unjoined
-    Sans Bengali, Serif Bengali
+    Serif Bengali
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Devanagari, Serif Devanagari
     Serif Gujarati
@@ -1016,13 +973,12 @@
     Sans Oriya, Serif Oriya
     Sans Sinhala, Serif Sinhala
     Sans Tamil, Serif Tamil
-    Serif Tangut
     Sans Telugu, Serif Telugu
     Sans Vithkuqi, Serif Vithkuqi
 005f
     Sans, Sans Mono, Serif
     Sans Adlam, Sans Adlam Unjoined
-    Sans Bengali, Serif Bengali
+    Serif Bengali
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Devanagari, Serif Devanagari
     Serif Gujarati
@@ -1034,169 +990,143 @@
     Sans Oriya, Serif Oriya
     Sans Sinhala, Serif Sinhala
     Sans Tamil, Serif Tamil
-    Serif Tangut
     Sans Telugu, Serif Telugu
+    Sans Thai Looped
 0060
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Nag Mundari
-    Serif Tangut
+    Sans Sunuwar
 0061
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 0062
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 0063
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 0064
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 0065
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 0066
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 0067
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 0068
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 0069
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 006a
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 006b
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 006c
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 006d
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 006e
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 006f
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 0070
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 0071
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 0072
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 0073
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 0074
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 0075
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 0076
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 0077
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 0078
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 0079
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 007a
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
     Sans Symbols
-    Serif Tangut
 007b
     Sans, Sans Mono, Serif
     Sans Adlam, Sans Adlam Unjoined
@@ -1212,15 +1142,16 @@
     Sans Math
     Sans Oriya, Serif Oriya
     Sans Sinhala, Serif Sinhala
+    Sans Sunuwar
     Sans Tamil, Serif Tamil
-    Serif Tangut
     Sans Telugu, Serif Telugu
+    Sans Thai Looped
     Sans Wancho
 007c
     Sans, Sans Mono, Serif
     Sans Adlam, Sans Adlam Unjoined
     Nastaliq Urdu
-    Sans Bengali, Serif Bengali
+    Serif Bengali
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Devanagari, Serif Devanagari
     Serif Gujarati
@@ -1232,8 +1163,8 @@
     Sans Oriya, Serif Oriya
     Sans Sinhala, Serif Sinhala
     Sans Tamil, Serif Tamil
-    Serif Tangut
     Sans Telugu, Serif Telugu
+    Sans Thai Looped
     Serif Tibetan
     Znamenny Musical Notation
 007d
@@ -1251,13 +1182,14 @@
     Sans Math
     Sans Oriya, Serif Oriya
     Sans Sinhala, Serif Sinhala
+    Sans Sunuwar
     Sans Tamil, Serif Tamil
-    Serif Tangut
     Sans Telugu, Serif Telugu
+    Sans Thai Looped
     Sans Wancho
 007e
     Sans, Sans Mono, Serif
-    Sans Bengali, Serif Bengali
+    Serif Bengali
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Devanagari, Serif Devanagari
     Serif Gujarati
@@ -1269,7 +1201,6 @@
     Sans Oriya, Serif Oriya
     Sans Sinhala, Serif Sinhala
     Sans Tamil, Serif Tamil
-    Serif Tangut
     Sans Telugu, Serif Telugu
 00a0
     Sans, Sans Mono, Serif
@@ -1402,6 +1333,7 @@
     Sans Sora Sompeng
     Sans Soyombo
     Sans Sundanese
+    Sans Sunuwar
     Sans Syloti Nagri
     Sans Symbols
     Sans Symbols 2
@@ -1417,7 +1349,7 @@
     Serif Tangut
     Sans Telugu, Serif Telugu
     Sans Thaana
-    Sans Thai, Sans Thai Looped Regular, Serif Thai
+    Sans Thai, Sans Thai Looped, Serif Thai
     Serif Tibetan
     Sans Tifinagh, Sans Tifinagh APT, Sans Tifinagh Adrar, Sans Tifinagh Agraw Imazighen, Sans Tifinagh Ahaggar, Sans Tifinagh Air, Sans Tifinagh Azawagh, Sans Tifinagh Ghat, Sans Tifinagh Hawad, Sans Tifinagh Rhissa Ixa, Sans Tifinagh SIL, Sans Tifinagh Tawellemmet
     Sans Tirhuta
@@ -1472,14 +1404,14 @@
     Sans Khmer, Serif Khmer
     Sans Lao Looped
     Sans Syriac, Sans Syriac Eastern, Sans Syriac Western
-    Sans Thai Looped Regular
+    Sans Thai Looped
 00ac
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
 00ad
     Sans, Serif
-    Sans Bengali, Serif Bengali
+    Serif Bengali
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Devanagari, Serif Devanagari
     Serif Gujarati
@@ -1519,12 +1451,14 @@
 00b4
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
+    Sans Sunuwar
 00b5
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
 00b6
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
+    Sans Thai Looped
 00b7
     Sans, Sans Mono, Serif
     Nastaliq Urdu
@@ -1554,7 +1488,7 @@
     Sans Khmer, Serif Khmer
     Sans Lao Looped
     Sans Syriac, Sans Syriac Eastern, Sans Syriac Western
-    Sans Thai Looped Regular
+    Sans Thai Looped
 00bc
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
@@ -1639,7 +1573,7 @@
 00d7
     Sans, Sans Mono, Serif
     Nastaliq Urdu
-    Sans Bengali, Serif Bengali
+    Serif Bengali
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Devanagari, Serif Devanagari
     Sans Duployan
@@ -1656,7 +1590,7 @@
     Sans Sinhala, Serif Sinhala
     Sans Tamil, Serif Tamil
     Sans Telugu, Serif Telugu
-    Sans Thai Looped Regular
+    Sans Thai Looped
 00d8
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
@@ -1753,7 +1687,7 @@
 00f7
     Sans, Sans Mono, Serif
     Nastaliq Urdu
-    Sans Bengali, Serif Bengali
+    Serif Bengali
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Devanagari, Serif Devanagari
     Serif Gujarati
@@ -1768,6 +1702,7 @@
     Sans Sinhala, Serif Sinhala
     Sans Tamil, Serif Tamil
     Sans Telugu, Serif Telugu
+    Sans Thai Looped
 00f8
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
@@ -1974,13 +1909,17 @@
     Sans Bengali, Serif Bengali
     Sans Devanagari, Serif Devanagari
     Sans Lisu
-    Sans Thai, Sans Thai Looped Regular, Serif Thai
+    Sans Thai, Sans Thai Looped, Serif Thai
+02c6
+    Sans, Sans Mono, Serif
+    Sans Sunuwar
 02c7
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
 02c9
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
+    Sans Sunuwar
 02ca
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
@@ -1998,10 +1937,14 @@
     Sans Math
 02d7
     Sans, Sans Mono, Serif
-    Sans Thai, Sans Thai Looped Regular, Serif Thai
+    Sans Thai, Sans Thai Looped, Serif Thai
 02d9
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
+02dc
+    Sans, Sans Mono, Serif
+    Sans Sunuwar
+    Sans Thai Looped
 02ea
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
@@ -2016,6 +1959,7 @@
     Sans Duployan
     Sans Math
     Sans Old Permic
+    Sans Sunuwar
     Sans Tai Le
 0301
     Sans, Sans Mono, Serif
@@ -2026,6 +1970,7 @@
     Serif Georgian
     Sans Math
     Sans Osage
+    Sans Sunuwar
     Sans Tai Le
     Sans Tifinagh, Sans Tifinagh APT, Sans Tifinagh Adrar, Sans Tifinagh Agraw Imazighen, Sans Tifinagh Ahaggar, Sans Tifinagh Air, Sans Tifinagh Azawagh, Sans Tifinagh Ghat, Sans Tifinagh Hawad, Sans Tifinagh Rhissa Ixa, Sans Tifinagh SIL, Sans Tifinagh Tawellemmet
 0302
@@ -2040,8 +1985,9 @@
     Sans, Sans Mono, Serif
     Sans Glagolitic
     Sans Math
+    Sans Sunuwar
     Sans Syriac, Sans Syriac Eastern, Sans Syriac Western
-    Sans Thai, Sans Thai Looped Regular, Serif Thai
+    Sans Thai, Sans Thai Looped, Serif Thai
 0304
     Sans, Sans Mono, Serif
     Sans Caucasian Albanian
@@ -2053,6 +1999,7 @@
     Sans Gothic
     Sans Math
     Sans Osage
+    Sans Sunuwar
     Sans Syriac, Sans Syriac Eastern, Sans Syriac Western
     Sans Tifinagh, Sans Tifinagh APT, Sans Tifinagh Adrar, Sans Tifinagh Agraw Imazighen, Sans Tifinagh Ahaggar, Sans Tifinagh Air, Sans Tifinagh Azawagh, Sans Tifinagh Ghat, Sans Tifinagh Hawad, Sans Tifinagh Rhissa Ixa, Sans Tifinagh SIL, Sans Tifinagh Tawellemmet
 0305
@@ -2112,9 +2059,15 @@
     Sans Duployan
     Sans Math
     Sans Tai Le
+030d
+    Sans, Sans Mono, Serif
+    Sans Sunuwar
 030e
     Sans, Sans Mono, Serif
     Sans Ethiopic, Serif Ethiopic
+0310
+    Sans, Sans Mono, Serif
+    Sans Sunuwar
 0311
     Sans, Sans Mono, Serif
     Sans Coptic
@@ -2134,6 +2087,9 @@
 0317
     Sans, Sans Mono, Serif
     Sans Duployan
+031d
+    Sans, Sans Mono, Serif
+    Sans Sunuwar
 0320
     Sans, Sans Mono, Serif
     Sans Syriac, Sans Syriac Eastern, Sans Syriac Western
@@ -2168,6 +2124,7 @@
 032d
     Sans, Sans Mono, Serif
     Sans Math
+    Sans Sunuwar
     Sans Syriac, Sans Syriac Eastern, Sans Syriac Western
 032e
     Sans, Sans Mono, Serif
@@ -2189,8 +2146,9 @@
     Sans Duployan
     Sans Gothic
     Sans Math
+    Sans Sunuwar
     Sans Syriac, Sans Syriac Eastern, Sans Syriac Western
-    Sans Thai, Sans Thai Looped Regular, Serif Thai
+    Sans Thai, Sans Thai Looped, Serif Thai
     Sans Tifinagh, Sans Tifinagh APT, Sans Tifinagh Adrar, Sans Tifinagh Agraw Imazighen, Sans Tifinagh Ahaggar, Sans Tifinagh Air, Sans Tifinagh Azawagh, Sans Tifinagh Ghat, Sans Tifinagh Hawad, Sans Tifinagh Rhissa Ixa, Sans Tifinagh SIL, Sans Tifinagh Tawellemmet
 0332
     Sans, Sans Mono, Serif
@@ -2219,7 +2177,6 @@
     Sans Arabic
     Sans Hebrew
     Sans Lao Looped
-    Sans Thai Looped Regular
 0358
     Sans, Sans Mono, Serif
     Sans Osage
@@ -2227,7 +2184,7 @@
     Sans, Sans Mono, Serif
     Sans Caucasian Albanian
     Sans Coptic
-    Sans Thai Looped Regular
+    Sans Thai Looped
 0361
     Sans, Sans Mono, Serif
     Sans Coptic
@@ -3316,10 +3273,10 @@
     Sans Nandinagari
 0e4f
     Sans Lao Looped
-    Sans Thai, Sans Thai Looped Regular, Serif Thai
+    Sans Thai, Sans Thai Looped, Serif Thai
 0e5b
     Sans Lao Looped
-    Sans Thai, Sans Thai Looped Regular, Serif Thai
+    Sans Thai, Sans Thai Looped, Serif Thai
 1040
     Sans Chakma
     Sans Myanmar, Serif Myanmar
@@ -3373,12 +3330,6 @@
     Sans Hanunoo
     Sans Tagalog
     Sans Tagbanwa
-17c9
-    Sans Khmer, Serif Khmer
-    Sans Thai Looped Regular
-17cb
-    Sans Khmer, Serif Khmer
-    Sans Thai Looped Regular
 1801
     Sans Mongolian
     Sans PhagsPa
@@ -3480,6 +3431,9 @@
 1dcd
     Sans, Sans Mono, Serif
     Sans Coptic
+1df5
+    Sans, Sans Mono, Serif
+    Sans Sunuwar
 1dfb
     Sans, Sans Mono, Serif
     Sans Newa
@@ -3770,13 +3724,11 @@
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
-    Serif Tangut
 2003
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Duployan
     Sans Math
-    Serif Tangut
 2004
     Sans, Sans Mono, Serif
     Sans Math
@@ -3842,7 +3794,7 @@
     Sans Tamil, Serif Tamil
     Sans Telugu, Serif Telugu
     Sans Thaana
-    Sans Thai, Sans Thai Looped Regular, Serif Thai
+    Sans Thai, Sans Thai Looped, Serif Thai
     Serif Tibetan
 200c
     Sans, Sans Mono, Serif
@@ -3916,7 +3868,7 @@
     Sans Tamil, Serif Tamil
     Sans Telugu, Serif Telugu
     Sans Thaana
-    Sans Thai, Sans Thai Looped Regular, Serif Thai
+    Sans Thai, Sans Thai Looped, Serif Thai
     Serif Tibetan
     Sans Tifinagh, Sans Tifinagh APT, Sans Tifinagh Adrar, Sans Tifinagh Agraw Imazighen, Sans Tifinagh Ahaggar, Sans Tifinagh Air, Sans Tifinagh Azawagh, Sans Tifinagh Ghat, Sans Tifinagh Hawad, Sans Tifinagh Rhissa Ixa, Sans Tifinagh SIL, Sans Tifinagh Tawellemmet
     Sans Tirhuta
@@ -3990,7 +3942,7 @@
     Sans Tamil, Serif Tamil
     Sans Telugu, Serif Telugu
     Sans Thaana
-    Sans Thai, Sans Thai Looped Regular, Serif Thai
+    Sans Thai, Sans Thai Looped, Serif Thai
     Serif Tibetan
     Sans Tifinagh, Sans Tifinagh APT, Sans Tifinagh Adrar, Sans Tifinagh Agraw Imazighen, Sans Tifinagh Ahaggar, Sans Tifinagh Air, Sans Tifinagh Azawagh, Sans Tifinagh Ghat, Sans Tifinagh Hawad, Sans Tifinagh Rhissa Ixa, Sans Tifinagh SIL, Sans Tifinagh Tawellemmet
     Sans Tirhuta
@@ -4039,7 +3991,7 @@
     Sans Syloti Nagri
     Sans Tamil, Serif Tamil
     Sans Telugu, Serif Telugu
-    Sans Thai, Sans Thai Looped Regular, Serif Thai
+    Sans Thai, Sans Thai Looped, Serif Thai
     Serif Tibetan
 2011
     Sans, Sans Mono, Serif
@@ -4050,12 +4002,12 @@
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Lao Looped
-    Sans Thai Looped Regular
+    Sans Thai Looped
 2013
     Sans, Sans Mono, Serif
     Sans Adlam, Sans Adlam Unjoined
     Nastaliq Urdu
-    Sans Bengali, Serif Bengali
+    Serif Bengali
     Sans Chakma
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Devanagari, Serif Devanagari
@@ -4071,12 +4023,12 @@
     Sans Sinhala, Serif Sinhala
     Sans Tamil, Serif Tamil
     Sans Telugu, Serif Telugu
-    Sans Thai Looped Regular
+    Sans Thai Looped
 2014
     Sans, Sans Mono, Serif
     Sans Adlam, Sans Adlam Unjoined
     Nastaliq Urdu
-    Sans Bengali, Serif Bengali
+    Serif Bengali
     Sans Chakma
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Devanagari, Serif Devanagari
@@ -4091,13 +4043,13 @@
     Sans Sinhala, Serif Sinhala
     Sans Tamil, Serif Tamil
     Sans Telugu, Serif Telugu
-    Sans Thai Looped Regular
+    Sans Thai Looped
 2015
     Sans, Sans Mono, Serif
     Sans Adlam, Sans Adlam Unjoined
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Lao Looped
-    Sans Thai Looped Regular
+    Sans Thai Looped
 2016
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
@@ -4123,10 +4075,11 @@
     Sans Myanmar, Serif Myanmar
     Sans Oriya, Serif Oriya
     Sans Sinhala, Serif Sinhala
+    Sans Sunuwar
     Sans Tamil, Serif Tamil
     Sans Telugu, Serif Telugu
     Sans Thaana
-    Sans Thai Looped Regular
+    Sans Thai Looped
 2019
     Sans, Sans Mono, Serif
     Sans Adlam, Sans Adlam Unjoined
@@ -4149,10 +4102,11 @@
     Sans Myanmar, Serif Myanmar
     Sans Oriya, Serif Oriya
     Sans Sinhala, Serif Sinhala
+    Sans Sunuwar
     Sans Tamil, Serif Tamil
     Sans Telugu, Serif Telugu
     Sans Thaana
-    Sans Thai Looped Regular
+    Sans Thai Looped
 201a
     Sans, Sans Mono, Serif
     Sans Adlam, Sans Adlam Unjoined
@@ -4182,10 +4136,11 @@
     Sans Myanmar, Serif Myanmar
     Sans Oriya, Serif Oriya
     Sans Sinhala, Serif Sinhala
+    Sans Sunuwar
     Sans Tamil, Serif Tamil
     Sans Telugu, Serif Telugu
     Sans Thaana
-    Sans Thai Looped Regular
+    Sans Thai Looped
     Sans Wancho
 201d
     Sans, Sans Mono, Serif
@@ -4209,10 +4164,11 @@
     Sans Myanmar, Serif Myanmar
     Sans Oriya, Serif Oriya
     Sans Sinhala, Serif Sinhala
+    Sans Sunuwar
     Sans Tamil, Serif Tamil
     Sans Telugu, Serif Telugu
     Sans Thaana
-    Sans Thai Looped Regular
+    Sans Thai Looped
     Sans Wancho
 201e
     Sans, Sans Mono, Serif
@@ -4234,7 +4190,7 @@
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Lao Looped
     Sans Symbols 2
-    Sans Thai Looped Regular
+    Sans Thai Looped
 2025
     Sans, Sans Mono, Serif
     Nastaliq Urdu
@@ -4244,7 +4200,7 @@
     Sans, Sans Mono, Serif
     Sans Adlam, Sans Adlam Unjoined
     Nastaliq Urdu
-    Sans Bengali, Serif Bengali
+    Serif Bengali
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Devanagari, Serif Devanagari
     Sans Duployan
@@ -4263,10 +4219,11 @@
     Sans Oriya, Serif Oriya
     Sans PhagsPa
     Sans Sinhala, Serif Sinhala
+    Sans Sunuwar
     Sans Syriac, Sans Syriac Eastern, Sans Syriac Western
     Sans Tamil, Serif Tamil
     Sans Telugu, Serif Telugu
-    Sans Thai Looped Regular
+    Sans Thai Looped
 2027
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
@@ -4311,7 +4268,7 @@
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Duployan
     Sans Lao Looped
-    Sans Thai Looped Regular
+    Sans Thai Looped
 203a
     Sans, Sans Mono, Serif
     Sans Adlam, Sans Adlam Unjoined
@@ -4319,7 +4276,7 @@
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Duployan
     Sans Lao Looped
-    Sans Thai Looped Regular
+    Sans Thai Looped
 203b
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
@@ -4387,7 +4344,7 @@
 2060
     Sans, Sans Mono, Serif
     Sans Lao Looped
-    Sans Thai Looped Regular
+    Sans Thai Looped
 2074
     Sans, Sans Mono, Serif
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
@@ -4944,7 +4901,7 @@
 2212
     Sans, Sans Mono, Serif
     Nastaliq Urdu
-    Sans Bengali, Serif Bengali
+    Serif Bengali
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Devanagari, Serif Devanagari
     Serif Gujarati
@@ -4960,6 +4917,7 @@
     Sans Syriac, Sans Syriac Eastern, Sans Syriac Western
     Sans Tamil, Serif Tamil
     Sans Telugu, Serif Telugu
+    Sans Thai Looped
 2213
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
@@ -7171,6 +7129,7 @@
     Sans Sogdian
     Sans Soyombo
     Sans Sundanese
+    Sans Sunuwar
     Sans Syloti Nagri
     Sans Symbols
     Sans Symbols 2
@@ -7183,7 +7142,7 @@
     Sans Tamil, Serif Tamil
     Sans Telugu, Serif Telugu
     Sans Thaana
-    Sans Thai, Sans Thai Looped Regular, Serif Thai
+    Sans Thai, Sans Thai Looped, Serif Thai
     Serif Tibetan
     Sans Tifinagh, Sans Tifinagh APT, Sans Tifinagh Adrar, Sans Tifinagh Agraw Imazighen, Sans Tifinagh Ahaggar, Sans Tifinagh Air, Sans Tifinagh Azawagh, Sans Tifinagh Ghat, Sans Tifinagh Hawad, Sans Tifinagh Rhissa Ixa, Sans Tifinagh SIL, Sans Tifinagh Tawellemmet
     Sans Tirhuta
@@ -7515,7 +7474,6 @@
     Color Emoji
     Sans Lao Looped
     Sans Symbols
-    Sans Thai Looped Regular
     Serif Tibetan
 2639
     Color Emoji
@@ -8372,53 +8330,15 @@
 2faf
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Traditional Nushu
-2ff0
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-2ff1
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-2ff2
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-2ff3
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-2ff4
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-2ff5
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-2ff6
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-2ff7
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-2ff8
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-2ff9
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-2ffa
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-2ffb
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
 3000
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans New Tai Lue
-    Serif Tangut
 3001
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Mongolian
     Sans New Tai Lue
     Sans PhagsPa
     Sans Tai Le
-    Serif Tangut
     Sans Yi
 3002
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
@@ -8427,7 +8347,6 @@
     Traditional Nushu
     Sans PhagsPa
     Sans Tai Le
-    Serif Tangut
     Sans Yi
 3007
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
@@ -8532,9 +8451,6 @@
 303d
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Color Emoji
-303e
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
 30fb
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Yi
@@ -8562,9 +8478,6 @@
 4491
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Traditional Nushu
-4e00
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
 4e39
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Fangsong KSS Rotated, Fangsong KSS Vertical, Serif Khitan Small Script
@@ -8580,16 +8493,12 @@
 4f53
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Fangsong KSS Rotated, Fangsong KSS Vertical, Serif Khitan Small Script
-    Serif Tangut
 51e1
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Traditional Nushu
 53e9
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Traditional Nushu
-590f
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
 5951
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Fangsong KSS Rotated, Fangsong KSS Vertical, Serif Khitan Small Script
@@ -8602,7 +8511,6 @@
 5b8b
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Fangsong KSS Rotated, Fangsong KSS Vertical, Serif Khitan Small Script
-    Serif Tangut
 5c0f
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Fangsong KSS Rotated, Fangsong KSS Vertical, Serif Khitan Small Script
@@ -8627,9 +8535,6 @@
 7684
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Traditional Nushu
-897f
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
 8bd5
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Traditional Nushu
@@ -8651,9 +8556,6 @@
 9875
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Traditional Nushu
-9ad4
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
 a66f
     Sans, Sans Mono, Serif
     Sans Glagolitic
@@ -8827,28 +8729,9 @@ fdf2
 fdfd
     Kufi Arabic, Naskh Arabic, Nastaliq Urdu, Sans Arabic
     Sans Thaana
-fe10
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-fe11
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
 fe12
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Traditional Nushu
-    Serif Tangut
-fe13
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-fe14
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-fe15
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-fe16
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
 fe24
     Sans, Sans Mono, Serif
     Sans Caucasian Albanian
@@ -8887,310 +8770,54 @@ ff01
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Mongolian
     Sans New Tai Lue
-    Serif Tangut
     Sans Yi
-ff02
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff03
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff04
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff05
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff06
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff07
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
 ff08
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Mongolian
     Sans New Tai Lue
-    Serif Tangut
 ff09
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Mongolian
     Sans New Tai Lue
-    Serif Tangut
-ff0a
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff0b
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
 ff0c
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Mongolian
     Sans New Tai Lue
-    Serif Tangut
     Sans Yi
 ff0d
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Mongolian
-    Serif Tangut
 ff0e
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans New Tai Lue
-    Serif Tangut
-ff0f
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff10
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff11
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff12
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff13
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff14
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff15
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff16
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff17
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff18
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff19
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
 ff1a
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans New Tai Lue
-    Serif Tangut
     Sans Yi
 ff1b
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Mongolian
     Sans New Tai Lue
-    Serif Tangut
     Sans Yi
-ff1c
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff1d
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff1e
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
 ff1f
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Mongolian
     Sans New Tai Lue
-    Serif Tangut
     Sans Yi
-ff20
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff21
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff22
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff23
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff24
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff25
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff26
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff27
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff28
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff29
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff2a
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff2b
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff2c
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff2d
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff2e
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff2f
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff30
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff31
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff32
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff33
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff34
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff35
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff36
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff37
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff38
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff39
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff3a
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
 ff3b
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Mongolian
-    Serif Tangut
-ff3c
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
 ff3d
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Mongolian
-    Serif Tangut
-ff3e
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff3f
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff40
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff41
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff42
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff43
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff44
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff45
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff46
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff47
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff48
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff49
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff4a
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff4b
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff4c
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff4d
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff4e
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff4f
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff50
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff51
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff52
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff53
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff54
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff55
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff56
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff57
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff58
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff59
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
-ff5a
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
 ff5b
     Sans Mono
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
-    Serif Tangut
-ff5c
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
 ff5d
     Sans Mono
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans Math
-    Serif Tangut
-ff5e
-    Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
-    Serif Tangut
 ff61
     Sans CJK HK, Sans CJK JP, Sans CJK KR, Sans CJK SC, Sans CJK TC
     Sans New Tai Lue
